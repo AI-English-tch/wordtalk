@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.mmr.wordtalk.common.seata.config.SeataAutoConfiguration
+
+
+

@@ -1,0 +1,12 @@
+{
+  "project": {
+    "packageName": "com.mmr.wordtalk",
+    "version": "1.0.0",
+    "backendPath": "wordtalk",
+    "frontendPath": "wordtalk-ui"
+  },
+  "developer": {
+    "author": "pig",
+    "email": "sw@mail.wordtalk.vip"
+  }
+}

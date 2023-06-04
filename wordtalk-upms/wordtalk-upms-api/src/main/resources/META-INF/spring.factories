@@ -1,0 +1,10 @@
+com.mmr.wordtalk.common.feign.WordtalkFeignAutoConfiguration=\
+  com.mmr.wordtalk.admin.api.feign.RemoteDataScopeService,\
+  com.mmr.wordtalk.admin.api.feign.RemoteClientDetailsService,\
+  com.mmr.wordtalk.admin.api.feign.RemoteLogService,\
+  com.mmr.wordtalk.admin.api.feign.RemoteParamService,\
+  com.mmr.wordtalk.admin.api.feign.RemoteTenantService,\
+  com.mmr.wordtalk.admin.api.feign.RemoteTokenService,\
+  com.mmr.wordtalk.admin.api.feign.RemoteUserService,\
+  com.mmr.wordtalk.admin.api.feign.RemoteDictService,\
+  com.mmr.wordtalk.admin.api.feign.RemoteAuditLogService

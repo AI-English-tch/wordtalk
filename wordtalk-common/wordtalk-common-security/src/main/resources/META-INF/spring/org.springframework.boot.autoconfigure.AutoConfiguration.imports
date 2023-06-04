@@ -1,0 +1,9 @@
+com.mmr.wordtalk.common.security.service.WordtalkDefaultUserDetailsServiceImpl
+com.mmr.wordtalk.common.security.service.WordtalkTocDefaultUserDetailsServiceImpl
+com.mmr.wordtalk.common.security.service.WordtalkMobileUserDetailServiceImpl
+com.mmr.wordtalk.common.security.service.WordtalkTocMobileUserDetailsServiceImpl
+com.mmr.wordtalk.common.security.service.WordtalkRedisOAuth2AuthorizationService
+com.mmr.wordtalk.common.security.service.WordtalkRedisOAuth2AuthorizationConsentService
+com.mmr.wordtalk.common.security.component.WordtalkSecurityInnerAspect
+com.mmr.wordtalk.common.security.component.WordtalkSecurityMessageSourceConfiguration
+com.mmr.wordtalk.common.security.service.WordtalkRemoteRegisteredClientRepository

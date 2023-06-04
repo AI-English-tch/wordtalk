@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.mmr.wordtalk.common.sentinel.SentinelAutoConfiguration,\
+    com.mmr.wordtalk.common.sentinel.handle.GlobalBizExceptionHandler

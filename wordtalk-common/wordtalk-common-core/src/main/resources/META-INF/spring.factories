@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.mmr.wordtalk.common.core.config.JacksonConfiguration,\
+  com.mmr.wordtalk.common.core.config.MessageSourceConfiguration,\
+  com.mmr.wordtalk.common.core.config.RestTemplateConfiguration,\
+  com.mmr.wordtalk.common.core.util.SpringContextHolder

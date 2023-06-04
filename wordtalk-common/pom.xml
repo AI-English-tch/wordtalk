@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~
+  ~      Copyright (c) 2018-2025, wordtalk All rights reserved.
+  ~
+  ~  Redistribution and use in source and binary forms, with or without
+  ~  modification, are permitted provided that the following conditions are met:
+  ~
+  ~ Redistributions of source code must retain the above copyright notice,
+  ~  this list of conditions and the following disclaimer.
+  ~  Redistributions in binary form must reproduce the above copyright
+  ~  notice, this list of conditions and the following disclaimer in the
+  ~  documentation and/or other materials provided with the distribution.
+  ~  Neither the name of the pig4cloud.com developer nor the names of its
+  ~  contributors may be used to endorse or promote products derived from
+  ~  this software without specific prior written permission.
+  ~  Author: wordtalk
+  ~
+  -->
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.mmr</groupId>
+		<artifactId>wordtalk</artifactId>
+		<version>5.0.0</version>
+	</parent>
+
+	<artifactId>wordtalk-common</artifactId>
+	<packaging>pom</packaging>
+
+	<description>wordtalk 公共聚合模块</description>
+
+	<modules>
+		<module>wordtalk-common-audit</module>
+		<module>wordtalk-common-bom</module>
+		<module>wordtalk-common-core</module>
+		<module>wordtalk-common-data</module>
+		<module>wordtalk-common-datasource</module>
+		<module>wordtalk-common-excel</module>
+		<module>wordtalk-common-encrypt-api</module>
+		<module>wordtalk-common-feign</module>
+		<module>wordtalk-common-gateway</module>
+		<module>wordtalk-common-gray</module>
+		<module>wordtalk-common-idempotent</module>
+		<module>wordtalk-common-job</module>
+		<module>wordtalk-common-log</module>
+		<module>wordtalk-common-oss</module>
+		<module>wordtalk-common-seata</module>
+		<module>wordtalk-common-security</module>
+		<module>wordtalk-common-sentinel</module>
+		<module>wordtalk-common-sequence</module>
+		<module>wordtalk-common-swagger</module>
+		<module>wordtalk-common-websocket</module>
+		<module>wordtalk-common-xss</module>
+	</modules>
+</project>

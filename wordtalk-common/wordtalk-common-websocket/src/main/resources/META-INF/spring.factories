@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.mmr.wordtalk.common.websocket.config.WebSocketAutoConfiguration,\
+  com.mmr.wordtalk.common.websocket.config.RedisMessageDistributorConfiguration,\
+  com.mmr.wordtalk.common.websocket.config.LocalMessageDistributorConfiguration

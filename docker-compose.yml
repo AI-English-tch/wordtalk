@@ -1,0 +1,152 @@
+# 使用说明 V4.4.0
+# 1. 使用docker-compose  宿主机不需要配置host来发现
+# 2. 无需修改源码，根目录  docker-compose up 即可
+# 3. 静静等待服务启动
+
+version: '3'
+services:
+  wordtalk-mysql:
+    build:
+      context: ./db
+    environment:
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+    container_name: wordtalk-mysql
+    image: wordtalk-mysql
+    volumes:
+      - ./wordtalk-mysql:/var/lib/mysql
+    command: --lower_case_table_names=1
+
+  wordtalk-redis:
+    container_name: wordtalk-redis
+    image: redis:6.2.6
+    restart: always
+
+  wordtalk-register:
+    build:
+      context: ./wordtalk-register
+    restart: always
+    container_name: wordtalk-register
+    image: wordtalk-register
+    ports:
+      - 8848:8848
+
+  wordtalk-gateway:
+    build:
+      context: ./wordtalk-gateway
+    restart: always
+    container_name: wordtalk-gateway
+    image: wordtalk-gateway
+    ports:
+      - 9999:9999
+
+  wordtalk-auth:
+    build:
+      context: ./wordtalk-auth
+    restart: always
+    container_name: wordtalk-auth
+    image: wordtalk-auth
+
+  wordtalk-upms:
+    build:
+      context: ./wordtalk-upms/wordtalk-upms-biz
+    restart: always
+    container_name: wordtalk-upms
+    image: wordtalk-upms
+
+
+  wordtalk-app-server:
+    build:
+      context: ./wordtalk-app-server/wordtalk-app-server-biz
+    restart: always
+    container_name: wordtalk-app-server
+    image: wordtalk-app-server
+
+  wordtalk-monitor:
+    build:
+      context: ./wordtalk-visual/wordtalk-monitor
+    restart: always
+    image: wordtalk-monitor
+    container_name: wordtalk-monitor
+    ports:
+      - 5001:5001
+
+  wordtalk-daemon-quartz:
+    build:
+      context: ./wordtalk-visual/wordtalk-daemon-quartz
+    restart: always
+    image: wordtalk-daemon-quartz
+    container_name: wordtalk-daemon-quartz
+
+  wordtalk-daemon-elastic-job:
+    build:
+      context: ./wordtalk-visual/wordtalk-daemon-elastic-job
+    restart: always
+    image: wordtalk-daemon-elastic-job
+    container_name: wordtalk-daemon-elastic-job
+
+  wordtalk-codegen:
+    build:
+      context: ./wordtalk-visual/wordtalk-codegen
+    restart: always
+    image: wordtalk-codegen
+    container_name: wordtalk-codegen
+
+  wordtalk-mp-platform:
+    build:
+      context: ./wordtalk-visual/wordtalk-mp-platform
+    restart: always
+    image: wordtalk-mp-platform
+    container_name: wordtalk-mp-platform
+
+  wordtalk-pay-platform:
+    build:
+      context: ./wordtalk-visual/wordtalk-pay-platform
+    restart: always
+    image: wordtalk-pay-platform
+    container_name: wordtalk-pay-platform
+
+  wordtalk-oa-platform:
+    build:
+      context: ./wordtalk-visual/wordtalk-oa-platform
+    restart: always
+    image: wordtalk-oa-platform
+    container_name: wordtalk-oa-platform
+
+  wordtalk-report-platform:
+    build:
+      context: ./wordtalk-visual/wordtalk-report-platform
+    restart: always
+    image: wordtalk-report-platform
+    container_name: wordtalk-report-platform
+    ports:
+      - 9095:9095
+
+  wordtalk-jimu-platform:
+    build:
+      context: ./wordtalk-visual/wordtalk-jimu-platform
+    restart: always
+    image: wordtalk-jimu-platform
+    container_name: wordtalk-jimu-platform
+    ports:
+      - 5008:5008
+
+  wordtalkx-job:
+    build:
+      context: ./wordtalk-visual/wordtalk-xxl-job-admin
+    restart: always
+    container_name: wordtalk-job
+    hostname: wordtalk-job
+    image: wordtalk-job
+    ports:
+      - 9080:9080
+
+  wordtalk-sentinel:
+    build:
+      context: ./wordtalk-visual/wordtalk-sentinel-dashboard
+    restart: always
+    image: wordtalk-sentinel
+    container_name: wordtalk-sentinel
+    ports:
+      - 5020:5020

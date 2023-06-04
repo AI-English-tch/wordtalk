@@ -1,0 +1,10 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.mmr.wordtalk.common.data.cache.RedisTemplateConfiguration,\
+    com.mmr.wordtalk.common.data.cache.RedisMessageConfiguration,\
+    com.mmr.wordtalk.common.data.cache.RedisCacheManagerConfiguration,\
+    com.mmr.wordtalk.common.data.cache.RedisCacheAutoConfiguration,\
+    com.mmr.wordtalk.common.data.tenant.WordtalkTenantConfigProperties,\
+    com.mmr.wordtalk.common.data.tenant.TenantContextHolderFilter,\
+    com.mmr.wordtalk.common.data.tenant.WordtalkTenantConfiguration,\
+    com.mmr.wordtalk.common.data.mybatis.MybatisPlusConfiguration,\
+    com.mmr.wordtalk.common.data.resolver.TenantKeyStrResolver

@@ -1,0 +1,2 @@
+com.mmr.wordtalk.common.feign.WordtalkFeignAutoConfiguration=\
+  com.mmr.wordtalk.app.api.feign.RemoteAppUserService
