@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-05-26
  * <p>
  * Snowflake 发号器属性

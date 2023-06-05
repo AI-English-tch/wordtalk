@@ -36,7 +36,7 @@ import static me.chanjar.weixin.common.api.WxConsts.*;
 
 /**
  * @author Binary Wang
- * @author wordtalk
+ * @author 张恩睿
  * <p>
  * 微信公众号基础配置，初始化配置
  */

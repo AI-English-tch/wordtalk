@@ -4,7 +4,7 @@ import com.mmr.wordtalk.common.core.util.R;
 import me.chanjar.weixin.cp.config.impl.WxCpDefaultConfigImpl;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/4/22
  * <p>
  * 互联平台

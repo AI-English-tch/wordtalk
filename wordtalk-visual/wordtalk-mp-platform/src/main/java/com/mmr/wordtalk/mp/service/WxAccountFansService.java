@@ -24,7 +24,7 @@ import com.mmr.wordtalk.mp.entity.WxAccountFans;
 /**
  * 微信公众号粉丝
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-03-26 22:08:08
  */
 public interface WxAccountFansService extends IService<WxAccountFans> {

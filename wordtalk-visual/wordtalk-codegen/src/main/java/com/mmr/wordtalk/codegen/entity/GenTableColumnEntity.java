@@ -23,7 +23,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2023-02-06
  *
  * 记录表字段的配置信息

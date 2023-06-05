@@ -31,7 +31,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-08-13
  * <p>
  * 脱敏序列化

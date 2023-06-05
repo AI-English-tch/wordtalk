@@ -48,7 +48,7 @@ import java.util.List;
  * 字典表 前端控制器
  * </p>
  *
- * @author wordtalk
+ * @author 张恩睿
  * @since 2019-03-19
  */
 @RestController

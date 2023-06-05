@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2023/1/4
  */
 public class OpenAPIMetadataConfiguration implements InitializingBean, ApplicationContextAware {

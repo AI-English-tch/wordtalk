@@ -6,7 +6,7 @@ import org.springframework.core.Ordered;
 import org.springframework.core.env.ConfigurableEnvironment;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-05-22
  * <p>
  * 通过环境变量的形式注入 logging.file 自动维护 Spring Boot Admin Logger Viewer

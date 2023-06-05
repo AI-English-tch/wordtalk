@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Import;
 /**
  * api 配置加载类
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/10/14
  */
 @Configuration(proxyBeanMethods = false)

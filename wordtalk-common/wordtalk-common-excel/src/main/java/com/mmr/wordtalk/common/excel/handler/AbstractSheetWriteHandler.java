@@ -49,8 +49,8 @@ import java.util.Objects;
 import java.util.UUID;
 
 /**
- * @author wordtalk
- * @author L.cm
+ * @author 张恩睿
+ * @author 张恩睿
  * @date 2020/3/31
  */
 @RequiredArgsConstructor

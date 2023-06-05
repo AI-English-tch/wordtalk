@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 文件操作模板
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/4/19
  */
 public interface FileTemplate extends InitializingBean {

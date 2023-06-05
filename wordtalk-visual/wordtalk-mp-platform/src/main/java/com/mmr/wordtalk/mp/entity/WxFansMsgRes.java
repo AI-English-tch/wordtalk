@@ -29,7 +29,7 @@ import java.time.LocalDateTime;
 /**
  * 微信粉丝消息回复表
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-03-27 20:45:48
  */
 @Data

@@ -20,7 +20,7 @@ package com.mmr.wordtalk.act.dto;
 import javax.validation.constraints.NotBlank;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/9/25
  */
 public class ModelForm {

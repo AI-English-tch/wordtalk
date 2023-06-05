@@ -21,7 +21,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * java 8 时间默认序列化
  *
- * @author L.cm
+ * @author 张恩睿
  * @author lishanbu
  */
 public class WordtalkJavaTimeModule extends SimpleModule {

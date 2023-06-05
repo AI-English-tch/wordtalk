@@ -26,7 +26,7 @@ import java.time.LocalDateTime;
 /**
  * 微信菜单表
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-03-27 20:45:18
  */
 @Data

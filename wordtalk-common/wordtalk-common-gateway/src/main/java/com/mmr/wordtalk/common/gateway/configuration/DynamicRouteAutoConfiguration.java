@@ -34,7 +34,7 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/11/5
  * <p>
  * 动态路由配置类

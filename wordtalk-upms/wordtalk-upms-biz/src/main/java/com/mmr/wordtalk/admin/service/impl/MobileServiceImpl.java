@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/11/14
  * <p>
  * 手机登录相关业务实现

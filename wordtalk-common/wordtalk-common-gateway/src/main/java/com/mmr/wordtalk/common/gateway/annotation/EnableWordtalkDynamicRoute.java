@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/11/5
  * <p>
  * 开启wordtalk 动态路由

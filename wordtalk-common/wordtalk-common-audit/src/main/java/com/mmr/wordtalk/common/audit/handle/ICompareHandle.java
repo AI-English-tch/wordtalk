@@ -7,7 +7,7 @@ import org.javers.core.Changes;
 /**
  * 比较器抽象类
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2023/2/26
  */
 public interface ICompareHandle {

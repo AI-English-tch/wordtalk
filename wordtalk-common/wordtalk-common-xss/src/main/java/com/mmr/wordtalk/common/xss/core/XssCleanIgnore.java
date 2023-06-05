@@ -21,7 +21,7 @@ import java.lang.annotation.*;
 /**
  * 忽略 xss
  *
- * @author L.cm
+ * @author 张恩睿
  */
 @Target({ ElementType.TYPE, ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)

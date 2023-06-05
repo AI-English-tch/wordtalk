@@ -28,7 +28,7 @@ import org.springframework.util.StringUtils;
  * 参考自 jpress：https://gitee.com/fuhai/jpress
  * </p>
  *
- * @author L.cm
+ * @author 张恩睿
  * @author michael
  */
 public class XssUtil {

@@ -25,7 +25,7 @@ import org.springframework.context.annotation.Configuration;
 import reactor.core.publisher.Mono;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/7/1 路由限流配置
  */
 @Configuration

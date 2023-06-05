@@ -20,7 +20,7 @@ package com.mmr.wordtalk.app.handler;
 import com.mmr.wordtalk.app.api.dto.AppUserInfo;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/11/18
  */
 public abstract class AbstractLoginHandler implements LoginHandler {

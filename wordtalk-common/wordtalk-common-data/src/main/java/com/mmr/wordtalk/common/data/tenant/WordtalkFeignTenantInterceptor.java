@@ -23,7 +23,7 @@ import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/9/14
  */
 @Slf4j

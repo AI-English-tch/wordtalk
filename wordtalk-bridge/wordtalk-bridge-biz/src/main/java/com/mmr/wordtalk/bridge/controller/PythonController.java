@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * PythonController
+ *
+ * @author 张恩睿
+ * @date 2023-06-05 23:12:52
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/python")

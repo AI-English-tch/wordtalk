@@ -7,7 +7,7 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/2/4
  *
  * redis message 信道相关配置

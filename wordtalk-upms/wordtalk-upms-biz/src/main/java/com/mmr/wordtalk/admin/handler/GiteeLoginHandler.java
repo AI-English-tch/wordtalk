@@ -37,7 +37,7 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019/4/8
  * <p>
  * 码云登录

@@ -30,7 +30,7 @@ import org.springframework.context.annotation.Primary;
 /**
  * aws 自动配置类
  *
- * @author wordtalk
+ * @author 张恩睿
  * @author 858695266
  */
 @AllArgsConstructor

@@ -33,7 +33,7 @@ import java.time.LocalDateTime;
  * 客户端信息
  * </p>
  *
- * @author wordtalk
+ * @author 张恩睿
  * @since 2018-05-15
  */
 @Data

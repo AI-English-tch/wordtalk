@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/9/4 getTokenPage 管理
  */
 @RestController

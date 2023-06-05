@@ -2,7 +2,7 @@ package com.mmr.wordtalk.common.log.util;
 
 /**
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2021/1/13
  */
 
@@ -10,7 +10,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/7/30
  * <p>
  * 日志类型

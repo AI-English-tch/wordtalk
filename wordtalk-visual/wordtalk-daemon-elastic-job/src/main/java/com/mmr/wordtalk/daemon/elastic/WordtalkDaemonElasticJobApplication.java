@@ -25,7 +25,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/7/24 分布式任务调度模块
  */
 @EnableWordtalkXxlJob

@@ -28,7 +28,7 @@ import com.mmr.wordtalk.pay.utils.OrderStatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-05-31
  */
 public abstract class AbstractPayOrderHandler implements PayOrderHandler {

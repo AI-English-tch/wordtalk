@@ -1,7 +1,7 @@
 package com.mmr.wordtalk.common.core.util;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/9/29
  * <p>
  * 字符串处理，方便其他模块解耦处理

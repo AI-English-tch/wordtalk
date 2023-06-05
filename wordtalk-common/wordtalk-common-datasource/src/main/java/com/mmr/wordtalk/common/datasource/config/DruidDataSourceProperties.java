@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-05-14
  * <p>
  * 参考DruidDataSourceWrapper

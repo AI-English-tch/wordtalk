@@ -25,7 +25,7 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020-02-08
  */
 @Target(ElementType.TYPE)

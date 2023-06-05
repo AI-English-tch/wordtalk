@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/10/9
  * <p>
  * 日志查询传输对象

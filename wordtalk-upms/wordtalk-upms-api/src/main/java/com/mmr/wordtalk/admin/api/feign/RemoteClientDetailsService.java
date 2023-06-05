@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import java.util.List;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/12/05
  */
 @FeignClient(contextId = "remoteClientDetailsService", value = ServiceNameConstants.UPMS_SERVICE)

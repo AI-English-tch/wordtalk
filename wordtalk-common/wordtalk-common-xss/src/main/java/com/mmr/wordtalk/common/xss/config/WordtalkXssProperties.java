@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * Xss配置类
  *
- * @author L.cm
+ * @author 张恩睿
  */
 @Getter
 @Setter

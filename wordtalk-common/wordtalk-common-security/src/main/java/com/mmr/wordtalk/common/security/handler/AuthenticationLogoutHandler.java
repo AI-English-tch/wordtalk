@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2021/06/22 退出后置处理
  */
 public interface AuthenticationLogoutHandler {

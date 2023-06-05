@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.event.TransactionalEventListener;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/11/18
  * <p>
  * oauth 客户端认证参数初始化

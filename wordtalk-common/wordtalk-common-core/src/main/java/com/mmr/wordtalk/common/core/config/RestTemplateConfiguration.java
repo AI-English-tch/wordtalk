@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/8/16 RestTemplate
  */
 @Configuration

@@ -12,7 +12,7 @@ import java.text.ParseException;
 /**
  * Long and string converter
  *
- * @author L.cm
+ * @author 张恩睿
  */
 public enum LongStringConverter implements Converter<Long> {
 

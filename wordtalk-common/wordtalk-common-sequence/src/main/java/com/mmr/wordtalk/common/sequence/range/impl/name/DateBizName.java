@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-05-26
  * <p>
  * 根据时间重置bizname

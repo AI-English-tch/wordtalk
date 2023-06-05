@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * @author wordtalk archetype
+ * @author 张恩睿
  * <p>
  * 项目启动类
  */

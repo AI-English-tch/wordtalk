@@ -19,7 +19,7 @@ package com.mmr.wordtalk.common.xss.core;
 /**
  * 利用 ThreadLocal 缓存线程间的数据
  *
- * @author L.cm
+ * @author 张恩睿
  */
 class XssHolder {
 

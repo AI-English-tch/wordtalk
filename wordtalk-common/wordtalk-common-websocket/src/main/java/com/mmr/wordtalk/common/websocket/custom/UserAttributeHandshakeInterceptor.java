@@ -10,7 +10,7 @@ import org.springframework.web.socket.server.HandshakeInterceptor;
 import java.util.Map;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2021/10/4
  */
 public class UserAttributeHandshakeInterceptor implements HandshakeInterceptor {

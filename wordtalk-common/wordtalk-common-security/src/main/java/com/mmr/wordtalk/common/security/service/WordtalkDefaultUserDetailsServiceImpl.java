@@ -34,7 +34,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 /**
  * 用户详细信息 default
  *
- * @author wordtalk
+ * @author 张恩睿
  */
 @Slf4j
 @Primary

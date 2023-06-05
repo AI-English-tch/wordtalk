@@ -21,7 +21,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/12/26
  * <p>
  * 数据权限类型

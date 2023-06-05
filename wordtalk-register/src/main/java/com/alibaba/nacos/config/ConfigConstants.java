@@ -18,7 +18,7 @@
 package com.alibaba.nacos.config;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-10-31
  * <p>
  * 覆盖nacos 默认配置

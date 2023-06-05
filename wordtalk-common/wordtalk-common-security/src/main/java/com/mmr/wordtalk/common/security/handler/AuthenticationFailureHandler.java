@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/03/25 token 发放失败处理
  */
 public interface AuthenticationFailureHandler {

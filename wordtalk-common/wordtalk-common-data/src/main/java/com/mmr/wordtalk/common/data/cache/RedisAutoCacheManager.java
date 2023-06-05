@@ -36,8 +36,8 @@ import java.util.Map;
 /**
  * redis cache 扩展cache name自动化配置
  *
- * @author L.cm
- * @author wordtalk
+ * @author 张恩睿
+ * @author 张恩睿
  * <p>
  * cachename = xx#ttl
  */

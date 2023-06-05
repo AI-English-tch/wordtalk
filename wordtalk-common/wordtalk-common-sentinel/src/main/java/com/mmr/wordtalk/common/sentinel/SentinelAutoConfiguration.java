@@ -32,7 +32,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020-02-12
  * <p>
  * sentinel 配置

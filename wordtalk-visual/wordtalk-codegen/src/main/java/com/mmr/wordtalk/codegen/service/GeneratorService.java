@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.zip.ZipOutputStream;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/7/29
  */
 public interface GeneratorService {

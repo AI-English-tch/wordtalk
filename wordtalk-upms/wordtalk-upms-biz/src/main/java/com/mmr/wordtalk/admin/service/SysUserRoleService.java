@@ -27,7 +27,7 @@ import com.mmr.wordtalk.admin.api.entity.SysUserRole;
  * 用户角色表 服务类
  * </p>
  *
- * @author wordtalk
+ * @author 张恩睿
  * @since 2017-10-29
  */
 public interface SysUserRoleService extends IService<SysUserRole> {

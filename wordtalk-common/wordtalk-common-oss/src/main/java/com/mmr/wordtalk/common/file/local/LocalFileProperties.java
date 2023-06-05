@@ -23,7 +23,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * 本地文件 配置信息
  *
- * @author wordtalk
+ * @author 张恩睿
  * <p>
  * bucket 设置公共读权限
  */

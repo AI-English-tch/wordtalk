@@ -6,7 +6,7 @@ import lombok.Getter;
 import java.util.Arrays;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020-01-19
  * <p>
  * 前端类型类型

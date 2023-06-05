@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * <p>
  * 保存微信消息
  */

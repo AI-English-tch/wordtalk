@@ -23,7 +23,7 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 公众号账户
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-03-26 22:07:53
  */
 @Mapper

@@ -26,7 +26,7 @@ import org.springframework.stereotype.Component;
 import static com.xxl.job.core.biz.model.ReturnT.SUCCESS;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-09-18
  */
 @Slf4j

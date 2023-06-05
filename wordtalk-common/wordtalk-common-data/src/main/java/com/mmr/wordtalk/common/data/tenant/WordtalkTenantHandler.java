@@ -25,7 +25,7 @@ import net.sf.jsqlparser.expression.LongValue;
 import net.sf.jsqlparser.expression.NullValue;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018-12-26
  * <p>
  * 租户维护处理器

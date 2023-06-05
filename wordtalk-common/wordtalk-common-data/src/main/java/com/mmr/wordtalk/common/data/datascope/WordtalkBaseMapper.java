@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 扩展通用 Mapper，支持数据权限 和批量插入
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020-06-17
  */
 public interface WordtalkBaseMapper<T> extends BaseMapper<T> {

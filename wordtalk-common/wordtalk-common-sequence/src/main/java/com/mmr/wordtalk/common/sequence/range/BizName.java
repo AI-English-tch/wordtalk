@@ -1,7 +1,7 @@
 package com.mmr.wordtalk.common.sequence.range;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-05-26
  * <p>
  * 名称生成器

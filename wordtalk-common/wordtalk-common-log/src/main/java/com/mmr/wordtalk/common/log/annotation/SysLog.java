@@ -22,7 +22,7 @@ package com.mmr.wordtalk.common.log.annotation;
 import java.lang.annotation.*;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/6/28 操作日志注解
  */
 @Target(ElementType.METHOD)

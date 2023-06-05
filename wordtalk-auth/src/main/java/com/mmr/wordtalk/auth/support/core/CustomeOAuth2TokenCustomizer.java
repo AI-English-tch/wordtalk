@@ -9,7 +9,7 @@ import org.springframework.security.oauth2.server.authorization.token.OAuth2Toke
 /**
  * token 输出增强
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/6/3
  */
 public class CustomeOAuth2TokenCustomizer implements OAuth2TokenCustomizer<OAuth2TokenClaimsContext> {

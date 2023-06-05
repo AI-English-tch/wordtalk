@@ -31,7 +31,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/2/8
  * <p>
  * feign 自动化配置

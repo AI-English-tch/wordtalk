@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @description 短信登录token信息
  */
 public class OAuth2ResourceOwnerSmsAuthenticationToken extends OAuth2ResourceOwnerBaseAuthenticationToken {

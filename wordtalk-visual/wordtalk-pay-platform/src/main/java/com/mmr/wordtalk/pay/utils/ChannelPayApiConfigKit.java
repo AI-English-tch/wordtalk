@@ -4,7 +4,7 @@ import com.mmr.wordtalk.pay.entity.PayChannel;
 import lombok.experimental.UtilityClass;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2021/2/2
  *
  * 聚合支付配置管理

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-05-26
  * <p>
  * 设置发号器生成规则

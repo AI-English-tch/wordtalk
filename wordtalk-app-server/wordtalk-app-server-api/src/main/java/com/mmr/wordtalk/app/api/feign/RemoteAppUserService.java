@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/6/22
  */
 @FeignClient(contextId = "remoteAppUserService", value = ServiceNameConstants.APP_SERVER)

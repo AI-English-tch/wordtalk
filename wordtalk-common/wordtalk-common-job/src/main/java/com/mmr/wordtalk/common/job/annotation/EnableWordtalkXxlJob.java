@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-09-18
  * <p>
  * 开启支持XXL

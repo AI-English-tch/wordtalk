@@ -1,7 +1,7 @@
 package com.mmr.wordtalk.pay.utils;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-06-14
  * <p>
  * 支付相关的常量

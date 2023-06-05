@@ -19,7 +19,7 @@ package com.mmr.wordtalk.common.xss.core;
 /**
  * xss 清理器
  *
- * @author L.cm
+ * @author 张恩睿
  */
 public interface XssCleaner {
 

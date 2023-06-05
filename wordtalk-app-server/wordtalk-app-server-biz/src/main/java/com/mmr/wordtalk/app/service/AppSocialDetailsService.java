@@ -24,7 +24,7 @@ import com.mmr.wordtalk.app.api.entity.AppSocialDetails;
 /**
  * 系统社交登录账号表
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018-08-16 21:30:41
  */
 public interface AppSocialDetailsService extends IService<AppSocialDetails> {

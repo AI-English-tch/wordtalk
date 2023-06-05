@@ -20,7 +20,7 @@ package com.mmr.wordtalk.codegen.entity;
 import lombok.Data;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/8/2 生成配置
  */
 @Data

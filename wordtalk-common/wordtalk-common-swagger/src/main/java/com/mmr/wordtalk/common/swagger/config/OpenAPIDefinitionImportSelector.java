@@ -12,7 +12,7 @@ import java.util.Objects;
 /**
  * openapi 配置类
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2023/1/1
  */
 public class OpenAPIDefinitionImportSelector implements ImportBeanDefinitionRegistrar {

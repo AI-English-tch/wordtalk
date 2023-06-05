@@ -30,7 +30,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020-02-06
  * <p>
  * 动态数据源切换配置

@@ -25,7 +25,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019年11月4日 监控中心
  */
 @EnableAdminServer

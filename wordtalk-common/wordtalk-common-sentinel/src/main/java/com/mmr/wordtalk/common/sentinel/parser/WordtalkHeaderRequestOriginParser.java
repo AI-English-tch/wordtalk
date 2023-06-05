@@ -22,7 +22,7 @@ import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.RequestOriginPars
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-10-11
  * <p>
  * sentinel 请求头解析判断

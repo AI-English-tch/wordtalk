@@ -29,7 +29,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/9/25 Activiti 配置
  */
 @Configuration

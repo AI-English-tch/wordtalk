@@ -28,7 +28,7 @@ import java.lang.annotation.*;
 /**
  * 开启 pig spring doc
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022-03-26
  */
 @Target({ ElementType.TYPE })

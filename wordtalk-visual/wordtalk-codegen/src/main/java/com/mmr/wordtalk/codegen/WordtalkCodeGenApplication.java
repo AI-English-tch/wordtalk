@@ -26,7 +26,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/07/29 代码生成模块
  */
 @EnableDynamicDataSource

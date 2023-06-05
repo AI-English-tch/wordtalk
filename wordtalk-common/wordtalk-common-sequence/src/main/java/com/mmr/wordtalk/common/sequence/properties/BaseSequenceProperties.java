@@ -3,7 +3,7 @@ package com.mmr.wordtalk.common.sequence.properties;
 import lombok.Data;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-05-26
  * <p>
  * 发号器通用属性

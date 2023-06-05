@@ -38,7 +38,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-06-24
  * <p>
  * 解决Mybatis Plus Order By SQL注入问题

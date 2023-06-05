@@ -27,7 +27,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-05-26
  */
 @Configuration

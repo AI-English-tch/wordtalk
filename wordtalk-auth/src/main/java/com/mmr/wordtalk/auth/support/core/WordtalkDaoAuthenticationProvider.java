@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022-06-04
  */
 public class WordtalkDaoAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {

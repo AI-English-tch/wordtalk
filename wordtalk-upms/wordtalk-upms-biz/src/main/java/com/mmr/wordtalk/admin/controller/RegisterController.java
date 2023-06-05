@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/3/30
  * <p>
  * 客户端注册功能 register.user = false

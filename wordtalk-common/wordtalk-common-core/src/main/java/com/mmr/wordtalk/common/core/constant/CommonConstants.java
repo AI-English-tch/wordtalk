@@ -20,7 +20,7 @@
 package com.mmr.wordtalk.common.core.constant;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2017/10/29
  */
 public interface CommonConstants {

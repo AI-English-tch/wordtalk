@@ -6,7 +6,7 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import java.util.Locale;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/9/4
  * <p>
  * @see org.springframework.security.core.SpringSecurityMessageSource wordtalk 框架自身异常处理，

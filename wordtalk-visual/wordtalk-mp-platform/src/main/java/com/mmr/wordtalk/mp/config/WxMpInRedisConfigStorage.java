@@ -23,7 +23,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019/03/26
  * <p>
  * 微信SDK redis扩展

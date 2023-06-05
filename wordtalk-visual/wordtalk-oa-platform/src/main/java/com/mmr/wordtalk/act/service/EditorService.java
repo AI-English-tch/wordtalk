@@ -18,7 +18,7 @@
 package com.mmr.wordtalk.act.service;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/9/25
  */
 public interface EditorService {

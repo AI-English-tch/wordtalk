@@ -9,7 +9,7 @@ import org.springframework.http.client.ClientHttpResponse;
 import java.io.IOException;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/4/29
  * <p>
  * 传递 RestTemplate 请求的租户ID

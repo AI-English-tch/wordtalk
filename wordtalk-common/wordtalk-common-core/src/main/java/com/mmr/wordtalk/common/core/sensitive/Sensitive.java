@@ -28,7 +28,7 @@ import java.lang.annotation.Target;
 /**
  * 对象脱敏注解
  *
- * @author mayee
+ * @author 张恩睿
  * @version v1.0
  **/
 @Retention(RetentionPolicy.RUNTIME)

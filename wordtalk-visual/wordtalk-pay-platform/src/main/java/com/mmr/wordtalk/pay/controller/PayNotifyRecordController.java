@@ -51,7 +51,7 @@ import java.util.Map;
 /**
  * 异步通知记录
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-05-28 23:57:23
  */
 @Slf4j

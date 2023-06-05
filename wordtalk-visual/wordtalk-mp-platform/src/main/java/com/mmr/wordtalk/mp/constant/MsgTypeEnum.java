@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/4/25
  * <p>
  * 消息类型

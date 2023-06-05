@@ -28,7 +28,7 @@ import org.apache.ibatis.annotations.Mapper;
  * Mapper 接口
  * </p>
  *
- * @author wordtalk
+ * @author 张恩睿
  * @since 2018-05-15
  */
 @Mapper

@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 /**
  * LocalDate and string converter
  *
- * @author L.cm
+ * @author 张恩睿
  */
 public enum StringArrayConverter implements Converter<String[]> {
 

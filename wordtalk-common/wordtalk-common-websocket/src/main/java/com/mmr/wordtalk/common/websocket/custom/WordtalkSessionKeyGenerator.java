@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.WebSocketSession;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2021/10/4 websocket session 标识生成规则
  */
 @Configuration

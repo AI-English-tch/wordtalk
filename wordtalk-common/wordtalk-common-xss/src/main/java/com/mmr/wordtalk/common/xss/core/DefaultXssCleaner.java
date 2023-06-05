@@ -30,7 +30,7 @@ import org.springframework.web.util.HtmlUtils;
 /**
  * 默认的 xss 清理器
  *
- * @author L.cm
+ * @author 张恩睿
  */
 @RequiredArgsConstructor
 public class DefaultXssCleaner implements XssCleaner {

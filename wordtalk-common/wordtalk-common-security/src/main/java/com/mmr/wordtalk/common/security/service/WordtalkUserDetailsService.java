@@ -37,7 +37,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/8/15
  */
 public interface WordtalkUserDetailsService extends UserDetailsService, Ordered {

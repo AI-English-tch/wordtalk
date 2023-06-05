@@ -37,7 +37,7 @@ import java.nio.charset.StandardCharsets;
 import static org.activiti.editor.constants.ModelDataJsonConstants.*;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/9/25
  */
 @Slf4j

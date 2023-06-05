@@ -34,7 +34,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Mica ribbon rule auto configuration.
  *
- * @author L.cm
+ * @author 张恩睿
  * @link https://github.com/lets-mica/mica
  */
 @Configuration

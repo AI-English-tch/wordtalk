@@ -47,7 +47,7 @@ import java.util.List;
  * havingValue = "true") 然后在测试配置或者开发配置中添加swagger.enable=true即可开启，生产环境不填则默认关闭Swagger.
  * </p>
  *
- * @author wordtalk
+ * @author 张恩睿
  */
 @RequiredArgsConstructor
 @ConditionalOnProperty(name = "swagger.enabled", matchIfMissing = true)

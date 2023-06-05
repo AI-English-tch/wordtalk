@@ -59,7 +59,7 @@ import java.util.stream.Collectors;
  * 菜单权限表 服务实现类
  * </p>
  *
- * @author wordtalk
+ * @author 张恩睿
  * @since 2017-10-29
  */
 @Service

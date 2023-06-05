@@ -43,7 +43,7 @@ import java.util.stream.Collectors;
 /**
  * 租户管理
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-05-15 15:55:41
  */
 @RestController

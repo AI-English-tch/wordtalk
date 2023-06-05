@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 解析加密密钥
  *
- * @author L.cm
+ * @author 张恩睿
  */
 public interface ISecretKeyResolver {
 

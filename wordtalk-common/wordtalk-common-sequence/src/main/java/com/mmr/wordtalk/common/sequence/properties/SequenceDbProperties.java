@@ -1,7 +1,7 @@
 package com.mmr.wordtalk.common.sequence.properties;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-05-26
  */
 
@@ -10,7 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019/5/26
  * <p>
  * 发号器DB配置属性

@@ -23,7 +23,7 @@ import org.activiti.engine.repository.Model;
 import java.util.Map;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/9/25
  */
 public interface ModelService {

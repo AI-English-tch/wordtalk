@@ -6,7 +6,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/10/2
  * <p>
  * 网关通用配置文件

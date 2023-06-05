@@ -35,7 +35,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019/2/1
  *
  * 客户端异常处理 AuthenticationException 不同细化异常处理

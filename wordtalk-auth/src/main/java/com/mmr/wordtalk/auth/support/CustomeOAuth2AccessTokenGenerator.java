@@ -19,7 +19,7 @@ import java.util.Set;
 import java.util.UUID;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/5/29
  */
 public class CustomeOAuth2AccessTokenGenerator implements OAuth2TokenGenerator<OAuth2AccessToken> {

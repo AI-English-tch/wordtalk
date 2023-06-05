@@ -30,7 +30,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 /**
  * RedisTemplate 配置
  *
- * @author L.cm
+ * @author 张恩睿
  */
 @EnableCaching
 @Configuration

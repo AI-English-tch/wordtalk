@@ -1,11 +1,8 @@
 package com.mmr.wordtalk.bridge.controller;
 
-import cn.hutool.core.date.DateUtil;
-import cn.hutool.http.server.HttpServerResponse;
 import com.mmr.wordtalk.common.core.util.R;
 import com.mmr.wordtalk.common.security.annotation.Inner;
 import com.plexpt.chatgpt.ChatGPTStream;
-import com.plexpt.chatgpt.entity.chat.ChatCompletion;
 import com.plexpt.chatgpt.entity.chat.Message;
 import com.plexpt.chatgpt.listener.SseStreamListener;
 import com.plexpt.chatgpt.util.Proxys;
@@ -15,12 +12,13 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.Proxy;
-import java.nio.charset.Charset;
 import java.util.Arrays;
 
+/**
+ * 测试接口
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/test")

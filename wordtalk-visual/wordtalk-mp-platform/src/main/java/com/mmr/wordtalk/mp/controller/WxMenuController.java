@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * 微信菜单管理
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-03-27 20:45:18
  */
 @RestController

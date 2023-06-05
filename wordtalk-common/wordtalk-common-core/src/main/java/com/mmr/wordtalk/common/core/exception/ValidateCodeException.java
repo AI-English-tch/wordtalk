@@ -20,7 +20,7 @@
 package com.mmr.wordtalk.common.core.exception;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018年06月22日16:22:15
  */
 public class ValidateCodeException extends RuntimeException {

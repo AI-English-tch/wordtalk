@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * xss 处理拦截器
  *
- * @author L.cm
+ * @author 张恩睿
  */
 @RequiredArgsConstructor
 public class XssCleanInterceptor implements AsyncHandlerInterceptor {

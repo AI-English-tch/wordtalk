@@ -11,7 +11,7 @@ import static org.javers.core.diff.ListCompareAlgorithm.LEVENSHTEIN_DISTANCE;
 /**
  * javers 审计工具
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2023/2/26
  */
 @UtilityClass

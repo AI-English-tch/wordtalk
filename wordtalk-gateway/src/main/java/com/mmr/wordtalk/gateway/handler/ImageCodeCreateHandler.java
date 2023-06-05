@@ -37,7 +37,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/5/19 验证码生成逻辑处理类
  */
 @Slf4j

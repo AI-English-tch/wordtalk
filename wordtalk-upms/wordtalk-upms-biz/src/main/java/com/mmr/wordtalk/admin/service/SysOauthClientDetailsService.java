@@ -30,7 +30,7 @@ import com.mmr.wordtalk.common.core.util.R;
  * 服务类
  * </p>
  *
- * @author wordtalk
+ * @author 张恩睿
  * @since 2018-05-15
  */
 public interface SysOauthClientDetailsService extends IService<SysOauthClientDetails> {

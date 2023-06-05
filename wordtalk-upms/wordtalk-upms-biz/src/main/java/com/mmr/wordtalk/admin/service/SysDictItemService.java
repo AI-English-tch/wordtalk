@@ -23,7 +23,7 @@ import com.mmr.wordtalk.common.core.util.R;
 /**
  * 字典项
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019/03/19
  */
 public interface SysDictItemService extends IService<SysDictItem> {

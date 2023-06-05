@@ -10,7 +10,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.util.StringUtils;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2023/2/26
  *
  * 拦截被@Audit注解标记的方法，并记录前后变化值

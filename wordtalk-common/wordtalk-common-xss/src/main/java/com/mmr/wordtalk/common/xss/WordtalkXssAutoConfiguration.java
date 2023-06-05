@@ -34,7 +34,7 @@ import java.util.List;
 /**
  * jackson xss 配置
  *
- * @author L.cm
+ * @author 张恩睿
  */
 @RequiredArgsConstructor
 @Configuration(proxyBeanMethods = false)

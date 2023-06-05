@@ -4,7 +4,7 @@ import com.mmr.wordtalk.common.core.util.KeyStrResolver;
 import com.mmr.wordtalk.common.data.tenant.TenantContextHolder;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/9/29
  * <p>
  * 租户字符串处理（方便其他模块获取）

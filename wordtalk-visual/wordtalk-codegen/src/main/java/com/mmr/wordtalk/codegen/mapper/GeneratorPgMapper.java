@@ -22,7 +22,7 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 支持 PostgreSQL 代码生成器
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020-12-11
  */
 @Mapper

@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * 前端展示令牌管理
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/6/2
  */
 @Data

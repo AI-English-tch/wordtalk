@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/3/29
  * <p>
  * 读取自定义 yaml 文件工厂类

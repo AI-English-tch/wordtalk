@@ -21,7 +21,7 @@ import com.mmr.wordtalk.admin.api.dto.UserInfo;
 import com.mmr.wordtalk.admin.api.entity.SysUser;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/11/18
  * <p>
  * 登录处理器

@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2021/1/4
  * <p>
  * https://open.pay.yungouos.com/#/api/api/pay/merge/nativePay 服务商聚合支付模式

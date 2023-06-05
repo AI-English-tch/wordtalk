@@ -8,7 +8,7 @@ import com.mmr.wordtalk.common.core.util.SpringContextHolder;
 import lombok.experimental.UtilityClass;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/5/12
  * <p>
  * 系统参数配置解析器

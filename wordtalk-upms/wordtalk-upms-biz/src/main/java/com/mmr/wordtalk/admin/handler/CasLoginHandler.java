@@ -33,7 +33,7 @@ import org.jasig.cas.client.validation.Cas30ProxyTicketValidator;
 import org.springframework.stereotype.Component;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/11/18
  */
 @Slf4j

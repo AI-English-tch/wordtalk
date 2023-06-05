@@ -25,7 +25,7 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022-06-02
  */
 @RequiredArgsConstructor

@@ -26,7 +26,7 @@ import org.springframework.context.annotation.Import;
 /**
  * aws 自动配置类
  *
- * @author wordtalk
+ * @author 张恩睿
  * @author 858695266
  */
 @Import({ LocalFileAutoConfiguration.class, OssAutoConfiguration.class })

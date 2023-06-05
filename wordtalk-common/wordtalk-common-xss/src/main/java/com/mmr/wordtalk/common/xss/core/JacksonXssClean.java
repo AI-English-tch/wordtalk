@@ -29,7 +29,7 @@ import java.io.IOException;
 /**
  * jackson xss 处理
  *
- * @author L.cm
+ * @author 张恩睿
  */
 @Slf4j
 @RequiredArgsConstructor

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * @author Binary Wang
- * @author wordtalk
+ * @author 张恩睿
  * <p>
  * 微信接入入口
  */

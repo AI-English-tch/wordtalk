@@ -26,7 +26,7 @@ import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/1/12
  * <p>
  * feign 请求VERSION 传递

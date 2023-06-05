@@ -4,7 +4,7 @@ import com.mmr.wordtalk.common.sequence.range.BizName;
 import lombok.AllArgsConstructor;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-05-26 根据传入返回bizname
  */
 @AllArgsConstructor

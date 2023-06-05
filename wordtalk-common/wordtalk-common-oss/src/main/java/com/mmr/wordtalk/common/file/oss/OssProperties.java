@@ -23,7 +23,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * aws 配置信息
  *
- * @author wordtalk
+ * @author 张恩睿
  * @author 858695266 配置文件添加： oss: enable: true endpoint: http://127.0.0.1:9000 #
  * pathStyleAccess 采用nginx反向代理或者AWS S3 配置成true，支持第三方云存储配置成false pathStyleAccess: false
  * access-key: wordtalk secret-key: wordtalk bucket-name: wordtalk region: custom-domain:

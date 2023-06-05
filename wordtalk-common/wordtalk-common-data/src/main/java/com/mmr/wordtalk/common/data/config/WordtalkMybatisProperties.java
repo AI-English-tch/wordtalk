@@ -7,7 +7,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 /**
  * Mybatis 配置
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2021/6/3
  */
 @Data

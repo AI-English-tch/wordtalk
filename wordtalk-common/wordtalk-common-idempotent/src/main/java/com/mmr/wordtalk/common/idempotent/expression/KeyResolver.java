@@ -4,7 +4,7 @@ import com.mmr.wordtalk.common.idempotent.annotation.Idempotent;
 import org.aspectj.lang.JoinPoint;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/9/25
  * <p>
  * 唯一标志处理器

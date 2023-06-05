@@ -3,7 +3,7 @@ package com.mmr.wordtalk.codegen.util.vo;
 import lombok.Data;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/5/2
  */
 @Data

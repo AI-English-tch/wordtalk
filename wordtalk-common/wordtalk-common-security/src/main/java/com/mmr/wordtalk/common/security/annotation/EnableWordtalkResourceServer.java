@@ -25,7 +25,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import java.lang.annotation.*;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022-06-04
  * <p>
  * 资源服务注解

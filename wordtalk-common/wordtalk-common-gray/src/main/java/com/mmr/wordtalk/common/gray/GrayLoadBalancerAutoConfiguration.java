@@ -26,7 +26,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/1/12
  */
 @Configuration

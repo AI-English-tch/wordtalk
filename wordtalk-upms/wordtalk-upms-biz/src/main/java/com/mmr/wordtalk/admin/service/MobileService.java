@@ -20,7 +20,7 @@ package com.mmr.wordtalk.admin.service;
 import com.mmr.wordtalk.common.core.util.R;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/11/14
  */
 public interface MobileService {

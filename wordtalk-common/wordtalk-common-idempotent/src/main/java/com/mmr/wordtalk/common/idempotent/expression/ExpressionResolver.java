@@ -1,7 +1,7 @@
 package com.mmr.wordtalk.common.idempotent.expression;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/9/25
  */
 
@@ -16,7 +16,7 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 import java.lang.reflect.Method;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * <p>
  * 默认key 抽取， 优先根据 spel 处理
  * @date 2020-09-25

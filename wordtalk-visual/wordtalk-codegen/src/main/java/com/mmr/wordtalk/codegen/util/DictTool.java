@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2023/2/7
  */
 public class DictTool {

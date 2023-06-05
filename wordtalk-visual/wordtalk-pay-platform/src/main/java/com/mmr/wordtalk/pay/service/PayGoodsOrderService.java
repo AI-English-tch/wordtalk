@@ -25,7 +25,7 @@ import java.util.Map;
 /**
  * 商品
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-05-28 23:58:27
  */
 public interface PayGoodsOrderService extends IService<PayGoodsOrder> {

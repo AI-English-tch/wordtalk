@@ -34,7 +34,7 @@ import java.time.LocalDateTime;
  * 菜单权限表
  * </p>
  *
- * @author wordtalk
+ * @author 张恩睿
  * @since 2017-11-08
  */
 @Data

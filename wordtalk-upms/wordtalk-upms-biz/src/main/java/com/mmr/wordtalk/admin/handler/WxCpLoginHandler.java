@@ -31,7 +31,7 @@ import me.chanjar.weixin.cp.bean.WxCpOauth2UserInfo;
 import org.springframework.stereotype.Component;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/7/19
  *
  * 企业微信免密登录

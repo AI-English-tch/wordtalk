@@ -24,7 +24,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @author wordtalk 系统日志事件
+ * @author 张恩睿
  */
 @Getter
 @AllArgsConstructor

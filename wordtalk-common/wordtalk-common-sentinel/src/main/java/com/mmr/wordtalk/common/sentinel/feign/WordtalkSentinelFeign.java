@@ -21,7 +21,7 @@ import java.util.Map;
 /**
  * 重写 {@link com.alibaba.cloud.sentinel.feign.SentinelFeign} 支持自动降级注入
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/6/9
  */
 public final class WordtalkSentinelFeign {

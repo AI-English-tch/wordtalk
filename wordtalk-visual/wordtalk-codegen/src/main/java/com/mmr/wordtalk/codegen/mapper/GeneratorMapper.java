@@ -31,7 +31,7 @@ import java.util.Map;
 /**
  * 代码生成器
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018-07-30
  */
 public interface GeneratorMapper extends WordtalkBaseMapper<ColumnEntity> {

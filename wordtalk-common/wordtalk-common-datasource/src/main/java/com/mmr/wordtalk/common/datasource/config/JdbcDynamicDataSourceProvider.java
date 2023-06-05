@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/2/6
  * <p>
  * 从数据源中获取 配置信息

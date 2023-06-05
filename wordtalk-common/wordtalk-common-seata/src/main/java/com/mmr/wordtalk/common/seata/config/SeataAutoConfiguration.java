@@ -8,7 +8,7 @@ import org.springframework.context.annotation.PropertySource;
 /**
  * Seata 配置类
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/3/29
  */
 @PropertySource(value = "classpath:seata-config.yml", factory = YamlPropertySourceFactory.class)

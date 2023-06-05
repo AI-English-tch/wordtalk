@@ -24,7 +24,7 @@ import com.mmr.wordtalk.act.service.LeaveBillService;
 import org.springframework.stereotype.Service;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018-09-27
  */
 @Service("leaveBillService")

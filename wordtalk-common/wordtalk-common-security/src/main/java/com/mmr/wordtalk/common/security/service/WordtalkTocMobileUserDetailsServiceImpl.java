@@ -42,7 +42,7 @@ import java.util.Set;
 /**
  * 用户详细信息
  *
- * @author wordtalk hccake
+ * @author 张恩睿
  */
 @Slf4j
 @RequiredArgsConstructor

@@ -29,7 +29,7 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/7/5 路由配置信息
  */
 @Slf4j

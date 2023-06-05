@@ -40,7 +40,7 @@ import java.util.stream.Collectors;
 /**
  * 字典表
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019/03/19
  */
 @Service

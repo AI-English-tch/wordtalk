@@ -21,7 +21,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/8/27 前端日志vo
  */
 @Data

@@ -21,7 +21,7 @@ import com.alibaba.ttl.TransmittableThreadLocal;
 import lombok.experimental.UtilityClass;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020-10-16
  * <p>
  * 灰度版本号传递工具 ,在非web 调用feign 传递之前手动setVersion

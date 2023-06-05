@@ -22,7 +22,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/9/28 批注Dto
  */
 @Data

@@ -7,7 +7,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/8/27
  * <p>
  * 验证码 缓存提供支持集群,需要通过SPI

@@ -21,7 +21,7 @@ import com.alibaba.ttl.TransmittableThreadLocal;
 import lombok.experimental.UtilityClass;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019/03/27 微信上下文工具类
  */
 @UtilityClass

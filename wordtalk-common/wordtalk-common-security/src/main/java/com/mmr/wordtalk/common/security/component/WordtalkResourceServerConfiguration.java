@@ -28,7 +28,7 @@ import org.springframework.security.oauth2.server.resource.introspection.OpaqueT
 import org.springframework.security.web.SecurityFilterChain;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022-06-04
  *
  * 资源服务器认证授权配置

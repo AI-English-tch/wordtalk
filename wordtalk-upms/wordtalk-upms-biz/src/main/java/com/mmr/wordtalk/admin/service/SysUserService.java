@@ -33,7 +33,7 @@ import org.springframework.validation.BindingResult;
 import java.util.List;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2017/10/31
  */
 public interface SysUserService extends IService<SysUser> {

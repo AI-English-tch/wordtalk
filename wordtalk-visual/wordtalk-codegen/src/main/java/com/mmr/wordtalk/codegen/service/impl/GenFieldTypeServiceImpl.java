@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 /**
  * 列属性
  *
- * @author wordtalk code generator
+ * @author 张恩睿
  * @date 2023-02-06 20:16:01
  */
 @Service

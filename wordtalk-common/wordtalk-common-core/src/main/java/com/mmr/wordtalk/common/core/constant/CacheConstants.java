@@ -1,7 +1,7 @@
 package com.mmr.wordtalk.common.core.constant;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-04-28
  * <p>
  * 缓存的key 常量

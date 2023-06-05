@@ -17,7 +17,7 @@ import org.springframework.security.oauth2.server.authorization.token.OAuth2Toke
 import java.util.Map;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date date
  *
  * 短信登录的核心处理

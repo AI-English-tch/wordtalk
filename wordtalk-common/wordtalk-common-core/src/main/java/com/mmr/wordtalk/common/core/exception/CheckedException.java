@@ -22,7 +22,7 @@ package com.mmr.wordtalk.common.core.exception;
 import lombok.NoArgsConstructor;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 😴2018年06月22日16:21:57
  */
 @NoArgsConstructor

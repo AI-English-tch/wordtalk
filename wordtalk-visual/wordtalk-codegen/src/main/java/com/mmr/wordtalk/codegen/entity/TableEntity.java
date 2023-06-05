@@ -22,7 +22,7 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/07/29 表属性： https://blog.csdn.net/lkforce/article/details/79557482
  */
 @Data

@@ -27,7 +27,7 @@ import java.util.Map;
 /**
  * 列属性
  *
- * @author wordtalk code generator
+ * @author 张恩睿
  * @date 2023-02-06 20:34:55
  */
 public interface GenTableService extends IService<GenTable> {

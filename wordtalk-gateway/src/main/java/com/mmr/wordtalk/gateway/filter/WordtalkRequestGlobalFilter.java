@@ -36,7 +36,7 @@ import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.G
 import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.addOriginalRequestUrl;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/10/8
  * <p>
  * 全局拦截器，作用所有的微服务

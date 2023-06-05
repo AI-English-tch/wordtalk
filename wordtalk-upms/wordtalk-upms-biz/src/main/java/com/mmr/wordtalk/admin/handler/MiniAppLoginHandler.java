@@ -33,7 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019年11月02日
  * <p>
  * 微信小程序

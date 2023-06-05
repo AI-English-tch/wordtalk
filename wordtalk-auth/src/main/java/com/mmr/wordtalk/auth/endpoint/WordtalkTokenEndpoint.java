@@ -69,7 +69,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019/2/1 删除token端点
  */
 @Slf4j

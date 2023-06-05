@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * api 签名自动配置
  *
- * @author L.cm
+ * @author 张恩睿
  */
 @RequiredArgsConstructor
 @ConditionalOnProperty(value = ApiEncryptProperties.PREFIX + ".enable", havingValue = "true", matchIfMissing = true)

@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/7/6
  *
  * credential 支持客户端模式的用户存储

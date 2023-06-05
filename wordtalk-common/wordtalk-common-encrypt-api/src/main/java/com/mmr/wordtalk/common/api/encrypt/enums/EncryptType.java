@@ -6,7 +6,7 @@ package com.mmr.wordtalk.common.api.encrypt.enums;
  * </p>
  *
  * @author licoy.cn
- * @author L.cm
+ * @author 张恩睿
  * @version 2018/9/4
  */
 public enum EncryptType {

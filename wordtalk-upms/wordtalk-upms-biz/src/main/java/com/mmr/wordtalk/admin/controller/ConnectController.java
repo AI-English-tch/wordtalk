@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 钉钉、微信 互联
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/4/22
  */
 @RestController

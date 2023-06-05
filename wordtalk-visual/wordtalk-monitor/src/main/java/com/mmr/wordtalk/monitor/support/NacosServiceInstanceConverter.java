@@ -12,7 +12,7 @@ import static java.util.Collections.emptyMap;
 /**
  * 针对 nacos 2.x 服务注册处理
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2021/12/20
  */
 @Configuration(proxyBeanMethods = false)

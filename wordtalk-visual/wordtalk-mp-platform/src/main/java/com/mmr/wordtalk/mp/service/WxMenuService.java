@@ -24,7 +24,7 @@ import com.mmr.wordtalk.mp.entity.WxMpMenu;
 /**
  * 微信菜单业务
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-03-27 20:45:18
  */
 public interface WxMenuService extends IService<WxMpMenu> {

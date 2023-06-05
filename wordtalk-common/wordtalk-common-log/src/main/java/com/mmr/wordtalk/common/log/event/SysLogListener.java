@@ -29,7 +29,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.scheduling.annotation.Async;
 
 /**
- * @author wordtalk 异步监听日志事件
+ * @author 张恩睿
  */
 @Slf4j
 @AllArgsConstructor

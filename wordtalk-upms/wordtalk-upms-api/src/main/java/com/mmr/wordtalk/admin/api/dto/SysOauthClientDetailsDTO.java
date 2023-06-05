@@ -4,7 +4,7 @@ import com.mmr.wordtalk.admin.api.entity.SysOauthClientDetails;
 import lombok.Data;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/11/18
  * <p>
  * 终端管理传输对象

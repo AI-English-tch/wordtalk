@@ -23,7 +23,7 @@ import lombok.Getter;
 /**
  * 数据权限函数类型
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020-06-17
  */
 @Getter

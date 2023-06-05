@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/8/30 数据权限查询参数
  */
 @Data

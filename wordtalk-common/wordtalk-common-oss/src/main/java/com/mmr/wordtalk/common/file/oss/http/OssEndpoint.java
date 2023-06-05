@@ -37,7 +37,7 @@ import java.util.Map;
 /**
  * aws 对外提供服务端点
  *
- * @author wordtalk
+ * @author 张恩睿
  * @author 858695266
  * <p>
  * oss.info

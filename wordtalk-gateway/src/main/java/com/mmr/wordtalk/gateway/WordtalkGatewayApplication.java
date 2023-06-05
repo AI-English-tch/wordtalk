@@ -25,7 +25,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018年06月21日 网关应用
  */
 @EnableWordtalkDynamicRoute

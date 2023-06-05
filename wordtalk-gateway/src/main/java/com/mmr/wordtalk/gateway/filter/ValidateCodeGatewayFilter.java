@@ -48,7 +48,7 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/5/19 登录逻辑验证码处理
  */
 @Slf4j

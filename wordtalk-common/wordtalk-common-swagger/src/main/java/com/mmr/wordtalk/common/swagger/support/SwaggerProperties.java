@@ -26,7 +26,7 @@ import java.util.Map;
 /**
  * SwaggerProperties
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/7/25 14:00
  */
 @Data

@@ -18,7 +18,7 @@
 package com.mmr.wordtalk.common.data.datascope;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-09-07
  * <p>
  * data scope 判断处理器,抽象服务扩展

@@ -10,7 +10,7 @@ import org.springframework.util.Assert;
 import java.util.*;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/6/2
  *
  * 自定义授权模式抽象

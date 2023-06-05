@@ -43,7 +43,7 @@ import java.util.stream.Collectors;
 /**
  * 公众号账户
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-03-26 22:07:53
  */
 @Slf4j

@@ -28,7 +28,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/10/30
  * <p>
  * 自定义basic认证，针对特殊场景使用

@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/11/14
  * <p>
  * 手机验证码

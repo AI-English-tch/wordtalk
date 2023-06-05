@@ -28,7 +28,7 @@ import java.time.LocalDateTime;
 /**
  * 渠道
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-05-28 23:57:58
  */
 @Data

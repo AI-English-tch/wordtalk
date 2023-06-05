@@ -52,7 +52,7 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 import java.util.Arrays;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/5/27
  *
  * 认证服务器配置

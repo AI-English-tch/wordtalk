@@ -29,7 +29,7 @@ import lombok.EqualsAndHashCode;
  * 角色菜单表
  * </p>
  *
- * @author wordtalk
+ * @author 张恩睿
  * @since 2017-10-29
  */
 @Data

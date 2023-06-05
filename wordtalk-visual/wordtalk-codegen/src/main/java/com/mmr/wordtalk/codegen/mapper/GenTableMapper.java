@@ -24,7 +24,7 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 列属性
  *
- * @author wordtalk code generator
+ * @author 张恩睿
  * @date 2023-02-06 20:34:55
  */
 @Mapper

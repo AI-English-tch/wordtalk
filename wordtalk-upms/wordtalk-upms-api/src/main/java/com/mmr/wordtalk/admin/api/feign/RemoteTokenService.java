@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/9/4
  */
 @FeignClient(contextId = "remoteTokenService", value = ServiceNameConstants.AUTH_SERVICE)

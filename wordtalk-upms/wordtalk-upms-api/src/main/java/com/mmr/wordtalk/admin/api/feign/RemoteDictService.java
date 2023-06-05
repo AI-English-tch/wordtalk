@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/5/12
  * <p>
  * 查询参数相关

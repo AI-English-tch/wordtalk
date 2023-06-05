@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/4/29
  * <p>
  * 租户信息拦截

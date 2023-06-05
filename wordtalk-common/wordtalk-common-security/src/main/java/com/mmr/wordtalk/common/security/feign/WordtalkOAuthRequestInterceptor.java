@@ -20,7 +20,7 @@ import java.util.Collection;
  *
  * 重新 OAuth2FeignRequestInterceptor ，官方实现部分常见不适用
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/5/29
  */
 @Slf4j

@@ -22,7 +22,7 @@ import com.baomidou.dynamic.datasource.toolkit.DynamicDataSourceContextHolder;
 import org.aopalliance.intercept.MethodInvocation;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/2/6
  * <p>
  * 参数数据源解析 @DS("#last)

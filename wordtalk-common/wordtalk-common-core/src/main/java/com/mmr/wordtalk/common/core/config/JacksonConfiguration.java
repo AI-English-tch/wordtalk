@@ -27,8 +27,8 @@ import java.util.TimeZone;
  * JacksonConfig 配置时间转换规则
  * {@link com.mmr.wordtalk.common.core.jackson.WordtalkJavaTimeModule}、默认时区等
  *
- * @author L.cm
- * @author wordtalk
+ * @author 张恩睿
+ * @author 张恩睿
  * @author lishangbu
  * @date 2020-06-15
  */

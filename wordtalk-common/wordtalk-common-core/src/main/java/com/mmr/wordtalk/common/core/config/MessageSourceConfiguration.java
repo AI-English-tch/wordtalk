@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2018/11/14
  * <p>
  * 国际化配置

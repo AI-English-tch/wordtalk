@@ -8,7 +8,7 @@ import java.util.Locale;
 /**
  * i18n 工具类
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/3/30
  */
 @UtilityClass

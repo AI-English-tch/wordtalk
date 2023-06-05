@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2020/12/29
  */
 public class GrayLoadBalancerClientConfiguration extends LoadBalancerClientConfiguration {

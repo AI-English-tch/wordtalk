@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author wordtalk
+ * @author 张恩睿
  * @date 2019-10-11
  * <p>
  * 降级 限流策略

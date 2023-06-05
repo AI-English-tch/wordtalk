@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 粉丝Vo 对象
  *
- * @author wordtalk
+ * @author 张恩睿
  * @date 2022/1/5
  */
 @Data

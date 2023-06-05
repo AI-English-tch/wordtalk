@@ -20,7 +20,7 @@ package com.mmr.wordtalk.common.core.sensitive;
 /**
  * 敏感信息枚举类
  *
- * @author mayee
+ * @author 张恩睿
  * @version v1.0
  **/
 public enum SensitiveTypeEnum {
