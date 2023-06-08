@@ -98,11 +98,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webflux</artifactId>
         </dependency>
-		<!--ChatGpt模块-->
+		<!--选配：AI模块-->
 		<dependency>
-			<groupId>com.github.plexpt</groupId>
-			<artifactId>chatgpt</artifactId>
-			<version>4.0.8</version>
+			<groupId>com.mmr</groupId>
+			<artifactId>wordtalk-common-ai</artifactId>
+			<version>5.0.0</version>
 		</dependency>
     </dependencies>
 	<build>

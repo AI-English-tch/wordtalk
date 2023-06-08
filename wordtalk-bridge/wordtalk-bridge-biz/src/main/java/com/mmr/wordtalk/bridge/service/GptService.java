@@ -1,5 +1,7 @@
 package com.mmr.wordtalk.bridge.service;
 
+import com.mmr.wordtalk.common.core.util.R;
+
 /**
  * GptService
  *
@@ -9,8 +11,11 @@ package com.mmr.wordtalk.bridge.service;
 public interface GptService {
 
     // 与gpt实现聊天的方法
-    Boolean chat(String msg);
+    String chat(String msg);
 
-    // 获取聊天上下文的方法
-    Object getContext();
+    String chatWithContext(String username, String msg);
+
+	R chatOnStream(String username, String msg);
+
+	R chatWithContextOnStream(String username, String msg);
 }

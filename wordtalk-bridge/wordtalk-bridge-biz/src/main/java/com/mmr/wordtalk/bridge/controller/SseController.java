@@ -1,7 +1,8 @@
 package com.mmr.wordtalk.bridge.controller;
 
-import com.mmr.wordtalk.bridge.utils.SseEmitterUtils;
+import com.mmr.wordtalk.bridge.utils.SseEmitterUtil;
 import com.mmr.wordtalk.common.core.util.R;
+import com.mmr.wordtalk.common.security.service.WordtalkUser;
 import com.mmr.wordtalk.common.security.util.SecurityUtils;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -25,6 +26,7 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 @SecurityRequirement(name = HttpHeaders.AUTHORIZATION)
 public class SseController {
 
+	private final SseEmitterUtil emitterUtil;
     /**
      * 打开连接
      *
@@ -32,8 +34,9 @@ public class SseController {
      */
     @GetMapping(value = "/open", produces = {MediaType.TEXT_EVENT_STREAM_VALUE})
     public SseEmitter open() {
-        String username = SecurityUtils.getUser().getUsername();
-        SseEmitter emitter = SseEmitterUtils.getEmitter(username);
+		WordtalkUser user = SecurityUtils.getUser();
+		String username = user.getUsername();
+		SseEmitter emitter = emitterUtil.createEmitter(username);
         return emitter;
     }
 
@@ -44,9 +47,9 @@ public class SseController {
      */
     @GetMapping("/close")
     public R close() {
-        String username = SecurityUtils.getUser().getUsername();
-        SseEmitterUtils.release(username);
-        return R.ok();
+		WordtalkUser user = SecurityUtils.getUser();
+		String username = user.getUsername();
+        return R.ok(emitterUtil.release(username));
     }
 
     /**
@@ -58,8 +61,9 @@ public class SseController {
     @SneakyThrows
     @GetMapping("/push")
     public R push(@RequestParam String msg) {
-        String username = SecurityUtils.getUser().getUsername();
-        SseEmitter emitter = SseEmitterUtils.getEmitter(username);
+		WordtalkUser user = SecurityUtils.getUser();
+		String username = user.getUsername();
+        SseEmitter emitter = emitterUtil.getEmitter(username);
         emitter.send(msg);
         return R.ok();
     }

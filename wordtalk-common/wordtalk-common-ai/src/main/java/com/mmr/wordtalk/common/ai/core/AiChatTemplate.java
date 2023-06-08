@@ -27,8 +27,8 @@ public interface AiChatTemplate {
 	 */
 	String chatWithContext(String key, String ask);
 
-	void chatOnStream(String ask, SseEmitter sseEmitter);
+	String chatOnStream(String ask, SseEmitter sseEmitter);
 
-	void chatWithContextOnStream(String key, String ask, SseEmitter sseEmitter);
+	String chatWithContextOnStream(String key, String ask, SseEmitter sseEmitter);
 
 }

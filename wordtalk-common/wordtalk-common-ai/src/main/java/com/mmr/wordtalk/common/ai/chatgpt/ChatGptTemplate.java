@@ -90,15 +90,21 @@ public class ChatGptTemplate implements AiChatTemplate {
 	}
 
 	@Override
-	public void chatOnStream(String ask, SseEmitter sseEmitter) {
+	public String chatOnStream(String ask, SseEmitter sseEmitter) {
+		StringBuilder result = new StringBuilder();
 		ChatGPTStream chatStream = buildGptStream();
 		SseStreamListener listener = new SseStreamListener(sseEmitter);
+		listener.setOnComplate(answer -> {
+			result.append(answer);
+		});
 		Message message = Message.of(ask);
 		chatStream.streamChatCompletion(Arrays.asList(message), listener);
+		return result.toString();
 	}
 
 	@Override
-	public void chatWithContextOnStream(String key, String ask, SseEmitter sseEmitter) {
+	public String chatWithContextOnStream(String key, String ask, SseEmitter sseEmitter) {
+		StringBuilder result = new StringBuilder();
 		// 推送到上下文
 		context.push(key, new Content("user", ask));
 		// 获取当前上下文数组
@@ -106,14 +112,15 @@ public class ChatGptTemplate implements AiChatTemplate {
 
 		ChatGPTStream chatStream = buildGptStream();
 		SseStreamListener listener = new SseStreamListener(sseEmitter);
-		listener.setOnComplate(result -> {
+		listener.setOnComplate(answer -> {
 			// 将chat的回答存入上下文
-			context.push(key, new Content("assistant", result));
+			context.push(key, new Content("assistant", answer));
+			result.append(answer);
 		});
 		List<Message> messageList = createMessageList(contentList);
 
 		chatStream.streamChatCompletion(messageList, listener);
-
+		return result.toString();
 	}
 
 
