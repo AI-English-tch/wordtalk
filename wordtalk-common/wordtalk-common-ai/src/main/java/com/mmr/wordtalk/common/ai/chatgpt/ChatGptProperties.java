@@ -14,11 +14,6 @@ import java.util.List;
 public class ChatGptProperties {
 
 	/**
-	 * 上下文数据大小
-	 */
-	private Integer contextSize;
-
-	/**
 	 * apiKey的列表
 	 */
 	private List<String> apiKeys;

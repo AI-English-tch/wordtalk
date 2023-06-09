@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * GptServiceImpl
@@ -38,9 +39,11 @@ public class GptServiceImpl implements GptService {
 		// 获取用户的SSE链接
 		SseEmitter emitter = emitterUtil.getEmitter(username);
 		if (Objects.nonNull(emitter)) {
-			String chat = chatTemplate.chatOnStream(msg, emitter);
-			System.out.println("chart返回值：" + chat);
-			return R.ok();
+			CompletableFuture<String> future = chatTemplate.chatOnStream(msg, emitter);
+			future.thenAccept(result -> {
+				System.out.println("异步等待chat的返回："+result);
+			});
+			return R.ok(Boolean.TRUE);
 		}
 		return R.failed("用户还未建立SSE连接");
 	}
@@ -50,9 +53,11 @@ public class GptServiceImpl implements GptService {
 		// 获取用户的SSE链接
 		SseEmitter emitter = emitterUtil.getEmitter(username);
 		if (Objects.nonNull(emitter)) {
-			String chat = chatTemplate.chatWithContextOnStream(username, msg, emitter);
-			System.out.println("chart返回值：" + chat);
-			return R.ok();
+			CompletableFuture<String> future =  chatTemplate.chatWithContextOnStream(username, msg, emitter);
+			future.thenAccept(result -> {
+				System.out.println("异步等待chat的返回："+result);
+			});
+			return R.ok(Boolean.TRUE);
 		}
 		return R.failed("用户还未建立SSE连接");
 	}

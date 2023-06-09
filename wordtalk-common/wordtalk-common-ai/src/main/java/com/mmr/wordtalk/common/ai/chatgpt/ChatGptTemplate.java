@@ -19,6 +19,10 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import java.net.Proxy;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 /**
@@ -90,21 +94,24 @@ public class ChatGptTemplate implements AiChatTemplate {
 	}
 
 	@Override
-	public String chatOnStream(String ask, SseEmitter sseEmitter) {
-		StringBuilder result = new StringBuilder();
+	public CompletableFuture<String> chatOnStream(String ask, SseEmitter sseEmitter) {
+		CompletableFuture<String> future = new CompletableFuture<>();
+
 		ChatGPTStream chatStream = buildGptStream();
 		SseStreamListener listener = new SseStreamListener(sseEmitter);
-		listener.setOnComplate(answer -> {
-			result.append(answer);
-		});
+		Consumer<String> onComplete = result -> future.complete(result);
+		listener.setOnComplate(onComplete);
+
 		Message message = Message.of(ask);
 		chatStream.streamChatCompletion(Arrays.asList(message), listener);
-		return result.toString();
+
+		return future;
 	}
 
 	@Override
-	public String chatWithContextOnStream(String key, String ask, SseEmitter sseEmitter) {
-		StringBuilder result = new StringBuilder();
+	public CompletableFuture<String> chatWithContextOnStream(String key, String ask, SseEmitter sseEmitter) {
+		CompletableFuture<String> future = new CompletableFuture<>();
+
 		// 推送到上下文
 		context.push(key, new Content("user", ask));
 		// 获取当前上下文数组
@@ -112,15 +119,12 @@ public class ChatGptTemplate implements AiChatTemplate {
 
 		ChatGPTStream chatStream = buildGptStream();
 		SseStreamListener listener = new SseStreamListener(sseEmitter);
-		listener.setOnComplate(answer -> {
-			// 将chat的回答存入上下文
-			context.push(key, new Content("assistant", answer));
-			result.append(answer);
-		});
-		List<Message> messageList = createMessageList(contentList);
+		Consumer<String> onComplete = result -> future.complete(result);
+		listener.setOnComplate(onComplete);
 
+		List<Message> messageList = createMessageList(contentList);
 		chatStream.streamChatCompletion(messageList, listener);
-		return result.toString();
+		return future;
 	}
 
 

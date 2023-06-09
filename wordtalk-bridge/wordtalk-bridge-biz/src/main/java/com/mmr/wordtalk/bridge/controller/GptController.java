@@ -57,7 +57,7 @@ public class GptController {
 	public R chatWithContextOnStream(@RequestParam String msg) {
 		WordtalkUser user = SecurityUtils.getUser();
 		String username = user.getUsername();
-		gptService.chatWithContextOnStream(username,msg);
+		return gptService.chatWithContextOnStream(username,msg);
 	}
 
 }
