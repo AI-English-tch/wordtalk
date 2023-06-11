@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mmr.wordtalk.bridge.mapper.GptStoreWordsMapper">
+
+  <resultMap id="gptStoreWordsMap" type="com.mmr.wordtalk.bridge.entity.GptStoreWordsEntity">
+        <id property="storeId" column="store_id"/>
+        <id property="wordId" column="word_id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+  </resultMap>
+</mapper>
