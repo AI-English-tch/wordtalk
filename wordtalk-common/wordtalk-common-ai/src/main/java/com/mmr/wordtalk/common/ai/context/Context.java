@@ -13,6 +13,13 @@ import java.util.List;
 public interface Context {
 
 	/**
+	 * 初始化上下文的接口
+	 * @param key
+	 * @param contentList
+	 */
+	void init(String key,List<Content> contentList);
+
+	/**
 	 * 向上下文中添加新的内容
 	 *
 	 * @param key

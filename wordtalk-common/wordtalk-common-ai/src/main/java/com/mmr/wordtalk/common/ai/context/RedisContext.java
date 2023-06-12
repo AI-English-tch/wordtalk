@@ -1,9 +1,9 @@
 package com.mmr.wordtalk.common.ai.context;
 
 import com.mmr.wordtalk.common.ai.core.Content;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.redis.core.ListOperations;
+import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.List;
 
@@ -12,23 +12,37 @@ import java.util.List;
  * @date 2023-06-07 18:26:00
  */
 @Data
-@AllArgsConstructor
 public class RedisContext implements Context {
 	private Integer contextSize;
 
-	private ListOperations<String, Content> ops;
+	private RedisTemplate redisTemplate;
+
+	private ListOperations<String, Content> opsForList;
+
+	public RedisContext(Integer contextSize, RedisTemplate redisTemplate) {
+		this.contextSize = contextSize;
+		this.redisTemplate = redisTemplate;
+		this.opsForList = redisTemplate.opsForList();
+	}
+
+	@Override
+	public void init(String key, List<Content> contentList) {
+		// 删除原有的列表
+		redisTemplate.delete(key);
+		opsForList.rightPushAll(key,contentList);
+	}
 
 	@Override
 	public void push(String key, Content content) {
-		ops.rightPush(key, content);
+		opsForList.rightPush(key, content);
 	}
 
 	@Override
 	public List<Content> getContext(String key) {
 		//  优化算法，在取的时候限定大小
-		List<Content> range = ops.range(key, 0, -1);
+		List<Content> range = opsForList.range(key, 0, -1);
 		if (range.size() > contextSize) {
-			ops.trim(key,range.size() - contextSize,-1);
+			opsForList.trim(key, range.size() - contextSize, -1);
 			// redis低于6.2版本不支持该语法
 			// ops.leftPop(key,range.size() - contextSize);
 			return range.subList(range.size() - contextSize, range.size());
@@ -38,6 +52,6 @@ public class RedisContext implements Context {
 
 	@Override
 	public void clear(String key) {
-		ops.leftPop(key, -1);
+		opsForList.leftPop(key, -1);
 	}
 }

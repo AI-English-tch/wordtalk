@@ -1,5 +1,7 @@
 package com.mmr.wordtalk.common.ai.chatgpt;
 
+import cn.hutool.core.collection.ListUtil;
+import cn.hutool.core.util.StrUtil;
 import com.mmr.wordtalk.common.ai.context.Context;
 import com.mmr.wordtalk.common.ai.core.AiChatTemplate;
 import com.mmr.wordtalk.common.ai.core.AiProperties;
@@ -7,6 +9,7 @@ import com.mmr.wordtalk.common.ai.core.Content;
 import com.plexpt.chatgpt.ChatGPT;
 import com.plexpt.chatgpt.ChatGPTStream;
 import com.plexpt.chatgpt.api.Api;
+import com.plexpt.chatgpt.entity.chat.ChatCompletion;
 import com.plexpt.chatgpt.entity.chat.ChatCompletionResponse;
 import com.plexpt.chatgpt.entity.chat.Message;
 import com.plexpt.chatgpt.listener.SseStreamListener;
@@ -17,6 +20,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.net.Proxy;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -71,19 +75,52 @@ public class ChatGptTemplate implements AiChatTemplate {
 	}
 
 	@Override
+	public void initContext(String key, List<Content> contentList) {
+		context.init(key, contentList);
+	}
+
+	@Override
+	public List<Content> getContext(String key) {
+		return context.getContext(key);
+	}
+
+	@Override
 	public String chat(String ask) {
+		return chat(ask, null);
+	}
+
+	@Override
+	public String chat(String ask, String prompt) {
 		ChatGPT chatGPT = buildGpt();
-		return chatGPT.chat(ask);
+		List<Message> messageList = new ArrayList<>(2);
+		if (StrUtil.isNotBlank(prompt)) {
+			messageList.add(Message.ofSystem(prompt));
+		}
+		messageList.add(Message.of(ask));
+
+		ChatCompletionResponse response = chatGPT.chatCompletion(messageList);
+		return response.getChoices().get(0).getMessage().getContent();
+
+
 	}
 
 	@Override
 	public String chatWithContext(String key, String ask) {
+		return chatWithContext(key, ask, null);
+	}
+
+	@Override
+	public String chatWithContext(String key, String ask, String prompt) {
 		// 推送到上下文
 		context.push(key, new Content("user", ask));
 		// 获取当前上下文数组
 		List<Content> contentList = context.getContext(key);
 
 		List<Message> messageList = createMessageList(contentList);
+
+		if (StrUtil.isNotBlank(prompt)) {
+			messageList.add(0, Message.ofSystem(prompt));
+		}
 
 		ChatGPT chatGPT = buildGpt();
 		ChatCompletionResponse response = chatGPT.chatCompletion(messageList);
@@ -95,6 +132,11 @@ public class ChatGptTemplate implements AiChatTemplate {
 
 	@Override
 	public CompletableFuture<String> chatOnStream(String ask, SseEmitter sseEmitter) {
+		return chatOnStream(ask, sseEmitter, null);
+	}
+
+	@Override
+	public CompletableFuture<String> chatOnStream(String ask, SseEmitter sseEmitter, String prompt) {
 		CompletableFuture<String> future = new CompletableFuture<>();
 
 		ChatGPTStream chatStream = buildGptStream();
@@ -102,14 +144,23 @@ public class ChatGptTemplate implements AiChatTemplate {
 		Consumer<String> onComplete = result -> future.complete(result);
 		listener.setOnComplate(onComplete);
 
-		Message message = Message.of(ask);
-		chatStream.streamChatCompletion(Arrays.asList(message), listener);
+		List<Message> messageList = new ArrayList<>(2);
+		if (StrUtil.isNotBlank(prompt)) {
+			messageList.add(Message.ofSystem(prompt));
+		}
+		messageList.add(Message.of(ask));
+		chatStream.streamChatCompletion(messageList, listener);
 
 		return future;
 	}
 
 	@Override
 	public CompletableFuture<String> chatWithContextOnStream(String key, String ask, SseEmitter sseEmitter) {
+		return chatWithContextOnStream(key, ask, sseEmitter, null);
+	}
+
+	@Override
+	public CompletableFuture<String> chatWithContextOnStream(String key, String ask, SseEmitter sseEmitter, String prompt) {
 		CompletableFuture<String> future = new CompletableFuture<>();
 
 		// 推送到上下文
@@ -117,12 +168,16 @@ public class ChatGptTemplate implements AiChatTemplate {
 		// 获取当前上下文数组
 		List<Content> contentList = context.getContext(key);
 
-		ChatGPTStream chatStream = buildGptStream();
 		SseStreamListener listener = new SseStreamListener(sseEmitter);
 		Consumer<String> onComplete = result -> future.complete(result);
 		listener.setOnComplate(onComplete);
-
 		List<Message> messageList = createMessageList(contentList);
+
+		if (StrUtil.isNotBlank(prompt)) {
+			messageList.add(0, Message.ofSystem(prompt));
+		}
+
+		ChatGPTStream chatStream = buildGptStream();
 		chatStream.streamChatCompletion(messageList, listener);
 		return future;
 	}

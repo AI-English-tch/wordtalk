@@ -1,9 +1,13 @@
 package com.mmr.wordtalk.bridge.service.impl;
 
+import com.mmr.wordtalk.bridge.entity.GptPromptEntity;
+import com.mmr.wordtalk.bridge.service.GptPromptService;
 import com.mmr.wordtalk.bridge.service.GptService;
 import com.mmr.wordtalk.bridge.utils.SseEmitterUtil;
 import com.mmr.wordtalk.common.ai.core.AiChatTemplate;
+import com.mmr.wordtalk.common.ai.core.Content;
 import com.mmr.wordtalk.common.core.util.R;
+import com.plexpt.chatgpt.entity.chat.Message;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
@@ -24,9 +28,15 @@ public class GptServiceImpl implements GptService {
 
 	private final SseEmitterUtil emitterUtil;
 
+	private final GptPromptService gptPromptService;
+
 	@Override
-	public String chat(String msg) {
-		return chatTemplate.chat(msg);
+	public String chat(Long id, String msg) {
+		GptPromptEntity prompt = gptPromptService.getById(id);
+		if (prompt == null) {
+			return chatTemplate.chat(msg);
+		}
+		return chatTemplate.chat(prompt.getContent(), msg);
 	}
 
 	@Override
@@ -41,7 +51,7 @@ public class GptServiceImpl implements GptService {
 		if (Objects.nonNull(emitter)) {
 			CompletableFuture<String> future = chatTemplate.chatOnStream(msg, emitter);
 			future.thenAccept(result -> {
-				System.out.println("异步等待chat的返回："+result);
+				System.out.println("异步等待chat的返回：" + result);
 			});
 			return R.ok(Boolean.TRUE);
 		}
@@ -53,9 +63,9 @@ public class GptServiceImpl implements GptService {
 		// 获取用户的SSE链接
 		SseEmitter emitter = emitterUtil.getEmitter(username);
 		if (Objects.nonNull(emitter)) {
-			CompletableFuture<String> future =  chatTemplate.chatWithContextOnStream(username, msg, emitter);
+			CompletableFuture<String> future = chatTemplate.chatWithContextOnStream(username, msg, emitter);
 			future.thenAccept(result -> {
-				System.out.println("异步等待chat的返回："+result);
+				System.out.println("异步等待chat的返回：" + result);
 			});
 			return R.ok(Boolean.TRUE);
 		}

@@ -22,6 +22,6 @@ public class ContextAutoConfiguration {
 	@ConditionalOnMissingBean(RedisContext.class)
 	@ConditionalOnProperty(name = "ai.context.redis.enable",havingValue = "true",matchIfMissing = true)
 	public Context redisContext() {
-		return new RedisContext(properties.getContext().getSize(),redisTemplate.opsForList());
+		return new RedisContext(properties.getContext().getSize(),redisTemplate);
 	}
 }

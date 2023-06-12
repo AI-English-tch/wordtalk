@@ -30,13 +30,13 @@ public class GptController {
 
 	private final GptService gptService;
 
-	@GetMapping("/chat")
-	public R chat(@RequestParam String msg) {
-		return R.ok(gptService.chat(msg));
+	@GetMapping("/chat/{id}")
+	public R chat(@PathVariable Long id, @RequestParam String msg) {
+		return R.ok(gptService.chat(id,msg));
 	}
 
-	@GetMapping("/chatWithContext")
-	public R chatWithContext(@RequestParam String msg) {
+	@GetMapping("/chatWithContext/{id}")
+	public R chatWithContext(@PathVariable Long id, @RequestParam String msg) {
 		WordtalkUser user = SecurityUtils.getUser();
 		if (Objects.isNull(user)) {
 			String message = "用户为空，不应该出现";
@@ -53,11 +53,11 @@ public class GptController {
 		return gptService.chatOnStream(username, msg);
 	}
 
-	@GetMapping("/chatWithContextOnStream")
-	public R chatWithContextOnStream(@RequestParam String msg) {
+	@GetMapping("/chatWithContextOnStream/{id}")
+	public R chatWithContextOnStream(@PathVariable Long id, @RequestParam String msg) {
 		WordtalkUser user = SecurityUtils.getUser();
 		String username = user.getUsername();
-		return gptService.chatWithContextOnStream(username,msg);
+		return gptService.chatWithContextOnStream(username, msg);
 	}
 
 }

@@ -11,7 +11,7 @@ import com.mmr.wordtalk.common.core.util.R;
 public interface GptService {
 
     // 与gpt实现聊天的方法
-    String chat(String msg);
+    String chat(Long id, String msg);
 
     String chatWithContext(String username, String msg);
 
