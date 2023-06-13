@@ -26,6 +26,7 @@ import com.mmr.wordtalk.common.core.util.R;
 import com.mmr.wordtalk.common.log.annotation.SysLog;
 import com.mmr.wordtalk.bridge.entity.GptPromptEntity;
 import com.mmr.wordtalk.bridge.service.GptPromptService;
+import com.mmr.wordtalk.common.security.util.SecurityUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
 import com.mmr.wordtalk.common.excel.annotation.ResponseExcel;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -45,90 +46,108 @@ import java.util.List;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/prompt" )
-@Tag(description = "prompt" , name = "gpt的prompt信息表管理" )
+@RequestMapping("/prompt")
+@Tag(description = "prompt", name = "gpt的prompt信息表管理")
 @SecurityRequirement(name = HttpHeaders.AUTHORIZATION)
 public class GptPromptController {
 
-    private final  GptPromptService gptPromptService;
+	private final GptPromptService gptPromptService;
 
-    /**
-     * 分页查询
-     * @param page 分页对象
-     * @param gptPrompt gpt的prompt信息表
-     * @return
-     */
-    @Operation(summary = "分页查询" , description = "分页查询" )
-    @GetMapping("/page" )
-    @PreAuthorize("@pms.hasPermission('bridge_prompt_view')" )
-    public R getgptPromptPage(Page page, GptPromptEntity gptPrompt) {
-        LambdaQueryWrapper<GptPromptEntity> wrapper = Wrappers.lambdaQuery();
-		wrapper.like(StrUtil.isNotBlank(gptPrompt.getName()),GptPromptEntity::getName,gptPrompt.getName());
-        return R.ok(gptPromptService.page(page, wrapper));
-    }
+	/**
+	 * 分页查询
+	 *
+	 * @param page      分页对象
+	 * @param gptPrompt gpt的prompt信息表
+	 * @return
+	 */
+	@Operation(summary = "分页查询", description = "分页查询")
+	@GetMapping("/page")
+	@PreAuthorize("@pms.hasPermission('bridge_prompt_view')")
+	public R getgptPromptPage(Page page, GptPromptEntity gptPrompt) {
+		LambdaQueryWrapper<GptPromptEntity> wrapper = Wrappers.lambdaQuery();
+		wrapper.like(StrUtil.isNotBlank(gptPrompt.getName()), GptPromptEntity::getName, gptPrompt.getName());
+		return R.ok(gptPromptService.page(page, wrapper));
+	}
+
+	// /**
+	//  * 查找我的题词
+	//  *
+	//  * @return
+	//  */
+	// @Operation(summary = "查找我的题词", description = "查找我的题词")
+	// @GetMapping("/myPrompt")
+	// public R getMyPrompt() {
+	// 	String username = SecurityUtils.getUser().getUsername();
+	// 	LambdaQueryWrapper<GptPromptEntity> wrapper = Wrappers.<GptPromptEntity>lambdaQuery().eq(GptPromptEntity::getCreateBy, username).orderByDesc(GptPromptEntity::getCreateTime);
+	// 	return R.ok(gptPromptService.list(wrapper));
+	// }
+
+	/**
+	 * 通过id查询gpt的prompt信息表
+	 *
+	 * @param id id
+	 * @return R
+	 */
+	@Operation(summary = "通过id查询", description = "通过id查询")
+	@GetMapping("/{id}")
+	@PreAuthorize("@pms.hasPermission('bridge_prompt_view')")
+	public R getById(@PathVariable("id") Long id) {
+		return R.ok(gptPromptService.getById(id));
+	}
+
+	/**
+	 * 新增gpt的prompt信息表
+	 *
+	 * @param gptPrompt gpt的prompt信息表
+	 * @return R
+	 */
+	@Operation(summary = "新增gpt的prompt信息表", description = "新增gpt的prompt信息表")
+	@SysLog("新增gpt的prompt信息表")
+	@PostMapping
+	@PreAuthorize("@pms.hasPermission('bridge_prompt_add')")
+	public R save(@RequestBody GptPromptEntity gptPrompt) {
+		return R.ok(gptPromptService.save(gptPrompt));
+	}
+
+	/**
+	 * 修改gpt的prompt信息表
+	 *
+	 * @param gptPrompt gpt的prompt信息表
+	 * @return R
+	 */
+	@Operation(summary = "修改gpt的prompt信息表", description = "修改gpt的prompt信息表")
+	@SysLog("修改gpt的prompt信息表")
+	@PutMapping
+	@PreAuthorize("@pms.hasPermission('bridge_prompt_edit')")
+	public R updateById(@RequestBody GptPromptEntity gptPrompt) {
+		return R.ok(gptPromptService.updateById(gptPrompt));
+	}
+
+	/**
+	 * 通过id删除gpt的prompt信息表
+	 *
+	 * @param ids id列表
+	 * @return R
+	 */
+	@Operation(summary = "通过id删除gpt的prompt信息表", description = "通过id删除gpt的prompt信息表")
+	@SysLog("通过id删除gpt的prompt信息表")
+	@DeleteMapping
+	@PreAuthorize("@pms.hasPermission('bridge_prompt_del')")
+	public R removeById(@RequestBody Long[] ids) {
+		return R.ok(gptPromptService.removeBatchByIds(CollUtil.toList(ids)));
+	}
 
 
-    /**
-     * 通过id查询gpt的prompt信息表
-     * @param id id
-     * @return R
-     */
-    @Operation(summary = "通过id查询" , description = "通过id查询" )
-    @GetMapping("/{id}" )
-    @PreAuthorize("@pms.hasPermission('bridge_prompt_view')" )
-    public R getById(@PathVariable("id" ) Long id) {
-        return R.ok(gptPromptService.getById(id));
-    }
-
-    /**
-     * 新增gpt的prompt信息表
-     * @param gptPrompt gpt的prompt信息表
-     * @return R
-     */
-    @Operation(summary = "新增gpt的prompt信息表" , description = "新增gpt的prompt信息表" )
-    @SysLog("新增gpt的prompt信息表" )
-    @PostMapping
-    @PreAuthorize("@pms.hasPermission('bridge_prompt_add')" )
-    public R save(@RequestBody GptPromptEntity gptPrompt) {
-        return R.ok(gptPromptService.save(gptPrompt));
-    }
-
-    /**
-     * 修改gpt的prompt信息表
-     * @param gptPrompt gpt的prompt信息表
-     * @return R
-     */
-    @Operation(summary = "修改gpt的prompt信息表" , description = "修改gpt的prompt信息表" )
-    @SysLog("修改gpt的prompt信息表" )
-    @PutMapping
-    @PreAuthorize("@pms.hasPermission('bridge_prompt_edit')" )
-    public R updateById(@RequestBody GptPromptEntity gptPrompt) {
-        return R.ok(gptPromptService.updateById(gptPrompt));
-    }
-
-    /**
-     * 通过id删除gpt的prompt信息表
-     * @param ids id列表
-     * @return R
-     */
-    @Operation(summary = "通过id删除gpt的prompt信息表" , description = "通过id删除gpt的prompt信息表" )
-    @SysLog("通过id删除gpt的prompt信息表" )
-    @DeleteMapping
-    @PreAuthorize("@pms.hasPermission('bridge_prompt_del')" )
-    public R removeById(@RequestBody Long[] ids) {
-        return R.ok(gptPromptService.removeBatchByIds(CollUtil.toList(ids)));
-    }
-
-
-    /**
-     * 导出excel 表格
-     * @param gptPrompt 查询条件
-     * @return excel 文件流
-     */
-    @ResponseExcel
-    @GetMapping("/export")
-    @PreAuthorize("@pms.hasPermission('bridge_prompt_export')" )
-    public List<GptPromptEntity> export(GptPromptEntity gptPrompt) {
-        return gptPromptService.list(Wrappers.query(gptPrompt));
-    }
+	/**
+	 * 导出excel 表格
+	 *
+	 * @param gptPrompt 查询条件
+	 * @return excel 文件流
+	 */
+	@ResponseExcel
+	@GetMapping("/export")
+	@PreAuthorize("@pms.hasPermission('bridge_prompt_export')")
+	public List<GptPromptEntity> export(GptPromptEntity gptPrompt) {
+		return gptPromptService.list(Wrappers.query(gptPrompt));
+	}
 }

@@ -37,33 +37,40 @@ import java.time.LocalDateTime;
 @Schema(description = "单库--单词关联表")
 public class GptStoreWordsEntity extends Model<GptStoreWordsEntity> {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 唯一标识
+	 */
+	@TableId(type = IdType.AUTO)
+	@Schema(description = "唯一标识")
+	private Long id;
 
 
-    /**
-     * 词库id
-     */
-    @Schema(description = "词库id")
-    private Long storeId;
+	/**
+	 * 词库id
+	 */
+	@Schema(description = "词库id")
+	private Long storeId;
 
-    /**
-     * 单词id
-     */
-    @Schema(description = "单词id")
-    private Long wordId;
+	/**
+	 * 单词id
+	 */
+	@Schema(description = "单词id")
+	private Long wordId;
 
-    /**
-     * 创建人
-     */
-    @TableField(fill = FieldFill.INSERT)
-    @Schema(description = "创建人")
-    private String createBy;
+	/**
+	 * 创建人
+	 */
+	@TableField(fill = FieldFill.INSERT)
+	@Schema(description = "创建人")
+	private String createBy;
 
-    /**
-     * 创建时间
-     */
-    @TableField(fill = FieldFill.INSERT)
-    @Schema(description = "创建时间")
-    private LocalDateTime createTime;
+	/**
+	 * 创建时间
+	 */
+	@TableField(fill = FieldFill.INSERT)
+	@Schema(description = "创建时间")
+	private LocalDateTime createTime;
 
 }

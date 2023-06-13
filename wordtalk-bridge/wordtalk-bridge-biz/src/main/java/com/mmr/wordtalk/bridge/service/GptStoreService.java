@@ -19,6 +19,9 @@ package com.mmr.wordtalk.bridge.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mmr.wordtalk.bridge.entity.GptStoreEntity;
+import com.mmr.wordtalk.common.core.util.R;
+
+import java.util.List;
 
 /**
  * 官方词库
@@ -27,5 +30,14 @@ import com.mmr.wordtalk.bridge.entity.GptStoreEntity;
  * @date 2023-06-11 20:01:48
  */
 public interface GptStoreService extends IService<GptStoreEntity> {
+
+	/**
+	 * 将单词列表导入到现有的词库中
+	 *
+	 * @param id
+	 * @param wordsList
+	 * @return
+	 */
+	R importWords(Long id, List<String> wordsList);
 
 }
