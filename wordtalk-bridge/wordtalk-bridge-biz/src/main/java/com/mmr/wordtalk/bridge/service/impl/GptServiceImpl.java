@@ -5,9 +5,7 @@ import com.mmr.wordtalk.bridge.service.GptPromptService;
 import com.mmr.wordtalk.bridge.service.GptService;
 import com.mmr.wordtalk.bridge.utils.SseEmitterUtil;
 import com.mmr.wordtalk.common.ai.core.AiChatTemplate;
-import com.mmr.wordtalk.common.ai.core.Content;
 import com.mmr.wordtalk.common.core.util.R;
-import com.plexpt.chatgpt.entity.chat.Message;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
@@ -36,20 +34,30 @@ public class GptServiceImpl implements GptService {
 		if (prompt == null) {
 			return chatTemplate.chat(msg);
 		}
-		return chatTemplate.chat(prompt.getContent(), msg);
+		return chatTemplate.chat(msg, prompt.getContent());
 	}
 
 	@Override
-	public String chatWithContext(String username, String msg) {
-		return chatTemplate.chatWithContext(username, msg);
+	public String chatWithContext(Long id, String username, String msg) {
+		GptPromptEntity prompt = gptPromptService.getById(id);
+		if (prompt == null) {
+			return chatTemplate.chatWithContext(username, msg);
+		}
+		return chatTemplate.chatWithContext(username, msg, prompt.getContent());
 	}
 
 	@Override
-	public R chatOnStream(String username, String msg) {
+	public R chatOnStream(Long id, String username, String msg) {
+		GptPromptEntity prompt = gptPromptService.getById(id);
 		// 获取用户的SSE链接
 		SseEmitter emitter = emitterUtil.getEmitter(username);
 		if (Objects.nonNull(emitter)) {
-			CompletableFuture<String> future = chatTemplate.chatOnStream(msg, emitter);
+			CompletableFuture<String> future = null;
+			if (prompt == null) {
+				future = chatTemplate.chatOnStream(msg, emitter);
+			} else {
+				future = chatTemplate.chatOnStream(msg, emitter, prompt.getContent());
+			}
 			future.thenAccept(result -> {
 				System.out.println("异步等待chat的返回：" + result);
 			});
@@ -59,11 +67,17 @@ public class GptServiceImpl implements GptService {
 	}
 
 	@Override
-	public R chatWithContextOnStream(String username, String msg) {
+	public R chatWithContextOnStream(Long id, String username, String msg) {
+		GptPromptEntity prompt = gptPromptService.getById(id);
 		// 获取用户的SSE链接
 		SseEmitter emitter = emitterUtil.getEmitter(username);
 		if (Objects.nonNull(emitter)) {
-			CompletableFuture<String> future = chatTemplate.chatWithContextOnStream(username, msg, emitter);
+			CompletableFuture<String> future = null;
+			if (prompt == null) {
+				future = chatTemplate.chatWithContextOnStream(username, msg, emitter);
+			} else {
+				future = chatTemplate.chatWithContextOnStream(username, msg, emitter, prompt.getContent());
+			}
 			future.thenAccept(result -> {
 				System.out.println("异步等待chat的返回：" + result);
 			});
@@ -71,6 +85,5 @@ public class GptServiceImpl implements GptService {
 		}
 		return R.failed("用户还未建立SSE连接");
 	}
-
 
 }

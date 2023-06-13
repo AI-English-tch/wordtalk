@@ -43,21 +43,21 @@ public class GptController {
 			return R.failed(message);
 		}
 		String username = user.getUsername();
-		return R.ok(gptService.chatWithContext(username, msg));
+		return R.ok(gptService.chatWithContext(id,username, msg));
 	}
 
-	@GetMapping("/chatOnStream")
-	public R chatOnStream(@RequestParam String msg) {
+	@GetMapping("/chatOnStream/{id}")
+	public R chatOnStream(@PathVariable Long id,@RequestParam String msg) {
 		WordtalkUser user = SecurityUtils.getUser();
 		String username = user.getUsername();
-		return gptService.chatOnStream(username, msg);
+		return gptService.chatOnStream(id,username, msg);
 	}
 
 	@GetMapping("/chatWithContextOnStream/{id}")
 	public R chatWithContextOnStream(@PathVariable Long id, @RequestParam String msg) {
 		WordtalkUser user = SecurityUtils.getUser();
 		String username = user.getUsername();
-		return gptService.chatWithContextOnStream(username, msg);
+		return gptService.chatWithContextOnStream(id,username, msg);
 	}
 
 }
