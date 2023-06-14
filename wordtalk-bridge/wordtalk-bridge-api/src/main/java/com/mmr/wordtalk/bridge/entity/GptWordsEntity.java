@@ -17,9 +17,10 @@
 
 package com.mmr.wordtalk.bridge.entity;
 
-import cn.hutool.json.JSON;
+import cn.hutool.json.JSONArray;
 import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -64,7 +65,8 @@ public class GptWordsEntity extends Model<GptWordsEntity> {
      * 分类标签(数组)
      */
     @Schema(description = "分类标签(数组)")
-    private JSON tags;
+    @TableField(typeHandler = FastjsonTypeHandler.class)
+    private JSONArray tags;
 
     /**
      * 创建人
@@ -97,7 +99,6 @@ public class GptWordsEntity extends Model<GptWordsEntity> {
     /**
      * 逻辑删除
      */
-    @TableField(fill = FieldFill.INSERT)
     @TableLogic
     @Schema(description = "逻辑删除")
     private String delFlag;

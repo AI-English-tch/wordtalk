@@ -1,4 +1,4 @@
-package com.mmr.wordtalk.common.ai.chatgpt;
+package com.mmr.wordtalk.common.ai.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -12,9 +12,13 @@ import java.util.List;
 @Data
 @ConfigurationProperties(prefix = "chatgpt")
 public class ChatGptProperties {
+    /**
+     * apiKey的列表
+     */
+    private List<String> apiKeys;
 
-	/**
-	 * apiKey的列表
-	 */
-	private List<String> apiKeys;
+    /**
+     * model类型
+     */
+    private String model;
 }

@@ -30,5 +30,4 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class GptBookWordsServiceImpl extends ServiceImpl<GptBookWordsMapper, GptBookWordsEntity> implements GptBookWordsService {
-
 }

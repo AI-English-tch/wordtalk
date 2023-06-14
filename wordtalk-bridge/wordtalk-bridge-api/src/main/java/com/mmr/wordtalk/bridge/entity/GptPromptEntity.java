@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) 2018-2025, wordtalk All rights reserved.
+ *    Copyright (c) 2018-2025, zero All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -12,7 +12,7 @@
  * Neither the name of the pig4cloud.com developer nor the names of its
  * contributors may be used to endorse or promote products derived from
  * this software without specific prior written permission.
- * Author: wordtalk
+ * Author: zero
  */
 
 package com.mmr.wordtalk.bridge.entity;
@@ -26,79 +26,79 @@ import lombok.EqualsAndHashCode;
 import java.time.LocalDateTime;
 
 /**
- * gpt的prompt信息表
+ * 题词表
  *
  * @author 张恩睿
- * @date 2023-06-11 19:56:17
+ * @date 2023-06-14 11:10:09
  */
 @Data
 @TableName("gpt_prompt")
 @EqualsAndHashCode(callSuper = true)
-@Schema(description = "gpt的prompt信息表")
+@Schema(description = "题词表")
 public class GptPromptEntity extends Model<GptPromptEntity> {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
 
-    /**
-     * 唯一标识
-     */
-    @TableId(type = IdType.AUTO)
-    @Schema(description = "唯一标识")
-    private Long id;
+	/**
+	 * 唯一标识
+	 */
+	@TableId(type = IdType.AUTO)
+	@Schema(description = "唯一标识")
+	private Long id;
 
-    /**
-     * 名称
-     */
-    @Schema(description = "名称")
-    private String name;
+	/**
+	 * 题词名称
+	 */
+	@Schema(description = "题词名称")
+	private String name;
 
-    /**
-     * prompt作用的描述
-     */
-    @Schema(description = "prompt作用的描述")
-    private String describe;
+	/**
+	 * 题词内容
+	 */
+	@Schema(description = "题词内容")
+	private String content;
 
-    /**
-     * 内容
-     */
-    @Schema(description = "内容")
-    private String content;
+	/**
+	 * 创建者
+	 */
+	@TableField(fill = FieldFill.INSERT)
+	@Schema(description = "创建者")
+	private String createBy;
 
-    /**
-     * 创建人
-     */
-    @TableField(fill = FieldFill.INSERT)
-    @Schema(description = "创建人")
-    private String createBy;
+	/**
+	 * 创建时间
+	 */
+	@TableField(fill = FieldFill.INSERT)
+	@Schema(description = "创建时间")
+	private LocalDateTime createTime;
 
-    /**
-     * 创建时间
-     */
-    @TableField(fill = FieldFill.INSERT)
-    @Schema(description = "创建时间")
-    private LocalDateTime createTime;
+	/**
+	 * 更新者
+	 */
+	@TableField(fill = FieldFill.INSERT_UPDATE)
+	@Schema(description = "更新者")
+	private String updateBy;
 
-    /**
-     * 更新人
-     */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    @Schema(description = "更新人")
-    private String updateBy;
+	/**
+	 * 更新时间
+	 */
+	@TableField(fill = FieldFill.INSERT_UPDATE)
+	@Schema(description = "更新时间")
+	private LocalDateTime updateTime;
 
-    /**
-     * 更新时间
-     */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    @Schema(description = "更新时间")
-    private LocalDateTime updateTime;
+	/**
+	 * 逻辑删除
+	 */
+	@TableLogic
+	@TableField(fill = FieldFill.INSERT)
+	@Schema(description = "逻辑删除")
+	private String delFlag;
 
-    /**
-     * 逻辑删除
-     */
-    @TableField(fill = FieldFill.INSERT)
-    @TableLogic
-    @Schema(description = "逻辑删除")
-    private String delFlag;
+	/**
+	 * 租户id
+	 */
+	@Schema(description = "租户id")
+	private Long tenantId;
 
 }

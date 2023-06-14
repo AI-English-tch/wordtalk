@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) 2018-2025, wordtalk All rights reserved.
+ *    Copyright (c) 2018-2025, zero All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -12,20 +12,20 @@
  * Neither the name of the pig4cloud.com developer nor the names of its
  * contributors may be used to endorse or promote products derived from
  * this software without specific prior written permission.
- * Author: wordtalk
+ * Author: zero
  */
 
 package com.mmr.wordtalk.bridge.mapper;
 
-import com.mmr.wordtalk.common.data.datascope.WordtalkBaseMapper;
 import com.mmr.wordtalk.bridge.entity.GptHistoryEntity;
+import com.mmr.wordtalk.common.data.datascope.WordtalkBaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * chart的对话记录表
+ * 对话历史
  *
  * @author 张恩睿
- * @date 2023-06-11 20:09:18
+ * @date 2023-06-14 11:07:37
  */
 @Mapper
 public interface GptHistoryMapper extends WordtalkBaseMapper<GptHistoryEntity> {

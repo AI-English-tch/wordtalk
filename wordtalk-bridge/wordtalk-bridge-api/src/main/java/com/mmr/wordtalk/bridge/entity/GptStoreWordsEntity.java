@@ -40,30 +40,30 @@ public class GptStoreWordsEntity extends Model<GptStoreWordsEntity> {
     private static final long serialVersionUID = 1L;
 
 
-    /**
-     * 词库id
-     */
-    @Schema(description = "词库id")
+	/**
+	* 词库id
+	*/
+    @Schema(description="词库id")
     private Long storeId;
 
-    /**
-     * 单词id
-     */
-    @Schema(description = "单词id")
+	/**
+	* 单词id
+	*/
+    @Schema(description="单词id")
     private Long wordId;
 
-    /**
-     * 创建人
-     */
-    @TableField(fill = FieldFill.INSERT)
-    @Schema(description = "创建人")
+	/**
+	* 创建人
+	*/
+	@TableField(fill = FieldFill.INSERT)
+    @Schema(description="创建人")
     private String createBy;
 
-    /**
-     * 创建时间
-     */
-    @TableField(fill = FieldFill.INSERT)
-    @Schema(description = "创建时间")
+	/**
+	* 创建时间
+	*/
+	@TableField(fill = FieldFill.INSERT)
+    @Schema(description="创建时间")
     private LocalDateTime createTime;
 
 }

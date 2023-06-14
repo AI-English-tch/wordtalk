@@ -1,4 +1,4 @@
-package com.mmr.wordtalk.bridge.utils;
+package com.mmr.wordtalk.bridge.util;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;

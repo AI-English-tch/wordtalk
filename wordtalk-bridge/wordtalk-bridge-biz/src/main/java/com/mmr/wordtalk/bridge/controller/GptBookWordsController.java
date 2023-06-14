@@ -44,8 +44,8 @@ import java.util.List;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/words" )
-@Tag(description = "words" , name = "词书--单词关联表管理" )
+@RequestMapping("/book-words" )
+@Tag(description = "book-words" , name = "词书--单词关联表管理" )
 @SecurityRequirement(name = HttpHeaders.AUTHORIZATION)
 public class GptBookWordsController {
 

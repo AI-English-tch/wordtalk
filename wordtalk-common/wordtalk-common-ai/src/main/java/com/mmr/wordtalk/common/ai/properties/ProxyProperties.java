@@ -1,4 +1,4 @@
-package com.mmr.wordtalk.common.ai.proxy;
+package com.mmr.wordtalk.common.ai.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
