@@ -91,6 +91,7 @@ public class GptWordsController {
         return R.ok(gptWordsService.save(gptWords));
     }
 
+
     /**
      * 修改单词表
      * @param gptWords 单词表
