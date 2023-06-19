@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.mmr.wordtalk.common.ai.AiAutoConfiguration
+    com.mmr.wordtalk.common.ai.core.AiAutoConfiguration

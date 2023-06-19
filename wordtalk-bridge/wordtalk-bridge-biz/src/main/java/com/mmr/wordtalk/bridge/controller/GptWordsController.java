@@ -23,7 +23,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mmr.wordtalk.common.core.util.R;
 import com.mmr.wordtalk.common.log.annotation.SysLog;
-import com.mmr.wordtalk.bridge.entity.GptWordsEntity;
+import com.mmr.wordtalk.bridge.entity.GptWords;
 import com.mmr.wordtalk.bridge.service.GptWordsService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import com.mmr.wordtalk.common.excel.annotation.ResponseExcel;
@@ -60,10 +60,12 @@ public class GptWordsController {
     @Operation(summary = "分页查询" , description = "分页查询" )
     @GetMapping("/page" )
     @PreAuthorize("@pms.hasPermission('bridge_words_view')" )
-    public R getgptWordsPage(Page page, GptWordsEntity gptWords) {
-        LambdaQueryWrapper<GptWordsEntity> wrapper = Wrappers.lambdaQuery();
+    public R getgptWordsPage(Page page, GptWords gptWords) {
+        LambdaQueryWrapper<GptWords> wrapper = Wrappers.lambdaQuery();
         return R.ok(gptWordsService.page(page, wrapper));
     }
+
+
 
 
     /**
@@ -87,10 +89,9 @@ public class GptWordsController {
     @SysLog("新增单词表" )
     @PostMapping
     @PreAuthorize("@pms.hasPermission('bridge_words_add')" )
-    public R save(@RequestBody GptWordsEntity gptWords) {
+    public R save(@RequestBody GptWords gptWords) {
         return R.ok(gptWordsService.save(gptWords));
     }
-
 
     /**
      * 修改单词表
@@ -101,7 +102,7 @@ public class GptWordsController {
     @SysLog("修改单词表" )
     @PutMapping
     @PreAuthorize("@pms.hasPermission('bridge_words_edit')" )
-    public R updateById(@RequestBody GptWordsEntity gptWords) {
+    public R updateById(@RequestBody GptWords gptWords) {
         return R.ok(gptWordsService.updateById(gptWords));
     }
 
@@ -127,7 +128,7 @@ public class GptWordsController {
     @ResponseExcel
     @GetMapping("/export")
     @PreAuthorize("@pms.hasPermission('bridge_words_export')" )
-    public List<GptWordsEntity> export(GptWordsEntity gptWords) {
+    public List<GptWords> export(GptWords gptWords) {
         return gptWordsService.list(Wrappers.query(gptWords));
     }
 }
