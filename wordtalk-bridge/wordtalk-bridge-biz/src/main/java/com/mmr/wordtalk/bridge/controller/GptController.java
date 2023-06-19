@@ -40,8 +40,8 @@ public class GptController {
 	 */
 	@Operation(summary = "单次聊天", description = "单次聊天")
 	@GetMapping("/chat/{id}")
-	public R chat(@PathVariable Long id, @RequestParam String msg) {
-		return R.ok(gptService.chat(id, msg));
+	public R chat(@PathVariable Long id, @RequestParam String msg, @RequestParam Long topicId) {
+		return R.ok(gptService.chat(id, msg, topicId));
 	}
 
 	/**
@@ -53,14 +53,14 @@ public class GptController {
 	 */
 	@Operation(summary = "上下文聊天", description = "上下文聊天")
 	@GetMapping("/chatWithContext/{id}")
-	public R chatWithContext(@PathVariable Long id, @RequestParam String msg) {
+	public R chatWithContext(@PathVariable Long id, @RequestParam String msg, @RequestParam Long topicId) {
 		WordtalkUser user = SecurityUtils.getUser();
 		if (Objects.isNull(user)) {
 			String message = "用户为空，不应该出现";
 			return R.failed(message);
 		}
 		String username = user.getUsername();
-		return R.ok(gptService.chatWithContext(id, username, msg));
+		return R.ok(gptService.chatWithContext(id, username, msg, topicId));
 	}
 
 	/**
@@ -72,10 +72,10 @@ public class GptController {
 	 */
 	@Operation(summary = "单次流式聊天", description = "单次流式聊天")
 	@GetMapping("/chatOnStream/{id}")
-	public R chatOnStream(@PathVariable Long id, @RequestParam String msg) {
+	public R chatOnStream(@PathVariable Long id, @RequestParam String msg, @RequestParam Long topicId) {
 		WordtalkUser user = SecurityUtils.getUser();
 		String username = user.getUsername();
-		return gptService.chatOnStream(id, username, msg);
+		return gptService.chatOnStream(id, username, msg, topicId);
 	}
 
 	/**
@@ -87,14 +87,22 @@ public class GptController {
 	 */
 	@Operation(summary = "上下文流式聊天", description = "上下文流式聊天")
 	@GetMapping("/chatWithContextOnStream/{id}")
-	public R chatWithContextOnStream(@PathVariable Long id, @RequestParam String msg) {
+	public R chatWithContextOnStream(@PathVariable Long id, @RequestParam String msg, @RequestParam Long topicId) {
 		WordtalkUser user = SecurityUtils.getUser();
 		String username = user.getUsername();
-		return gptService.chatWithContextOnStream(id, username, msg);
+		return gptService.chatWithContextOnStream(id, username, msg, topicId);
 	}
 
-	@Operation(summary = "初始化上下文",description = "初始化上下文")
+	/**
+	 * 初始化上下文的方法
+	 *
+	 * @param topicId
+	 * @return
+	 */
+	@Operation(summary = "初始化上下文", description = "初始化上下文")
 	@GetMapping("/initContext")
-	public
+	public R initContext(@RequestParam Long topicId) {
+		return gptService.initContext(topicId);
+	}
 
 }

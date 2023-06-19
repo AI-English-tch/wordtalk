@@ -11,11 +11,13 @@ import com.mmr.wordtalk.common.core.util.R;
 public interface GptService {
 
     // 与gpt实现聊天的方法
-    String chat(Long id, String msg);
+    String chat(Long id, String msg, Long topicId);
 
-    String chatWithContext(Long id, String username, String msg);
+    String chatWithContext(Long id, String username, String msg, Long topicId);
 
-	R chatOnStream(Long id, String username, String msg);
+	R chatOnStream(Long id, String username, String msg, Long topicId);
 
-	R chatWithContextOnStream(Long id, String username, String msg);
+	R chatWithContextOnStream(Long id, String username, String msg, Long topicId);
+
+	R initContext(Long topicId);
 }
