@@ -1,6 +1,6 @@
 package com.mmr.wordtalk.bridge.controller;
 
-import com.mmr.wordtalk.bridge.entity.GptTalkEntity;
+import com.mmr.wordtalk.bridge.entity.GptTalk;
 import com.mmr.wordtalk.bridge.service.GptChatService;
 import com.mmr.wordtalk.bridge.util.SseEmitterUtil;
 import com.mmr.wordtalk.common.core.util.R;
@@ -74,26 +74,26 @@ public class GptChatController {
 	/**
 	 * 单次对话
 	 *
-	 * @param gptTalkEntity
+	 * @param gptTalk
 	 * @return
 	 */
 	@Operation(summary = "单次对话", description = "单次对话")
 	@PostMapping("/talk")
-	public R talk(@RequestBody GptTalkEntity gptTalkEntity) {
-		return R.ok(chatService.talk(gptTalkEntity));
+	public R talk(@RequestBody GptTalk gptTalk) {
+		return R.ok(chatService.talk(gptTalk));
 	}
 
 
 	/**
 	 * 流式对话
 	 *
-	 * @param gptTalkEntity
+	 * @param gptTalk
 	 * @return
 	 */
 	@Operation(summary = "流式对话", description = "流式对话")
 	@PostMapping("/talkOnStream")
-	public R talkOnStream(@RequestBody GptTalkEntity gptTalkEntity) {
-		return R.ok(chatService.talkOnStream(gptTalkEntity));
+	public R talkOnStream(@RequestBody GptTalk gptTalk) {
+		return R.ok(chatService.talkOnStream(gptTalk));
 	}
 
 

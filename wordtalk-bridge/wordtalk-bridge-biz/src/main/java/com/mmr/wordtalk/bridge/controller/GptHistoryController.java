@@ -21,7 +21,7 @@ import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.mmr.wordtalk.bridge.entity.GptHistoryEntity;
+import com.mmr.wordtalk.bridge.entity.GptHistory;
 import com.mmr.wordtalk.bridge.service.GptHistoryService;
 import com.mmr.wordtalk.common.core.util.R;
 import com.mmr.wordtalk.common.excel.annotation.ResponseExcel;
@@ -60,8 +60,8 @@ public class GptHistoryController {
 	@Operation(summary = "分页查询", description = "分页查询")
 	@GetMapping("/page")
 	// @PreAuthorize("@pms.hasPermission('chatgpt_history_view')")
-	public R getgptHistoryPage(Page page, GptHistoryEntity gptHistory) {
-		LambdaQueryWrapper<GptHistoryEntity> wrapper = Wrappers.lambdaQuery();
+	public R getgptHistoryPage(Page page, GptHistory gptHistory) {
+		LambdaQueryWrapper<GptHistory> wrapper = Wrappers.lambdaQuery();
 		return R.ok(gptHistoryService.page(page, wrapper));
 	}
 
@@ -89,7 +89,7 @@ public class GptHistoryController {
 	@SysLog("新增对话历史")
 	@PostMapping
 	// @PreAuthorize("@pms.hasPermission('chatgpt_history_add')")
-	public R save(@RequestBody GptHistoryEntity gptHistory) {
+	public R save(@RequestBody GptHistory gptHistory) {
 		return R.ok(gptHistoryService.save(gptHistory));
 	}
 
@@ -103,7 +103,7 @@ public class GptHistoryController {
 	@SysLog("修改对话历史")
 	@PutMapping
 	// @PreAuthorize("@pms.hasPermission('chatgpt_history_edit')")
-	public R updateById(@RequestBody GptHistoryEntity gptHistory) {
+	public R updateById(@RequestBody GptHistory gptHistory) {
 		return R.ok(gptHistoryService.updateById(gptHistory));
 	}
 
@@ -131,7 +131,7 @@ public class GptHistoryController {
 	@ResponseExcel
 	@GetMapping("/export")
 	// @PreAuthorize("@pms.hasPermission('chatgpt_history_export')")
-	public List<GptHistoryEntity> export(GptHistoryEntity gptHistory) {
+	public List<GptHistory> export(GptHistory gptHistory) {
 		return gptHistoryService.list(Wrappers.query(gptHistory));
 	}
 }

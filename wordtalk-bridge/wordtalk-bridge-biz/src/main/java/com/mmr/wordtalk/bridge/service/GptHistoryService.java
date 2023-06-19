@@ -19,7 +19,7 @@ package com.mmr.wordtalk.bridge.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.mmr.wordtalk.bridge.entity.GptHistoryEntity;
+import com.mmr.wordtalk.bridge.entity.GptHistory;
 
 import java.util.List;
 
@@ -29,9 +29,9 @@ import java.util.List;
  * @author 张恩睿
  * @date 2023-06-14 11:07:37
  */
-public interface GptHistoryService extends IService<GptHistoryEntity> {
+public interface GptHistoryService extends IService<GptHistory> {
 
-    void saveTalk(Long topicId, GptHistoryEntity userEntity, GptHistoryEntity assistantEntity);
+    void saveTalk(Long topicId, GptHistory userEntity, GptHistory assistantEntity);
 
-	List<GptHistoryEntity> queryHistoryByTopicId(Long topicId);
+	List<GptHistory> queryHistoryByTopicId(Long topicId);
 }

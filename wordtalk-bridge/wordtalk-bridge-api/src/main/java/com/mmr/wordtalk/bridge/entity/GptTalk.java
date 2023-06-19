@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
  * @date 2023-06-14 11:45:00
  */
 @Data
-public class GptTalkEntity {
+public class GptTalk {
 
 	/**
 	 * 关联的话题id

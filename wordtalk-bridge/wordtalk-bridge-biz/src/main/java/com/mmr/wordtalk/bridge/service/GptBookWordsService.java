@@ -17,8 +17,12 @@
 
 package com.mmr.wordtalk.bridge.service;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.mmr.wordtalk.bridge.entity.GptBookWordsEntity;
+import com.mmr.wordtalk.bridge.entity.GptBookWords;
+import com.mmr.wordtalk.bridge.entity.GptWords;
+
+import java.util.List;
 
 /**
  * 词书--单词关联表
@@ -26,6 +30,7 @@ import com.mmr.wordtalk.bridge.entity.GptBookWordsEntity;
  * @author 张恩睿
  * @date 2023-06-11 20:06:27
  */
-public interface GptBookWordsService extends IService<GptBookWordsEntity> {
+public interface GptBookWordsService extends IService<GptBookWords> {
 
+    List<GptWords> queryWordsList(Wrapper<GptBookWords> wrapper);
 }

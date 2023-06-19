@@ -35,7 +35,7 @@ import java.time.LocalDateTime;
 @TableName("gpt_book")
 @EqualsAndHashCode(callSuper = true)
 @Schema(description = "用户自己的词书")
-public class GptBookEntity extends Model<GptBookEntity> {
+public class GptBook extends Model<GptBook> {
 
     private static final long serialVersionUID = 1L;
 
@@ -51,12 +51,14 @@ public class GptBookEntity extends Model<GptBookEntity> {
      * 词书名称
      */
     @Schema(description = "词书名称")
+    @TableField(condition = SqlCondition.LIKE)
     private String name;
 
     /**
      * 词书描述
      */
     @Schema(description = "词书描述")
+    @TableField("`describe`")
     private String describe;
 
     /**

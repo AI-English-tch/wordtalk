@@ -17,8 +17,13 @@
 
 package com.mmr.wordtalk.bridge.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.mmr.wordtalk.bridge.entity.GptBookEntity;
+import com.mmr.wordtalk.bridge.entity.GptBook;
+import com.mmr.wordtalk.bridge.vo.GptBookVo;
+
+import java.util.List;
 
 /**
  * 用户自己的词书
@@ -26,6 +31,11 @@ import com.mmr.wordtalk.bridge.entity.GptBookEntity;
  * @author 张恩睿
  * @date 2023-06-11 20:00:03
  */
-public interface GptBookService extends IService<GptBookEntity> {
+public interface GptBookService extends IService<GptBook> {
 
+    IPage queryPage(Page page, GptBookVo vo);
+
+    List queryList(GptBookVo vo);
+
+    GptBook detail(Long id, GptBookVo vo);
 }

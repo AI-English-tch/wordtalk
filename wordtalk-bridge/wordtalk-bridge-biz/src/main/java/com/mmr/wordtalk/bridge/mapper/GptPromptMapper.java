@@ -17,7 +17,7 @@
 
 package com.mmr.wordtalk.bridge.mapper;
 
-import com.mmr.wordtalk.bridge.entity.GptPromptEntity;
+import com.mmr.wordtalk.bridge.entity.GptPrompt;
 import com.mmr.wordtalk.common.data.datascope.WordtalkBaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -28,6 +28,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2023-06-14 11:10:09
  */
 @Mapper
-public interface GptPromptMapper extends WordtalkBaseMapper<GptPromptEntity> {
+public interface GptPromptMapper extends WordtalkBaseMapper<GptPrompt> {
 
 }

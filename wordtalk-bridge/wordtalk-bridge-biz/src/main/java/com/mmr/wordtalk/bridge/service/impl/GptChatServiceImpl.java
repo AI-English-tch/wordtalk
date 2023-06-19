@@ -1,10 +1,10 @@
 package com.mmr.wordtalk.bridge.service.impl;
 
 import cn.hutool.core.thread.ThreadUtil;
-import com.mmr.wordtalk.bridge.entity.GptHistoryEntity;
-import com.mmr.wordtalk.bridge.entity.GptPromptEntity;
-import com.mmr.wordtalk.bridge.entity.GptTalkEntity;
-import com.mmr.wordtalk.bridge.entity.GptTopicEntity;
+import com.mmr.wordtalk.bridge.entity.GptHistory;
+import com.mmr.wordtalk.bridge.entity.GptPrompt;
+import com.mmr.wordtalk.bridge.entity.GptTalk;
+import com.mmr.wordtalk.bridge.entity.GptTopic;
 import com.mmr.wordtalk.bridge.service.GptChatService;
 import com.mmr.wordtalk.bridge.service.GptHistoryService;
 import com.mmr.wordtalk.bridge.service.GptPromptService;
@@ -44,14 +44,14 @@ public class GptChatServiceImpl implements GptChatService {
 	private final SseEmitterUtil sseEmitterUtil;
 	@Override
 
-	public GptTalkEntity talk(GptTalkEntity gptTalkEntity) {
-		GptTalkEntity result = new GptTalkEntity();
+	public GptTalk talk(GptTalk gptTalk) {
+		GptTalk result = new GptTalk();
 		// 创建|读取话题
-		GptTopicEntity topic = createTopic(gptTalkEntity);
+		GptTopic topic = createTopic(gptTalk);
 		// 通过话题构建上下文
 		List<Context> contextList = createContextByTopic(topic);
 		// 用户本次对话添加到上下文中
-		Context userContext = new Context(ChatGptRole.USER, gptTalkEntity.getContent());
+		Context userContext = new Context(ChatGptRole.USER, gptTalk.getContent());
 		contextList.add(userContext);
 		// 清理上下文中的null值
 		contextList.removeIf(Objects::isNull);
@@ -62,8 +62,8 @@ public class GptChatServiceImpl implements GptChatService {
 		Long topicId = topic.getId();
 		String username = SecurityUtils.getUser().getUsername();
 		ThreadUtil.execute(() -> {
-			GptHistoryEntity userHistory = createUserHistory(topicId, username, userContext.getText());
-			GptHistoryEntity assistantHistory = createAssistantHistory(topicId, username, reply);
+			GptHistory userHistory = createUserHistory(topicId, username, userContext.getText());
+			GptHistory assistantHistory = createAssistantHistory(topicId, username, reply);
 			historyService.saveTalk(topicId, userHistory, assistantHistory);
 		});
 
@@ -75,14 +75,14 @@ public class GptChatServiceImpl implements GptChatService {
 	}
 
 	@Override
-	public GptTalkEntity talkOnStream(GptTalkEntity gptTalkEntity) {
-		GptTalkEntity result = new GptTalkEntity();
+	public GptTalk talkOnStream(GptTalk gptTalk) {
+		GptTalk result = new GptTalk();
 		// 创建|读取话题
-		GptTopicEntity topic = createTopic(gptTalkEntity);
+		GptTopic topic = createTopic(gptTalk);
 		// 通过话题构建上下文
 		List<Context> contextList = createContextByTopic(topic);
 
-		Context userContext = new Context(ChatGptRole.USER, gptTalkEntity.getContent());
+		Context userContext = new Context(ChatGptRole.USER, gptTalk.getContent());
 		contextList.add(userContext);
 		// 清理上下文中的null值
 		contextList.removeIf(Objects::isNull);
@@ -108,8 +108,8 @@ public class GptChatServiceImpl implements GptChatService {
 	 */
 	private Consumer<String> complete(Long topicId, String username, String message) {
 		return reply -> {
-			GptHistoryEntity userHistory = createUserHistory(topicId, username, message);
-			GptHistoryEntity assistantHistory = createAssistantHistory(topicId, username, reply);
+			GptHistory userHistory = createUserHistory(topicId, username, message);
+			GptHistory assistantHistory = createAssistantHistory(topicId, username, reply);
 			historyService.saveTalk(topicId, userHistory, assistantHistory);
 		};
 	}
@@ -117,21 +117,21 @@ public class GptChatServiceImpl implements GptChatService {
 	/**
 	 * 构建话题，有则读取，无则新建
 	 *
-	 * @param gptTalkEntity
+	 * @param gptTalk
 	 * @return
 	 */
-	private GptTopicEntity createTopic(GptTalkEntity gptTalkEntity) {
-		GptTopicEntity topic = null;
-		if (Objects.nonNull(gptTalkEntity.getTopicId())) {
+	private GptTopic createTopic(GptTalk gptTalk) {
+		GptTopic topic = null;
+		if (Objects.nonNull(gptTalk.getTopicId())) {
 			// 话题不为空则继续上次的话题，通过话题的题词+历史消息构建上下文对象
-			topic = topicService.getById(gptTalkEntity.getTopicId());
+			topic = topicService.getById(gptTalk.getTopicId());
 			topic.setUpdateTime(LocalDateTime.now());
 		} else {
 			// 话题为空是新启话题，通过gptTalkEntity的promptId构造system语句即可，没有历史消息
 			// 创建一个新的话题
-			topic = new GptTopicEntity();
+			topic = new GptTopic();
 			topic.setTitle("None Title");
-			topic.setPromptId(gptTalkEntity.getPromptId());
+			topic.setPromptId(gptTalk.getPromptId());
 		}
 		// 保存或更新topic的值
 		topicService.saveOrUpdate(topic);
@@ -147,9 +147,9 @@ public class GptChatServiceImpl implements GptChatService {
 	 * @param message
 	 * @return
 	 */
-	private GptHistoryEntity createUserHistory(Long topicId, String username, String message) {
-		GptHistoryEntity userEntity = new GptHistoryEntity();
-		userEntity.setRole(ChatGptRole.ASSISTANT);
+	private GptHistory createUserHistory(Long topicId, String username, String message) {
+		GptHistory userEntity = new GptHistory();
+		userEntity.setRole(ChatGptRole.USER);
 		userEntity.setTopicId(topicId);
 		userEntity.setCreateBy(username);
 		userEntity.setContent(message);
@@ -164,8 +164,8 @@ public class GptChatServiceImpl implements GptChatService {
 	 * @param reply
 	 * @return
 	 */
-	private GptHistoryEntity createAssistantHistory(Long topicId, String username, String reply) {
-		GptHistoryEntity assistantEntity = new GptHistoryEntity();
+	private GptHistory createAssistantHistory(Long topicId, String username, String reply) {
+		GptHistory assistantEntity = new GptHistory();
 		assistantEntity.setRole(ChatGptRole.ASSISTANT);
 		assistantEntity.setTopicId(topicId);
 		assistantEntity.setCreateBy(username);
@@ -180,7 +180,7 @@ public class GptChatServiceImpl implements GptChatService {
 	 * @param topic
 	 * @return
 	 */
-	private List<Context> createContextByTopic(GptTopicEntity topic) {
+	private List<Context> createContextByTopic(GptTopic topic) {
 		List<Context> contextList = new ArrayList<>();
 
 		if (Objects.nonNull(topic.getPromptId())) {
@@ -200,7 +200,7 @@ public class GptChatServiceImpl implements GptChatService {
 	 * @return
 	 */
 	private List<Context> createHistoryContext(Long topicId) {
-		List<GptHistoryEntity> historyEntityList = historyService.queryHistoryByTopicId(topicId);
+		List<GptHistory> historyEntityList = historyService.queryHistoryByTopicId(topicId);
 		return historyEntityList.stream().map(item -> new Context(item.getRole(), item.getContent())).collect(Collectors.toList());
 	}
 
@@ -212,7 +212,7 @@ public class GptChatServiceImpl implements GptChatService {
 	 */
 	private Context createSystemContext(Long promptId) {
 		// 查找prompt
-		GptPromptEntity prompt = promptService.getById(promptId);
+		GptPrompt prompt = promptService.getById(promptId);
 		if (Objects.nonNull(prompt)) {
 			Context context = new Context(ChatGptRole.SYSTEM, prompt.getContent());
 			return context;

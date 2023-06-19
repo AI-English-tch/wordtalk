@@ -26,16 +26,16 @@ import lombok.EqualsAndHashCode;
 import java.time.LocalDateTime;
 
 /**
- * 话题
+ * 对话历史
  *
  * @author 张恩睿
- * @date 2023-06-14 11:11:15
+ * @date 2023-06-14 11:07:37
  */
 @Data
-@TableName("gpt_topic")
+@TableName("gpt_history")
 @EqualsAndHashCode(callSuper = true)
-@Schema(description = "话题")
-public class GptTopicEntity extends Model<GptTopicEntity> {
+@Schema(description = "对话历史")
+public class GptHistory extends Model<GptHistory> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -48,16 +48,22 @@ public class GptTopicEntity extends Model<GptTopicEntity> {
 	private Long id;
 
 	/**
-	 * 标题
+	 * 对话角色
 	 */
-	@Schema(description = "标题")
-	private String title;
+	@Schema(description = "对话角色")
+	private String role;
 
 	/**
-	 * 关联的题词ID
+	 * 对话内容
 	 */
-	@Schema(description = "关联的题词ID")
-	private Long promptId;
+	@Schema(description = "对话内容")
+	private String content;
+
+	/**
+	 * 对话关联的话题
+	 */
+	@Schema(description = "对话关联的话题")
+	private Long topicId;
 
 	/**
 	 * 创建时间
@@ -67,26 +73,25 @@ public class GptTopicEntity extends Model<GptTopicEntity> {
 	private LocalDateTime createTime;
 
 	/**
-	 * 对话发起人
+	 * 创建者
 	 */
 	@TableField(fill = FieldFill.INSERT)
-	@Schema(description = "对话发起人")
+	@Schema(description = "创建者")
 	private String createBy;
 
 	/**
-	 * 对话更新时间
+	 * 更新时间
 	 */
 	@TableField(fill = FieldFill.INSERT_UPDATE)
-	@Schema(description = "对话更新时间")
+	@Schema(description = "更新时间")
 	private LocalDateTime updateTime;
 
 	/**
-	 * 逻辑删除
+	 * 更新者
 	 */
-	@TableLogic
-	@TableField(fill = FieldFill.INSERT)
-	@Schema(description = "逻辑删除")
-	private String delFlag;
+	@TableField(fill = FieldFill.INSERT_UPDATE)
+	@Schema(description = "更新者")
+	private String updateBy;
 
 	/**
 	 * 租户id

@@ -17,7 +17,7 @@
 package com.mmr.wordtalk.bridge.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mmr.wordtalk.bridge.entity.GptTopicEntity;
+import com.mmr.wordtalk.bridge.entity.GptTopic;
 import com.mmr.wordtalk.bridge.mapper.GptTopicMapper;
 import com.mmr.wordtalk.bridge.service.GptTopicService;
 import org.springframework.stereotype.Service;
@@ -29,6 +29,6 @@ import org.springframework.stereotype.Service;
  * @date 2023-06-14 11:11:15
  */
 @Service
-public class GptTopicServiceImpl extends ServiceImpl<GptTopicMapper, GptTopicEntity> implements GptTopicService {
+public class GptTopicServiceImpl extends ServiceImpl<GptTopicMapper, GptTopic> implements GptTopicService {
 
 }

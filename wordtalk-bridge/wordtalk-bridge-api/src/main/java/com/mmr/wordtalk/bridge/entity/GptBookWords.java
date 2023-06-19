@@ -17,27 +17,26 @@
 
 package com.mmr.wordtalk.bridge.entity;
 
-import cn.hutool.json.JSONArray;
 import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * 单词表
+ * 词书--单词关联表
  *
  * @author 张恩睿
- * @date 2023-06-11 20:10:30
+ * @date 2023-06-11 20:06:27
  */
 @Data
-@TableName(value = "gpt_words", autoResultMap = true)
+@TableName("gpt_book_words")
 @EqualsAndHashCode(callSuper = true)
-@Schema(description = "单词表")
-public class GptWordsEntity extends Model<GptWordsEntity> {
+@Schema(description = "词书--单词关联表")
+public class GptBookWords extends Model<GptBookWords> {
 
     private static final long serialVersionUID = 1L;
 
@@ -50,23 +49,22 @@ public class GptWordsEntity extends Model<GptWordsEntity> {
     private Long id;
 
     /**
-     * 单词
+     * 词书id
      */
-    @Schema(description = "单词")
-    private String word;
+    @Schema(description = "词书id")
+    private Long bookId;
 
     /**
-     * 释义
+     * 单词id
      */
-    @Schema(description = "释义")
-    private String mean;
+    @Schema(description = "单词id")
+    private Long wordId;
 
     /**
-     * 分类标签(数组)
+     * 熟练度
      */
-    @Schema(description = "分类标签(数组)")
-    @TableField(typeHandler = FastjsonTypeHandler.class)
-    private JSONArray tags;
+    @Schema(description = "熟练度")
+    private BigDecimal score;
 
     /**
      * 创建人
@@ -81,26 +79,5 @@ public class GptWordsEntity extends Model<GptWordsEntity> {
     @TableField(fill = FieldFill.INSERT)
     @Schema(description = "创建时间")
     private LocalDateTime createTime;
-
-    /**
-     * 更新人
-     */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    @Schema(description = "更新人")
-    private String updateBy;
-
-    /**
-     * 更新时间
-     */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    @Schema(description = "更新时间")
-    private LocalDateTime updateTime;
-
-    /**
-     * 逻辑删除
-     */
-    @TableLogic
-    @Schema(description = "逻辑删除")
-    private String delFlag;
 
 }

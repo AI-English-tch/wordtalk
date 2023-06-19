@@ -16,11 +16,22 @@
  */
 package com.mmr.wordtalk.bridge.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mmr.wordtalk.bridge.entity.GptBookWordsEntity;
+import com.mmr.wordtalk.bridge.entity.GptBookWords;
+import com.mmr.wordtalk.bridge.entity.GptWords;
 import com.mmr.wordtalk.bridge.mapper.GptBookWordsMapper;
+import com.mmr.wordtalk.bridge.service.GptBookService;
 import com.mmr.wordtalk.bridge.service.GptBookWordsService;
+import com.mmr.wordtalk.bridge.service.GptWordsService;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 词书--单词关联表
@@ -29,5 +40,23 @@ import org.springframework.stereotype.Service;
  * @date 2023-06-11 20:06:27
  */
 @Service
-public class GptBookWordsServiceImpl extends ServiceImpl<GptBookWordsMapper, GptBookWordsEntity> implements GptBookWordsService {
+public class GptBookWordsServiceImpl extends ServiceImpl<GptBookWordsMapper, GptBookWords> implements GptBookWordsService {
+
+    @Resource
+    @Lazy
+    private GptWordsService wordsService;
+
+    @Resource
+    @Lazy
+    private GptBookService bookService;
+
+    @Override
+    public List<GptWords> queryWordsList(Wrapper<GptBookWords> wrapper) {
+        List<GptBookWords> list = this.list(wrapper);
+        List<Long> collect = list.stream().map(GptBookWords::getWordId).distinct().collect(Collectors.toList());
+        if (collect.isEmpty()) {
+            return new ArrayList<>(0);
+        }
+        return wordsService.list(Wrappers.<GptWords>lambdaQuery().in(GptWords::getId, collect));
+    }
 }

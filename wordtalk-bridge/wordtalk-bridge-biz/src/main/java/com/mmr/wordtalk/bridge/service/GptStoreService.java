@@ -17,8 +17,11 @@
 
 package com.mmr.wordtalk.bridge.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.mmr.wordtalk.bridge.entity.GptStoreEntity;
+import com.mmr.wordtalk.bridge.entity.GptStore;
+import com.mmr.wordtalk.bridge.vo.GptStoreVo;
 import com.mmr.wordtalk.common.core.util.R;
 
 import java.util.List;
@@ -29,7 +32,7 @@ import java.util.List;
  * @author 张恩睿
  * @date 2023-06-11 20:01:48
  */
-public interface GptStoreService extends IService<GptStoreEntity> {
+public interface GptStoreService extends IService<GptStore> {
 
 	/**
 	 * 将单词列表导入到现有的词库中
@@ -40,4 +43,9 @@ public interface GptStoreService extends IService<GptStoreEntity> {
 	 */
 	R importWords(Long id, List<String> wordsList);
 
+	IPage queryPage(Page page, GptStoreVo vo);
+
+	List queryList(Page page, GptStoreVo vo);
+
+	GptStore detail(Long id, GptStoreVo vo);
 }

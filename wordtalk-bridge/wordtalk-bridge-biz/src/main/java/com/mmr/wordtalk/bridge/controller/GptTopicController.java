@@ -21,7 +21,7 @@ import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.mmr.wordtalk.bridge.entity.GptTopicEntity;
+import com.mmr.wordtalk.bridge.entity.GptTopic;
 import com.mmr.wordtalk.bridge.service.GptTopicService;
 import com.mmr.wordtalk.common.core.util.R;
 import com.mmr.wordtalk.common.excel.annotation.ResponseExcel;
@@ -60,8 +60,8 @@ public class GptTopicController {
 	@Operation(summary = "分页查询", description = "分页查询")
 	@GetMapping("/page")
 	// @PreAuthorize("@pms.hasPermission('chatgpt_topic_view')")
-	public R getGptTopicPage(Page page, GptTopicEntity gptTopic) {
-		LambdaQueryWrapper<GptTopicEntity> wrapper = Wrappers.lambdaQuery();
+	public R getGptTopicPage(Page page, GptTopic gptTopic) {
+		LambdaQueryWrapper<GptTopic> wrapper = Wrappers.lambdaQuery();
 		return R.ok(gptTopicService.page(page, wrapper));
 	}
 
@@ -74,8 +74,8 @@ public class GptTopicController {
 	@Operation(summary = "列表查询", description = "列表查询")
 	@GetMapping("/list")
 	// @PreAuthorize("@pms.hasPermission('chatgpt_topic_view')")
-	public R getGptTopicList(GptTopicEntity gptTopic) {
-		LambdaQueryWrapper<GptTopicEntity> wrapper = Wrappers.lambdaQuery();
+	public R getGptTopicList(GptTopic gptTopic) {
+		LambdaQueryWrapper<GptTopic> wrapper = Wrappers.lambdaQuery();
 		return R.ok(gptTopicService.list(wrapper));
 	}
 
@@ -103,7 +103,7 @@ public class GptTopicController {
 	@SysLog("新增话题")
 	@PostMapping
 	// @PreAuthorize("@pms.hasPermission('chatgpt_topic_add')")
-	public R save(@RequestBody GptTopicEntity gptTopic) {
+	public R save(@RequestBody GptTopic gptTopic) {
 		return R.ok(gptTopicService.save(gptTopic));
 	}
 
@@ -117,7 +117,7 @@ public class GptTopicController {
 	@SysLog("修改话题")
 	@PutMapping
 	// @PreAuthorize("@pms.hasPermission('chatgpt_topic_edit')")
-	public R updateById(@RequestBody GptTopicEntity gptTopic) {
+	public R updateById(@RequestBody GptTopic gptTopic) {
 		return R.ok(gptTopicService.updateById(gptTopic));
 	}
 
@@ -145,7 +145,7 @@ public class GptTopicController {
 	@ResponseExcel
 	@GetMapping("/export")
 	// @PreAuthorize("@pms.hasPermission('chatgpt_topic_export')")
-	public List<GptTopicEntity> export(GptTopicEntity gptTopic) {
+	public List<GptTopic> export(GptTopic gptTopic) {
 		return gptTopicService.list(Wrappers.query(gptTopic));
 	}
 }

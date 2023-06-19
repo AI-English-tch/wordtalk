@@ -21,7 +21,7 @@ import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.mmr.wordtalk.bridge.entity.GptPromptEntity;
+import com.mmr.wordtalk.bridge.entity.GptPrompt;
 import com.mmr.wordtalk.bridge.service.GptPromptService;
 import com.mmr.wordtalk.common.core.util.R;
 import com.mmr.wordtalk.common.excel.annotation.ResponseExcel;
@@ -60,8 +60,8 @@ public class GptPromptController {
 	@Operation(summary = "分页查询", description = "分页查询")
 	@GetMapping("/page")
 	// @PreAuthorize("@pms.hasPermission('chatgpt_prompt_view')")
-	public R getgptPromptPage(Page page, GptPromptEntity gptPrompt) {
-		LambdaQueryWrapper<GptPromptEntity> wrapper = Wrappers.lambdaQuery();
+	public R getgptPromptPage(Page page, GptPrompt gptPrompt) {
+		LambdaQueryWrapper<GptPrompt> wrapper = Wrappers.lambdaQuery();
 		return R.ok(gptPromptService.page(page, wrapper));
 	}
 
@@ -89,7 +89,7 @@ public class GptPromptController {
 	@SysLog("新增题词表")
 	@PostMapping
 	// @PreAuthorize("@pms.hasPermission('chatgpt_prompt_add')")
-	public R save(@RequestBody GptPromptEntity gptPrompt) {
+	public R save(@RequestBody GptPrompt gptPrompt) {
 		return R.ok(gptPromptService.save(gptPrompt));
 	}
 
@@ -103,7 +103,7 @@ public class GptPromptController {
 	@SysLog("修改题词表")
 	@PutMapping
 	// @PreAuthorize("@pms.hasPermission('chatgpt_prompt_edit')")
-	public R updateById(@RequestBody GptPromptEntity gptPrompt) {
+	public R updateById(@RequestBody GptPrompt gptPrompt) {
 		return R.ok(gptPromptService.updateById(gptPrompt));
 	}
 
@@ -131,7 +131,7 @@ public class GptPromptController {
 	@ResponseExcel
 	@GetMapping("/export")
 	// @PreAuthorize("@pms.hasPermission('chatgpt_prompt_export')")
-	public List<GptPromptEntity> export(GptPromptEntity gptPrompt) {
+	public List<GptPrompt> export(GptPrompt gptPrompt) {
 		return gptPromptService.list(Wrappers.query(gptPrompt));
 	}
 }

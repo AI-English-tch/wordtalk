@@ -17,8 +17,10 @@
 
 package com.mmr.wordtalk.bridge.entity;
 
+import cn.hutool.json.JSONArray;
 import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,16 +28,16 @@ import lombok.EqualsAndHashCode;
 import java.time.LocalDateTime;
 
 /**
- * 官方词库
+ * 单词表
  *
  * @author 张恩睿
- * @date 2023-06-11 20:01:48
+ * @date 2023-06-11 20:10:30
  */
 @Data
-@TableName("gpt_store")
+@TableName(value = "gpt_words", autoResultMap = true)
 @EqualsAndHashCode(callSuper = true)
-@Schema(description = "官方词库")
-public class GptStoreEntity extends Model<GptStoreEntity> {
+@Schema(description = "单词表")
+public class GptWords extends Model<GptWords> {
 
     private static final long serialVersionUID = 1L;
 
@@ -48,22 +50,24 @@ public class GptStoreEntity extends Model<GptStoreEntity> {
     private Long id;
 
     /**
-     * 词库名称
+     * 单词
      */
-    @Schema(description = "词库名称")
-    private String name;
+    @Schema(description = "单词")
+    @TableField(condition = SqlCondition.LIKE)
+    private String word;
 
     /**
-     * 词库简介
+     * 释义
      */
-    @Schema(description = "词库简介")
-    private String describe;
+    @Schema(description = "释义")
+    private String mean;
 
     /**
-     * 词库包含单词数
+     * 分类标签(数组)
      */
-    @Schema(description = "词库包含单词数")
-    private Long wordNum;
+    @Schema(description = "分类标签(数组)")
+    @TableField(typeHandler = FastjsonTypeHandler.class)
+    private JSONArray tags;
 
     /**
      * 创建人
@@ -96,7 +100,6 @@ public class GptStoreEntity extends Model<GptStoreEntity> {
     /**
      * 逻辑删除
      */
-    @TableField(fill = FieldFill.INSERT)
     @TableLogic
     @Schema(description = "逻辑删除")
     private String delFlag;

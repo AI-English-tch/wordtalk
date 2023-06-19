@@ -17,22 +17,21 @@
 
 package com.mmr.wordtalk.bridge.controller;
 
-import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.collection.CollUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.mmr.wordtalk.common.core.util.R;
-import com.mmr.wordtalk.common.log.annotation.SysLog;
-import com.mmr.wordtalk.bridge.entity.GptBookEntity;
+import com.mmr.wordtalk.bridge.entity.GptBook;
 import com.mmr.wordtalk.bridge.service.GptBookService;
-import org.springframework.security.access.prepost.PreAuthorize;
+import com.mmr.wordtalk.bridge.vo.GptBookVo;
+import com.mmr.wordtalk.common.core.util.R;
 import com.mmr.wordtalk.common.excel.annotation.ResponseExcel;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import org.springframework.http.HttpHeaders;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import com.mmr.wordtalk.common.log.annotation.SysLog;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -55,17 +54,26 @@ public class GptBookController {
     /**
      * 分页查询
      * @param page 分页对象
-     * @param gptBook 用户自己的词书
+     * @param vo 用户自己的词书
      * @return
      */
     @Operation(summary = "分页查询" , description = "分页查询" )
     @GetMapping("/page" )
     @PreAuthorize("@pms.hasPermission('bridge_book_view')" )
-    public R getgptBookPage(Page page, GptBookEntity gptBook) {
-        LambdaQueryWrapper<GptBookEntity> wrapper = Wrappers.lambdaQuery();
-		wrapper.like(StrUtil.isNotBlank(gptBook.getName()),GptBookEntity::getName,gptBook.getName());
-		wrapper.like(StrUtil.isNotBlank(gptBook.getCreateBy()),GptBookEntity::getCreateBy,gptBook.getCreateBy());
-        return R.ok(gptBookService.page(page, wrapper));
+    public R getBookPage(Page page, GptBookVo vo) {
+        return R.ok(gptBookService.queryPage(page, vo));
+    }
+
+    /**
+     * 列表查询
+     * @param vo 用户自己的词书
+     * @return
+     */
+    @Operation(summary = "列表查询" , description = "列表查询" )
+    @GetMapping("/list" )
+    @PreAuthorize("@pms.hasPermission('bridge_book_view')" )
+    public R getBookList(GptBookVo vo) {
+        return R.ok(gptBookService.queryList(vo));
     }
 
 
@@ -77,8 +85,8 @@ public class GptBookController {
     @Operation(summary = "通过id查询" , description = "通过id查询" )
     @GetMapping("/{id}" )
     @PreAuthorize("@pms.hasPermission('bridge_book_view')" )
-    public R getById(@PathVariable("id" ) Long id) {
-        return R.ok(gptBookService.getById(id));
+    public R getById(@PathVariable("id" ) Long id,GptBookVo vo) {
+        return R.ok(gptBookService.detail(id,vo));
     }
 
     /**
@@ -90,7 +98,7 @@ public class GptBookController {
     @SysLog("新增用户自己的词书" )
     @PostMapping
     @PreAuthorize("@pms.hasPermission('bridge_book_add')" )
-    public R save(@RequestBody GptBookEntity gptBook) {
+    public R save(@RequestBody GptBook gptBook) {
         return R.ok(gptBookService.save(gptBook));
     }
 
@@ -103,7 +111,7 @@ public class GptBookController {
     @SysLog("修改用户自己的词书" )
     @PutMapping
     @PreAuthorize("@pms.hasPermission('bridge_book_edit')" )
-    public R updateById(@RequestBody GptBookEntity gptBook) {
+    public R updateById(@RequestBody GptBook gptBook) {
         return R.ok(gptBookService.updateById(gptBook));
     }
 
@@ -129,7 +137,7 @@ public class GptBookController {
     @ResponseExcel
     @GetMapping("/export")
     @PreAuthorize("@pms.hasPermission('bridge_book_export')" )
-    public List<GptBookEntity> export(GptBookEntity gptBook) {
+    public List<GptBook> export(GptBook gptBook) {
         return gptBookService.list(Wrappers.query(gptBook));
     }
 }

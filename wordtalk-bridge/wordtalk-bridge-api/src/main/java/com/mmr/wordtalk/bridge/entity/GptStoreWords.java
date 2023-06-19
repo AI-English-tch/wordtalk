@@ -23,61 +23,47 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * 词书--单词关联表
+ * 单库--单词关联表
  *
  * @author 张恩睿
- * @date 2023-06-11 20:06:27
+ * @date 2023-06-11 20:04:47
  */
 @Data
-@TableName("gpt_book_words")
+@TableName("gpt_store_words")
 @EqualsAndHashCode(callSuper = true)
-@Schema(description = "词书--单词关联表")
-public class GptBookWordsEntity extends Model<GptBookWordsEntity> {
+@Schema(description = "单库--单词关联表")
+public class GptStoreWords extends Model<GptStoreWords> {
 
     private static final long serialVersionUID = 1L;
 
 
-    /**
-     * 唯一标识
-     */
-    @TableId(type = IdType.AUTO)
-    @Schema(description = "唯一标识")
-    private Long id;
+	/**
+	* 词库id
+	*/
+    @Schema(description="词库id")
+    private Long storeId;
 
-    /**
-     * 词书id
-     */
-    @Schema(description = "词书id")
-    private Long bookId;
-
-    /**
-     * 单词id
-     */
-    @Schema(description = "单词id")
+	/**
+	* 单词id
+	*/
+    @Schema(description="单词id")
     private Long wordId;
 
-    /**
-     * 熟练度
-     */
-    @Schema(description = "熟练度")
-    private BigDecimal score;
-
-    /**
-     * 创建人
-     */
-    @TableField(fill = FieldFill.INSERT)
-    @Schema(description = "创建人")
+	/**
+	* 创建人
+	*/
+	@TableField(fill = FieldFill.INSERT)
+    @Schema(description="创建人")
     private String createBy;
 
-    /**
-     * 创建时间
-     */
-    @TableField(fill = FieldFill.INSERT)
-    @Schema(description = "创建时间")
+	/**
+	* 创建时间
+	*/
+	@TableField(fill = FieldFill.INSERT)
+    @Schema(description="创建时间")
     private LocalDateTime createTime;
 
 }

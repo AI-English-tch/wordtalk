@@ -1,7 +1,7 @@
 package com.mmr.wordtalk.bridge.service;
 
 
-import com.mmr.wordtalk.bridge.entity.GptTalkEntity;
+import com.mmr.wordtalk.bridge.entity.GptTalk;
 
 /**
  * @author 张恩睿
@@ -10,7 +10,7 @@ import com.mmr.wordtalk.bridge.entity.GptTalkEntity;
 
 public interface GptChatService {
 	// 单次对话的接口
-	GptTalkEntity talk(GptTalkEntity gptTalkEntity);
+	GptTalk talk(GptTalk gptTalk);
 
-	GptTalkEntity talkOnStream(GptTalkEntity gptTalkEntity);
+	GptTalk talkOnStream(GptTalk gptTalk);
 }

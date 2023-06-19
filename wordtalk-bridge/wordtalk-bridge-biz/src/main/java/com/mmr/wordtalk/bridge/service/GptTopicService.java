@@ -19,7 +19,7 @@ package com.mmr.wordtalk.bridge.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.mmr.wordtalk.bridge.entity.GptTopicEntity;
+import com.mmr.wordtalk.bridge.entity.GptTopic;
 
 /**
  * 话题
@@ -27,6 +27,6 @@ import com.mmr.wordtalk.bridge.entity.GptTopicEntity;
  * @author 张恩睿
  * @date 2023-06-14 11:11:15
  */
-public interface GptTopicService extends IService<GptTopicEntity> {
+public interface GptTopicService extends IService<GptTopic> {
 
 }

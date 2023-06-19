@@ -17,7 +17,7 @@
 
 package com.mmr.wordtalk.bridge.mapper;
 
-import com.mmr.wordtalk.bridge.entity.GptTopicEntity;
+import com.mmr.wordtalk.bridge.entity.GptTopic;
 import com.mmr.wordtalk.common.data.datascope.WordtalkBaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -28,6 +28,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2023-06-14 11:11:15
  */
 @Mapper
-public interface GptTopicMapper extends WordtalkBaseMapper<GptTopicEntity> {
+public interface GptTopicMapper extends WordtalkBaseMapper<GptTopic> {
 
 }
