@@ -16,54 +16,52 @@ services:
     image: wordtalk-mysql
     ports:
       - 3306:3306
-    volumes:
-      - ./wordtalk-mysql:/var/lib/mysql
     command: --lower_case_table_names=1
 
-  wordtalk-redis:
-    container_name: wordtalk-redis
-    image: redis:6.2.6
-    restart: always
+#  wordtalk-redis:
+#    container_name: wordtalk-redis
+#    image: redis:6.2.6
+#    restart: always
 
-  wordtalk-register:
-    build:
-      context: ./wordtalk-register
-    restart: always
-    container_name: wordtalk-register
-    image: wordtalk-register
-    ports:
-      - 8848:8848
+#  wordtalk-register:
+#    build:
+#      context: ./wordtalk-register
+#    restart: always
+#    container_name: wordtalk-register
+#    image: wordtalk-register
+#    ports:
+#      - 8848:8848
 
-  wordtalk-gateway:
-    build:
-      context: ./wordtalk-gateway
-    restart: always
-    container_name: wordtalk-gateway
-    image: wordtalk-gateway
-    ports:
-      - 9999:9999
+#  wordtalk-gateway:
+#    build:
+#      context: ./wordtalk-gateway
+#    restart: always
+#    container_name: wordtalk-gateway
+#    image: wordtalk-gateway
+#    ports:
+#      - 9999:9999
 
-  wordtalk-auth:
-    build:
-      context: ./wordtalk-auth
-    restart: always
-    container_name: wordtalk-auth
-    image: wordtalk-auth
+#  wordtalk-auth:
+#    build:
+#      context: ./wordtalk-auth
+#    restart: always
+#    container_name: wordtalk-auth
+#    image: wordtalk-auth
 
-  wordtalk-upms:
-    build:
-      context: ./wordtalk-upms/wordtalk-upms-biz
-    restart: always
-    container_name: wordtalk-upms
-    image: wordtalk-upms
+#  wordtalk-upms:
+#    build:
+#      context: ./wordtalk-upms/wordtalk-upms-biz
+#    restart: always
+#    container_name: wordtalk-upms
+#    image: wordtalk-upms
 
 
-  wordtalk-app-server:
-    build:
-      context: ./wordtalk-app-server/wordtalk-app-server-biz
-    restart: always
-    container_name: wordtalk-app-server
-    image: wordtalk-app-server
+#  wordtalk-app-server:
+#    build:
+#      context: ./wordtalk-app-server/wordtalk-app-server-biz
+#    restart: always
+#    container_name: wordtalk-app-server
+#    image: wordtalk-app-server
 
   #  wordtalk-monitor:
   #    build:
@@ -88,12 +86,12 @@ services:
   #    image: wordtalk-daemon-elastic-job
   #    container_name: wordtalk-daemon-elastic-job
 
-  wordtalk-codegen:
-    build:
-      context: ./wordtalk-visual/wordtalk-codegen
-    restart: always
-    image: wordtalk-codegen
-    container_name: wordtalk-codegen
+#  wordtalk-codegen:
+#    build:
+#      context: ./wordtalk-visual/wordtalk-codegen
+#    restart: always
+#    image: wordtalk-codegen
+#    container_name: wordtalk-codegen
 
 #  wordtalk-mp-platform:
 #    build:

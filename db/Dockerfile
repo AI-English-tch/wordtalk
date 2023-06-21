@@ -25,5 +25,3 @@ COPY ./8wordtalkx_codegen.sql /docker-entrypoint-initdb.d
 COPY ./99wordtalkx_bi.sql /docker-entrypoint-initdb.d
 
 COPY ./999wordtalkx_app.sql /docker-entrypoint-initdb.d
-
-
