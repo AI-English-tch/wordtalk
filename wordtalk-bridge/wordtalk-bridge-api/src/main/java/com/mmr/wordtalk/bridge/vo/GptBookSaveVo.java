@@ -12,6 +12,5 @@ import java.util.List;
 @Data
 public class GptBookSaveVo extends GptBook {
 	private Long storeId;
-
 	private List<Long> wordsIdList;
 }

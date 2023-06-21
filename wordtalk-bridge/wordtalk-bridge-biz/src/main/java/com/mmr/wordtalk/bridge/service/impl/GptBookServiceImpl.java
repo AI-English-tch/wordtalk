@@ -17,16 +17,14 @@
 package com.mmr.wordtalk.bridge.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.lang.WeightRandom;
-import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.mmr.wordtalk.bridge.constant.Evaluate;
 import com.mmr.wordtalk.bridge.dto.GptBookDto;
 import com.mmr.wordtalk.bridge.dto.GptWordsDto;
 import com.mmr.wordtalk.bridge.entity.GptBook;
@@ -37,7 +35,7 @@ import com.mmr.wordtalk.bridge.mapper.GptBookMapper;
 import com.mmr.wordtalk.bridge.service.GptBookService;
 import com.mmr.wordtalk.bridge.service.GptBookWordsService;
 import com.mmr.wordtalk.bridge.service.GptStoreWordsService;
-import com.mmr.wordtalk.bridge.service.GptWordsService;
+import com.mmr.wordtalk.bridge.vo.GptBookWordsNextVo;
 import com.mmr.wordtalk.bridge.vo.GptBookSaveVo;
 import com.mmr.wordtalk.bridge.vo.GptBookVo;
 import lombok.RequiredArgsConstructor;
@@ -45,10 +43,9 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
 /**
@@ -162,6 +159,23 @@ public class GptBookServiceImpl extends ServiceImpl<GptBookMapper, GptBook> impl
 			}
 		}
 		return result;
+	}
+
+	@Override
+	public GptWords next(GptBookWordsNextVo vo) {
+		GptBookWords bookWords = bookWordsService.getOne(Wrappers.<GptBookWords>lambdaQuery().eq(GptBookWords::getWordId, vo.getWordId()).eq(GptBookWords::getBookId, vo.getBookId()));
+		// 计算当前单词的最新抽取概率
+		String evaluate = vo.getEvaluate();
+		UnaryOperator<BigDecimal> operator = Evaluate.getOperator(evaluate);
+		BigDecimal score = operator.apply(bookWords.getScore());
+		bookWords.setScore(score);
+
+		// 更新到数据库中
+		bookWordsService.updateById(bookWords);
+		// 抽取一次概率
+		List<GptWords> extract = this.extract(vo.getBookId(), 1);
+
+		return extract.get(0);
 	}
 
 

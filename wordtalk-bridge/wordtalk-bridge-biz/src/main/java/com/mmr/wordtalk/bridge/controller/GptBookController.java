@@ -22,6 +22,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mmr.wordtalk.bridge.entity.GptBook;
 import com.mmr.wordtalk.bridge.service.GptBookService;
+import com.mmr.wordtalk.bridge.vo.GptBookWordsNextVo;
 import com.mmr.wordtalk.bridge.vo.GptBookSaveVo;
 import com.mmr.wordtalk.bridge.vo.GptBookVo;
 import com.mmr.wordtalk.common.core.util.R;
@@ -185,5 +186,11 @@ public class GptBookController {
 	@GetMapping("/extract/{id}")
 	public R extract(@PathVariable Long id, @RequestParam Integer size) {
 		return R.ok(gptBookService.extract(id, size));
+	}
+
+	@Operation(summary = "下一个单词",description = "下一个单词")
+	@GetMapping("/next")
+	public R next(GptBookWordsNextVo vo) {
+		return R.ok(gptBookService.next(vo));
 	}
 }
