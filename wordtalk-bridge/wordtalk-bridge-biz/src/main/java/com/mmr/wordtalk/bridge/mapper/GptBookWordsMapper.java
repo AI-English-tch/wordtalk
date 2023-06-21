@@ -17,9 +17,14 @@
 
 package com.mmr.wordtalk.bridge.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.toolkit.Constants;
+import com.mmr.wordtalk.bridge.dto.GptWordsDto;
 import com.mmr.wordtalk.common.data.datascope.WordtalkBaseMapper;
 import com.mmr.wordtalk.bridge.entity.GptBookWords;
-import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 /**
  * 词书--单词关联表
@@ -29,5 +34,8 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface GptBookWordsMapper extends WordtalkBaseMapper<GptBookWords> {
+
+	@Select("select gpt_words.*,gpt_book_words.score from gpt_book_words inner join gpt_words on gpt_book_words.word_id = gpt_words.id ${ew.customSqlSegment}")
+	List<GptWordsDto> dtoList(@Param(Constants.WRAPPER) Wrapper queryWrapper);
 
 }

@@ -17,8 +17,10 @@
 package com.mmr.wordtalk.bridge.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.mmr.wordtalk.bridge.dto.GptWordsDto;
 import com.mmr.wordtalk.bridge.entity.GptBookWords;
 import com.mmr.wordtalk.bridge.entity.GptWords;
 import com.mmr.wordtalk.bridge.mapper.GptBookWordsMapper;
@@ -54,9 +56,15 @@ public class GptBookWordsServiceImpl extends ServiceImpl<GptBookWordsMapper, Gpt
     public List<GptWords> queryWordsList(Wrapper<GptBookWords> wrapper) {
         List<GptBookWords> list = this.list(wrapper);
         List<Long> collect = list.stream().map(GptBookWords::getWordId).distinct().collect(Collectors.toList());
-        if (collect.isEmpty()) {
-            return new ArrayList<>(0);
-        }
-        return wordsService.list(Wrappers.<GptWords>lambdaQuery().in(GptWords::getId, collect));
+		if (collect.isEmpty()) {
+			return new ArrayList<>(0);
+		}
+		return wordsService.list(Wrappers.<GptWords>lambdaQuery().in(GptWords::getId, collect));
     }
+
+	@Override
+	public List<GptWordsDto> queryWordsDtoList(LambdaQueryWrapper<GptBookWords> wrapper) {
+		List<GptWordsDto> wordsDtoList = baseMapper.dtoList(wrapper);
+		return wordsDtoList;
+	}
 }

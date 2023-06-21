@@ -18,7 +18,9 @@
 package com.mmr.wordtalk.bridge.service;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.mmr.wordtalk.bridge.dto.GptWordsDto;
 import com.mmr.wordtalk.bridge.entity.GptBookWords;
 import com.mmr.wordtalk.bridge.entity.GptWords;
 
@@ -33,4 +35,6 @@ import java.util.List;
 public interface GptBookWordsService extends IService<GptBookWords> {
 
     List<GptWords> queryWordsList(Wrapper<GptBookWords> wrapper);
+
+	List<GptWordsDto> queryWordsDtoList(LambdaQueryWrapper<GptBookWords> wrapper);
 }

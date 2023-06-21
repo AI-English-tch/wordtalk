@@ -20,8 +20,12 @@ package com.mmr.wordtalk.bridge.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.mmr.wordtalk.bridge.dto.GptBookDto;
 import com.mmr.wordtalk.bridge.entity.GptBook;
+import com.mmr.wordtalk.bridge.entity.GptWords;
+import com.mmr.wordtalk.bridge.vo.GptBookSaveVo;
 import com.mmr.wordtalk.bridge.vo.GptBookVo;
+import com.mmr.wordtalk.common.core.util.R;
 
 import java.util.List;
 
@@ -38,4 +42,10 @@ public interface GptBookService extends IService<GptBook> {
     List queryList(GptBookVo vo);
 
     GptBook detail(Long id, GptBookVo vo);
+
+	GptBook saveByStore(GptBookSaveVo saveVo);
+
+	GptBook saveByWordsList(GptBookSaveVo saveVo);
+
+	List<GptWords> extract(Long id, Integer size);
 }

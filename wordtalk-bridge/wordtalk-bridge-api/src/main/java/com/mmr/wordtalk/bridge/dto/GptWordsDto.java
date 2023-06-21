@@ -3,6 +3,8 @@ package com.mmr.wordtalk.bridge.dto;
 import com.mmr.wordtalk.bridge.entity.GptWords;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 /**
  * GptWordsDto
  *
@@ -11,7 +13,6 @@ import lombok.Data;
  */
 @Data
 public class GptWordsDto extends GptWords {
-//    private List<GptStore> storeList;
 
-//    private List<GptBook> bookList;
+	private BigDecimal score;
 }
