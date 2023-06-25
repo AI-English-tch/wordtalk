@@ -32,43 +32,43 @@ services:
     ports:
       - 8848:8848
 
-  wordtalk-gateway:
-    build:
-      context: ./wordtalk-gateway
-    restart: always
-    container_name: wordtalk-gateway
-    image: wordtalk-gateway
-    ports:
-      - 9999:9999
+#  wordtalk-gateway:
+#    build:
+#      context: ./wordtalk-gateway
+#    restart: always
+#    container_name: wordtalk-gateway
+#    image: wordtalk-gateway
+#    ports:
+#      - 9999:9999
 
-  wordtalk-auth:
-    build:
-      context: ./wordtalk-auth
-    restart: always
-    container_name: wordtalk-auth
-    image: wordtalk-auth
+#  wordtalk-auth:
+#    build:
+#      context: ./wordtalk-auth
+#    restart: always
+#    container_name: wordtalk-auth
+#    image: wordtalk-auth
 
-  wordtalk-upms:
-    build:
-      context: ./wordtalk-upms/wordtalk-upms-biz
-    restart: always
-    container_name: wordtalk-upms
-    image: wordtalk-upms
+#  wordtalk-upms:
+#    build:
+#      context: ./wordtalk-upms/wordtalk-upms-biz
+#    restart: always
+#    container_name: wordtalk-upms
+#    image: wordtalk-upms
 
 
-  wordtalk-app-server:
-    build:
-      context: ./wordtalk-app-server/wordtalk-app-server-biz
-    restart: always
-    container_name: wordtalk-app-server
-    image: wordtalk-app-server
-
-  wordtalk-bridge:
-    build:
-      context: ./wordtalk-bridge/wordtalk-bridge-biz
-    restart: always
-    container_name: wordtalk-bridge
-    image: wordtalk-bridge
+#  wordtalk-app-server:
+#    build:
+#      context: ./wordtalk-app-server/wordtalk-app-server-biz
+#    restart: always
+#    container_name: wordtalk-app-server
+#    image: wordtalk-app-server
+#
+#  wordtalk-bridge:
+#    build:
+#      context: ./wordtalk-bridge/wordtalk-bridge-biz
+#    restart: always
+#    container_name: wordtalk-bridge
+#    image: wordtalk-bridge
 
   #  wordtalk-monitor:
   #    build:
