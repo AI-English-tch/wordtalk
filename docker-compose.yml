@@ -4,6 +4,8 @@
 # 3. 静静等待服务启动
 
 version: '3'
+volumes:
+  mysql_data:
 services:
   wordtalk-mysql:
     build:
