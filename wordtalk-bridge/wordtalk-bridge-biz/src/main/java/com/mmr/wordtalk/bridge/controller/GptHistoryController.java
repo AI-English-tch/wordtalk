@@ -61,7 +61,7 @@ public class GptHistoryController {
 	@GetMapping("/page")
 	// @PreAuthorize("@pms.hasPermission('chatgpt_history_view')")
 	public R getgptHistoryPage(Page page, GptHistory gptHistory) {
-		LambdaQueryWrapper<GptHistory> wrapper = Wrappers.lambdaQuery();
+		LambdaQueryWrapper<GptHistory> wrapper = Wrappers.lambdaQuery(gptHistory);
 		return R.ok(gptHistoryService.page(page, wrapper));
 	}
 
