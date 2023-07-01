@@ -12,7 +12,7 @@ services:
       context: ./db
     environment:
       MYSQL_ROOT_HOST: "%"
-      MYSQL_ROOT_PASSWORD: "root1"
+      MYSQL_ROOT_PASSWORD: jiydCXYM3242
     restart: always
     container_name: wordtalk-mysql
     image: wordtalk-mysql
