@@ -8,11 +8,11 @@ volumes:
   mysql_data:
 services:
   wordtalk-mysql:
-    build:
-      context: ./db
+#    build:
+#      context: ./db
     environment:
       MYSQL_ROOT_HOST: "%"
-      MYSQL_ROOT_PASSWORD: jiydCXYM3242
+      MYSQL_ROOT_PASSWORD: root1
     restart: always
     container_name: wordtalk-mysql
     image: wordtalk-mysql
@@ -22,19 +22,19 @@ services:
       - 3306:3306
     command: --lower_case_table_names=1
 
-  wordtalk-redis:
-    container_name: wordtalk-redis
-    image: redis:6.2.6
-    restart: always
-
-  wordtalk-register:
-    build:
-      context: ./wordtalk-register
-    restart: always
-    container_name: wordtalk-register
-    image: wordtalk-register
-    ports:
-      - 8848:8848
+#  wordtalk-redis:
+#    container_name: wordtalk-redis
+#    image: redis:6.2.6
+#    restart: always
+#
+#  wordtalk-register:
+#    build:
+#      context: ./wordtalk-register
+#    restart: always
+#    container_name: wordtalk-register
+#    image: wordtalk-register
+#    ports:
+#      - 8848:8848
 
 #  wordtalk-gateway:
 #    build:
