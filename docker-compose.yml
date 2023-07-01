@@ -16,8 +16,8 @@ services:
     restart: always
     container_name: wordtalk-mysql
     image: wordtalk-mysql
-#    volumes:
-#      - mysql_data:/var/lib/mysql
+    volumes:
+      - mysql_data:/var/lib/mysql
     ports:
       - 3306:3306
     command: --lower_case_table_names=1
