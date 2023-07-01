@@ -8,8 +8,8 @@ volumes:
   mysql_data:
 services:
   wordtalk-mysql:
-#    build:
-#      context: ./db
+    build:
+      context: ./db
     environment:
       MYSQL_ROOT_HOST: "%"
       MYSQL_ROOT_PASSWORD: root1
