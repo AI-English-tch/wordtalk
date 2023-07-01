@@ -7,65 +7,75 @@ version: '3'
 volumes:
   mysql_data:
 services:
-#  wordtalk-mysql:
-#    build:
-#      context: ./db
-#    environment:
-#      MYSQL_ROOT_HOST: "%"
-#      MYSQL_ROOT_PASSWORD: root
-#    restart: always
-#    container_name: wordtalk-mysql
-#    image: wordtalk-mysql
-#    volumes:
-#      - mysql_data:/var/lib/mysql
-#    ports:
-#      - 3306:3306
-#    command: --lower_case_table_names=1
-#
-#  wordtalk-redis:
-#    container_name: wordtalk-redis
-#    image: redis:6.2.6
-#    restart: always
-#
-#  wordtalk-register:
-#    build:
-#      context: ./wordtalk-register
-#    restart: always
-#    container_name: wordtalk-register
-#    image: wordtalk-register
-#    ports:
-#      - 8848:8848
-#
-#  wordtalk-gateway:
-#    build:
-#      context: ./wordtalk-gateway
-#    restart: always
-#    container_name: wordtalk-gateway
-#    image: wordtalk-gateway
-#    ports:
-#      - 9999:9999
-#
-#  wordtalk-auth:
-#    build:
-#      context: ./wordtalk-auth
-#    restart: always
-#    container_name: wordtalk-auth
-#    image: wordtalk-auth
-#
-#  wordtalk-upms:
-#    build:
-#      context: ./wordtalk-upms/wordtalk-upms-biz
-#    restart: always
-#    container_name: wordtalk-upms
-#    image: wordtalk-upms
-#
-#
-#  wordtalk-app-server:
-#    build:
-#      context: ./wordtalk-app-server/wordtalk-app-server-biz
-#    restart: always
-#    container_name: wordtalk-app-server
-#    image: wordtalk-app-server
+  wordtalk-mysql:
+    build:
+      context: ./db
+    environment:
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: jiydCXYM3242
+    restart: always
+    container_name: wordtalk-mysql
+    image: wordtalk-mysql
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    command: --lower_case_table_names=1
+
+  wordtalk-redis:
+    container_name: wordtalk-redis
+    image: redis:6.2.6
+    restart: always
+
+  wordtalk-register:
+    build:
+      context: ./wordtalk-register
+    restart: always
+    container_name: wordtalk-register
+    image: wordtalk-register
+    ports:
+      - 8848:8848
+    environment:
+      - MYSQL_PWD=jiydCXYM3242
+
+  wordtalk-gateway:
+    build:
+      context: ./wordtalk-gateway
+    restart: always
+    container_name: wordtalk-gateway
+    image: wordtalk-gateway
+    ports:
+      - 9999:9999
+    environment:
+      - MYSQL_PWD=jiydCXYM3242
+
+  wordtalk-auth:
+    build:
+      context: ./wordtalk-auth
+    restart: always
+    container_name: wordtalk-auth
+    image: wordtalk-auth
+    environment:
+      - MYSQL_PWD=jiydCXYM3242
+
+  wordtalk-upms:
+    build:
+      context: ./wordtalk-upms/wordtalk-upms-biz
+    restart: always
+    container_name: wordtalk-upms
+    image: wordtalk-upms
+    environment:
+      - MYSQL_PWD=jiydCXYM3242
+
+
+  wordtalk-app-server:
+    build:
+      context: ./wordtalk-app-server/wordtalk-app-server-biz
+    restart: always
+    container_name: wordtalk-app-server
+    image: wordtalk-app-server
+    environment:
+      - MYSQL_PWD=jiydCXYM3242
 
   wordtalk-bridge:
     build:
@@ -73,6 +83,8 @@ services:
     restart: always
     container_name: wordtalk-bridge
     image: wordtalk-bridge
+    environment:
+      - MYSQL_PWD=jiydCXYM3242
 
   #  wordtalk-monitor:
   #    build:
