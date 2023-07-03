@@ -6,11 +6,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.mmr</groupId>
-		<artifactId>wordtalk-bridge</artifactId>
+		<artifactId>zero-ai-server</artifactId>
 		<version>5.0.0</version>
 	</parent>
 
-	<artifactId>wordtalk-bridge-api</artifactId>
+	<artifactId>zero-ai-server-api</artifactId>
 
 	<dependencies>
 		<!--core 工具类-->
@@ -33,12 +33,5 @@
 			<groupId>com.mmr</groupId>
 			<artifactId>wordtalk-common-excel</artifactId>
 		</dependency>
-        <dependency>
-            <groupId>com.mmr</groupId>
-            <artifactId>zero-ai-server-api</artifactId>
-            <version>5.0.0</version>
-            <scope>compile</scope>
-        </dependency>
-
-    </dependencies>
+	</dependencies>
 </project>

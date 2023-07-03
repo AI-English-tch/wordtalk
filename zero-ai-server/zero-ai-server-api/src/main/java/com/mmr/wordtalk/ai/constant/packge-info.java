@@ -1,0 +1,1 @@
+package com.mmr.wordtalk.ai.constant;

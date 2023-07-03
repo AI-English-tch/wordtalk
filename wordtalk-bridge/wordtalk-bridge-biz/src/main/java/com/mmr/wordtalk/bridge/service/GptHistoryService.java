@@ -19,6 +19,7 @@ package com.mmr.wordtalk.bridge.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.mmr.wordtalk.ai.dto.Context;
 import com.mmr.wordtalk.bridge.entity.GptHistory;
 
 import java.util.List;
@@ -30,8 +31,22 @@ import java.util.List;
  * @date 2023-06-14 11:07:37
  */
 public interface GptHistoryService extends IService<GptHistory> {
+    /**
+     * 获取历史上下文的方法
+     *
+     * @param robotId 助手的id
+     * @param bookId  词书的id
+     * @param size    上下文的大小
+     * @return
+     */
+    List<Context> getHistoryContext(Long robotId, Long bookId, Integer size);
 
-    void saveTalk(Long topicId, GptHistory userEntity, GptHistory assistantEntity);
-
-	List<GptHistory> queryHistoryByTopicId(Long topicId);
+    /**
+     * 保存上下文到历史的方法
+     *
+     * @param robotId  助手的id
+     * @param bookId   词书的id
+     * @param needSave 需要保存的上下文
+     */
+    void saveContext(Long robotId, Long bookId, List<Context> needSave);
 }

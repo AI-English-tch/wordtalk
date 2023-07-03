@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--
   ~
   ~      Copyright (c) 2018-2025, wordtalk All rights reserved.
@@ -18,7 +17,7 @@
   ~  Author: wordtalk
   ~
   -->
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -121,10 +120,11 @@
         <module>wordtalk-common</module>
         <module>wordtalk-visual</module>
         <module>wordtalk-app-server</module>
-	 <module>wordtalk-bridge</module>
-	 <module>wordtalk-history</module>
-	 <module>wordtalk-feedback</module>
-	 <module>wordtalk-dictionary</module>
+        <module>wordtalk-bridge</module>
+        <module>wordtalk-history</module>
+        <module>wordtalk-feedback</module>
+        <module>wordtalk-dictionary</module>
+        <module>zero-ai-server</module>
     </modules>
 
     <dependencyManagement>

@@ -25,24 +25,29 @@ package com.mmr.wordtalk.common.core.constant;
  */
 public interface ServiceNameConstants {
 
-	/**
-	 * 认证中心
-	 */
-	String AUTH_SERVICE = "wordtalk-auth";
+    /**
+     * 认证中心
+     */
+    String AUTH_SERVICE = "wordtalk-auth";
 
-	/**
-	 * UMPS模块
-	 */
-	String UPMS_SERVICE = "wordtalk-upms-biz";
+    /**
+     * UMPS模块
+     */
+    String UPMS_SERVICE = "wordtalk-upms-biz";
 
-	/**
-	 * 分布式事务协调服务
-	 */
-	String TX_MANAGER = "wordtalk-tx-manager";
+    /**
+     * 分布式事务协调服务
+     */
+    String TX_MANAGER = "wordtalk-tx-manager";
 
-	/**
-	 * app服务
-	 */
-	String APP_SERVER = "wordtalk-app-server-biz";
+    /**
+     * app服务
+     */
+    String APP_SERVER = "wordtalk-app-server-biz";
+
+    /**
+     * ai基座服务
+     */
+    String AI_SERVER = "wordtalk-ai-server-biz";
 
 }

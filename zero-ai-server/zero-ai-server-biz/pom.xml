@@ -6,11 +6,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.mmr</groupId>
-		<artifactId>wordtalk-bridge</artifactId>
+		<artifactId>zero-ai-server</artifactId>
 		<version>5.0.0</version>
 	</parent>
 
-	<artifactId>wordtalk-bridge-biz</artifactId>
+	<artifactId>zero-ai-server-biz</artifactId>
+	<properties>
+		<chatgpt.version>4.1.2</chatgpt.version>
+	</properties>
 
 	<dependencies>
 		<!--必备: undertow容器-->
@@ -61,7 +64,7 @@
 		<!--必备: 依赖api模块-->
 		<dependency>
 			<groupId>com.mmr</groupId>
-			<artifactId>wordtalk-bridge-api</artifactId>
+			<artifactId>zero-ai-server-api</artifactId>
 			<version>5.0.0</version>
 		</dependency>
 		<!--必备: log 依赖-->
@@ -94,11 +97,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webflux</artifactId>
-        </dependency>
-    </dependencies>
+		<!-- AI 依赖模块 -->
+		<dependency>
+			<groupId>com.github.plexpt</groupId>
+			<artifactId>chatgpt</artifactId>
+			<version>${chatgpt.version}</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>

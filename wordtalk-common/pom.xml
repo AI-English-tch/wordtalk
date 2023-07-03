@@ -54,6 +54,5 @@
 		<module>wordtalk-common-swagger</module>
 		<module>wordtalk-common-websocket</module>
 		<module>wordtalk-common-xss</module>
-		<module>wordtalk-common-ai</module>
 	</modules>
 </project>

@@ -60,10 +60,16 @@ public class GptHistory extends Model<GptHistory> {
 	private String content;
 
 	/**
-	 * 对话关联的话题
+	 * 关联的词书ID
 	 */
-	@Schema(description = "对话关联的话题")
-	private Long topicId;
+	@Schema(description = "关联的词书ID")
+	private Long bookId;
+
+	/**
+	 * 关联的助手ID
+	 */
+	@Schema(description = "关联的助手ID")
+	private Long robotId;
 
 	/**
 	 * 创建时间
@@ -93,10 +99,5 @@ public class GptHistory extends Model<GptHistory> {
 	@Schema(description = "更新者")
 	private String updateBy;
 
-	/**
-	 * 租户id
-	 */
-	@Schema(description = "租户id")
-	private Long tenantId;
 
 }

@@ -1,16 +1,13 @@
 package com.mmr.wordtalk.bridge.service;
 
-
-import com.mmr.wordtalk.bridge.entity.GptTalk;
-
 /**
+ * GptChatService
+ *
  * @author 张恩睿
- * @date 2023-06-14 11:38:00
+ * @date 2023-07-04 01:17:07
  */
-
 public interface GptChatService {
-	// 单次对话的接口
-	GptTalk talk(GptTalk gptTalk);
+    String send(Long robotId, Long bookId, String message, String inject);
 
-	GptTalk talkOnStream(GptTalk gptTalk);
+    String sendOnStream(Long robotId, Long bookId, String message, String inject);
 }
