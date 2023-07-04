@@ -39,103 +39,109 @@ import java.util.stream.Collectors;
 @Data
 public class ChatGptSendStrategy implements SendStrategy {
 
-	private final ChatCompletion chatCompletion;
+    private final ChatCompletion chatCompletion;
 
-	private final ChatGPT chatGPT;
+    private final ChatGPT chatGPT;
 
-	private final ChatGPTStream chatGPTStream;
+    private final ChatGPTStream chatGPTStream;
 
-	public ChatGptSendStrategy(AiModel model, JSONObject params) {
-		Proxy globalProxy = SpringUtil.getBean("globalProxy");
-		// 构建模型默认参数 ---- 先采用全默认参数，若模型内有自定义参数，则将自定义覆盖之，若本次调用有自定义参数，则再覆盖之
-		ChatGptModelParams defaultParams = new ChatGptModelParams();
-		if (!JSONUtil.isNull(model.getParam())) {
-			ChatGptModelParams source = model.getParam().toBean(ChatGptModelParams.class);
-			BeanUtil.copyProperties(source, defaultParams);
-		}
+    public ChatGptSendStrategy(AiModel model, JSONObject params) {
+        Proxy globalProxy = null;
+        try {
+            globalProxy = SpringUtil.getBean("globalProxy", Proxy.class);
+        } catch (Exception e) {
+            // 未开启全局代理
+        }
 
-		if (!JSONUtil.isNull(params)) {
-			ChatGptModelParams source = params.toBean(ChatGptModelParams.class);
-			BeanUtil.copyProperties(source, defaultParams);
-		}
+        // 构建模型默认参数 ---- 先采用全默认参数，若模型内有自定义参数，则将自定义覆盖之，若本次调用有自定义参数，则再覆盖之
+        ChatGptModelParams defaultParams = new ChatGptModelParams();
+        if (!JSONUtil.isNull(model.getParam())) {
+            ChatGptModelParams source = model.getParam().toBean(ChatGptModelParams.class);
+            BeanUtil.copyProperties(source, defaultParams);
+        }
 
-		Proxy proxy = model.getEnable_proxy() && ObjectUtil.isNotNull(globalProxy) ? globalProxy : Proxy.NO_PROXY;
+        if (!JSONUtil.isNull(params)) {
+            ChatGptModelParams source = params.toBean(ChatGptModelParams.class);
+            BeanUtil.copyProperties(source, defaultParams);
+        }
 
-		// 根据模型构造策略
-		this.chatCompletion = ChatCompletion.builder()
-				.model(model.getVersion())
-				.temperature(defaultParams.getTemperature())
-				.topP(defaultParams.getTopP())
-				.frequencyPenalty(defaultParams.getFrequencyPenalty())
-				.presencePenalty(defaultParams.getPresencePenalty())
-				.maxTokens(defaultParams.getMaxTokens())
-				.n(defaultParams.getN())
-				.messages(new ArrayList<>())
-				.build();
+        Proxy proxy = model.getEnable_proxy() && ObjectUtil.isNotNull(globalProxy) ? globalProxy : Proxy.NO_PROXY;
 
-		this.chatGPT = ChatGPT.builder()
-				.apiHost(StrUtil.isNotBlank(model.getHost()) ? model.getHost() : Api.DEFAULT_API_HOST)
-				.timeout(300)
-				.proxy(proxy)
-				.apiKeyList(model.getKeyList())
-				.build();
+        // 根据模型构造策略
+        this.chatCompletion = ChatCompletion.builder()
+                .model(model.getVersion())
+                .temperature(defaultParams.getTemperature())
+                .topP(defaultParams.getTopP())
+                .frequencyPenalty(defaultParams.getFrequencyPenalty())
+                .presencePenalty(defaultParams.getPresencePenalty())
+                .maxTokens(defaultParams.getMaxTokens())
+                .n(defaultParams.getN())
+                .messages(new ArrayList<>())
+                .build();
 
-		this.chatGPTStream = ChatGPTStream.builder()
-				.apiHost(StrUtil.isNotBlank(model.getHost()) ? model.getHost() : Api.DEFAULT_API_HOST)
-				.timeout(300)
-				.proxy(proxy)
-				.apiKeyList(model.getKeyList())
-				.build();
-	}
+        this.chatGPT = ChatGPT.builder()
+                .apiHost(StrUtil.isNotBlank(model.getHost()) ? model.getHost() : Api.DEFAULT_API_HOST)
+                .timeout(300)
+                .proxy(proxy)
+                .apiKeyList(model.getKeyList())
+                .build();
 
-	public static List<Message> cover(List<Context> contextList) {
-		return contextList.stream().map(item -> Message.builder().role(item.getRole()).content(item.getContent()).build()).collect(Collectors.toList());
-	}
+        this.chatGPTStream = ChatGPTStream.builder()
+                .apiHost(StrUtil.isNotBlank(model.getHost()) ? model.getHost() : Api.DEFAULT_API_HOST)
+                .timeout(300)
+                .proxy(proxy)
+                .apiKeyList(model.getKeyList())
+                .build();
+    }
 
-	public static String parse(List<ChatChoice> choices, boolean isStream) {
-		return choices.stream().map(item -> {
-			Message message = null;
-			if (isStream) {
-				message = item.getDelta();
-			} else {
-				message = item.getMessage();
-			}
-			return message.getContent() != null ? message.getContent() : "";
-		}).collect(Collectors.joining("\n"));
-	}
+    public static List<Message> cover(List<Context> contextList) {
+        return contextList.stream().map(item -> Message.builder().role(item.getRole()).content(item.getContent()).build()).collect(Collectors.toList());
+    }
+
+    public static String parse(List<ChatChoice> choices, boolean isStream) {
+        return choices.stream().map(item -> {
+            Message message = null;
+            if (isStream) {
+                message = item.getDelta();
+            } else {
+                message = item.getMessage();
+            }
+            return message.getContent() != null ? message.getContent() : "";
+        }).collect(Collectors.joining("\n"));
+    }
 
 
-	@Override
-	public String send(List<Context> contextList) {
-		ChatGPT gpt = this.chatGPT.init();
-		this.chatCompletion.setMessages(cover(contextList));
-		ChatCompletionResponse response = gpt.chatCompletion(this.chatCompletion);
+    @Override
+    public String send(List<Context> contextList) {
+        ChatGPT gpt = this.chatGPT.init();
+        this.chatCompletion.setMessages(cover(contextList));
+        ChatCompletionResponse response = gpt.chatCompletion(this.chatCompletion);
 
-		// 此处可获取token总量进行扣费
+        // 此处可获取token总量进行扣费
 //        Usage usage = response.getUsage();
 
-		return parse(response.getChoices(), false);
-	}
+        return parse(response.getChoices(), false);
+    }
 
-	@SneakyThrows
-	@Override
-	public String streamSend(String system, List<Context> contextList) {
-		ChatGPTStream gpt = this.chatGPTStream.init();
+    @SneakyThrows
+    @Override
+    public String streamSend(String system, List<Context> contextList) {
+        ChatGPTStream gpt = this.chatGPTStream.init();
 
-		this.chatCompletion.setMessages(cover(contextList));
-		this.chatCompletion.setStream(true);
+        this.chatCompletion.setMessages(cover(contextList));
+        this.chatCompletion.setStream(true);
 
-		//  获取当前用户的登陆信息
-		WordtalkUser user = SecurityUtils.getUser();
+        //  获取当前用户的登陆信息
+        WordtalkUser user = SecurityUtils.getUser();
 
-		SseEmitter emitter = SseEmitterUtil.openEmitter(system, user.getUsername());
+        SseEmitter emitter = SseEmitterUtil.openEmitter(system, user.getUsername());
 
-		ChatGptSseEmitterListener listener = new ChatGptSseEmitterListener(emitter, user.getUsername());
+        ChatGptSseEmitterListener listener = new ChatGptSseEmitterListener(emitter, user.getUsername());
 
-		gpt.streamChatCompletion(this.chatCompletion, listener);
+        gpt.streamChatCompletion(this.chatCompletion, listener);
 
-		CompletableFuture<String> future = listener.getFuture();
+        CompletableFuture<String> future = listener.getFuture();
 
-		return future.get();
-	}
+        return future.get();
+    }
 }
