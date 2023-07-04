@@ -43,9 +43,9 @@ public class GptChatServiceImpl implements GptChatService {
 		// 获取助手的信息
         GptRobot robot = gptRobotService.getById(robotId);
         // 获取模型的ID
-        Long modelId = robot.getModel_id();
+        Long modelId = robot.getModelId();
         // 获取模型的微调参数
-        ChatGptModelParams modelParams = robot.getModelParams();
+        ChatGptModelParams modelParams = robot.getModelParam();
         // 构建上下文对象
         List<Context> contextList = buildContext(robot, bookId, message, inject);
         SendDto sendDto = new SendDto();
@@ -84,9 +84,9 @@ public class GptChatServiceImpl implements GptChatService {
         // 获取助手的信息
         GptRobot robot = gptRobotService.getById(robotId);
         // 获取模型的ID
-        Long modelId = robot.getModel_id();
+        Long modelId = robot.getModelId();
         // 获取模型的微调参数
-        ChatGptModelParams modelParams = robot.getModelParams();
+        ChatGptModelParams modelParams = robot.getModelParam();
         // 构建上下文对象
         List<Context> contextList = buildContext(robot, bookId, message, inject);
         SendDto sendDto = new SendDto();

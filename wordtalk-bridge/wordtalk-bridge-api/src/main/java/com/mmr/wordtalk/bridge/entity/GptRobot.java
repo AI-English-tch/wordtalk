@@ -39,6 +39,7 @@ public class GptRobot extends Model<GptRobot> {
 	 * master | servant
 	 */
 	@Schema(description = "使用的系统")
+	@TableField("`system`")
 	private String system;
 
 	/**
@@ -51,14 +52,14 @@ public class GptRobot extends Model<GptRobot> {
 	 * 关联的模型ID
 	 */
 	@Schema(description = "关联的模型ID")
-	private Long model_id;
+	private Long modelId;
 
 	/**
 	 * 模型的微调参数
 	 */
 	@Schema(description = "模型的微调参数")
 	@TableField(typeHandler = FastjsonTypeHandler.class)
-	private ChatGptModelParams modelParams;
+	private ChatGptModelParams modelParam;
 
 	/**
 	 * 上下文大小
@@ -83,14 +84,14 @@ public class GptRobot extends Model<GptRobot> {
 	/**
 	 * 更新时间
 	 */
-	@TableField(fill = FieldFill.INSERT_UPDATE)
+	@TableField(fill = FieldFill.UPDATE)
 	@Schema(description = "更新时间")
 	private LocalDateTime updateTime;
 
 	/**
 	 * 更新者
 	 */
-	@TableField(fill = FieldFill.INSERT_UPDATE)
+	@TableField(fill = FieldFill.UPDATE)
 	@Schema(description = "更新者")
 	private String updateBy;
 }
