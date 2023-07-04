@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 /**
- * chat对话管理
+ * servant对话管理
  *
  * @author 张恩睿
  * @date 2023-06-14 11:36:00

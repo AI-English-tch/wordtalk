@@ -14,10 +14,13 @@ import java.util.List;
 @Schema(description = "AI交互对象")
 public class SendDto {
 
-    @Schema(description = "上下文列表")
-    private List<Context> contextList;
+	@Schema(description = "交互系统")
+	private String system;
 
-    @Schema(description = "Ai参数")
-    private JSONObject params;
+	@Schema(description = "上下文列表")
+	private List<Context> contextList;
+
+	@Schema(description = "Ai参数")
+	private JSONObject params;
 
 }

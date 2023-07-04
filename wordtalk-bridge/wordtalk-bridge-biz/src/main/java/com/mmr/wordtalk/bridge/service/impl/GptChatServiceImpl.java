@@ -6,6 +6,7 @@ import com.mmr.wordtalk.ai.api.feign.RemoteAiModelService;
 import com.mmr.wordtalk.ai.bo.ChatGptModelParams;
 import com.mmr.wordtalk.ai.dto.Context;
 import com.mmr.wordtalk.ai.dto.SendDto;
+import com.mmr.wordtalk.bridge.dto.GptChatDto;
 import com.mmr.wordtalk.bridge.entity.GptRobot;
 import com.mmr.wordtalk.bridge.service.GptChatService;
 import com.mmr.wordtalk.bridge.service.GptHistoryService;
@@ -35,8 +36,11 @@ public class GptChatServiceImpl implements GptChatService {
     private final GptRobotService gptRobotService;
 
     @Override
-    public String send(Long robotId, Long bookId, String message, String inject) {
-        // 获取助手的信息
+    public String send(Long robotId, GptChatDto chatDto) {
+		Long bookId = chatDto.getBookId();
+		String message = chatDto.getMessage();
+		String inject = chatDto.getInject();
+		// 获取助手的信息
         GptRobot robot = gptRobotService.getById(robotId);
         // 获取模型的ID
         Long modelId = robot.getModel_id();
@@ -45,6 +49,7 @@ public class GptChatServiceImpl implements GptChatService {
         // 构建上下文对象
         List<Context> contextList = buildContext(robot, bookId, message, inject);
         SendDto sendDto = new SendDto();
+		sendDto.setSystem(robot.getSystem());
         sendDto.setContextList(contextList);
         sendDto.setParams(new JSONObject(modelParams));
         // 接收AI模型的返回值
@@ -72,7 +77,10 @@ public class GptChatServiceImpl implements GptChatService {
     }
 
     @Override
-    public String sendOnStream(Long robotId, Long bookId, String message, String inject) {
+    public String sendOnStream(Long robotId, GptChatDto chatDto) {
+		Long bookId = chatDto.getBookId();
+		String message = chatDto.getMessage();
+		String inject = chatDto.getInject();
         // 获取助手的信息
         GptRobot robot = gptRobotService.getById(robotId);
         // 获取模型的ID
@@ -82,6 +90,7 @@ public class GptChatServiceImpl implements GptChatService {
         // 构建上下文对象
         List<Context> contextList = buildContext(robot, bookId, message, inject);
         SendDto sendDto = new SendDto();
+		sendDto.setSystem(robot.getSystem());
         sendDto.setContextList(contextList);
         sendDto.setParams(new JSONObject(modelParams));
         // 接收AI模型的返回值

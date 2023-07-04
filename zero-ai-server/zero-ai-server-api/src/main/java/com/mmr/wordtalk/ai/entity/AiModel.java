@@ -25,6 +25,7 @@ import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import mybatis.mate.annotation.FieldSensitive;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -86,6 +87,7 @@ public class AiModel extends Model<AiModel> {
 	 */
 	@Schema(description = "API Key List")
 	@TableField(typeHandler = FastjsonTypeHandler.class)
+	@FieldSensitive("keyList")
 	private List<String> keyList;
 
 	/**

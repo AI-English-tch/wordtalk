@@ -16,6 +16,6 @@ public interface SendStrategy {
         return "模型策略不存在!";
     }
 
-    default String streamSend(List<Context> contextList) {return "模型策略不存在!";}
+    default String streamSend(String system, List<Context> contextList) {return "模型策略不存在!";}
 
 }

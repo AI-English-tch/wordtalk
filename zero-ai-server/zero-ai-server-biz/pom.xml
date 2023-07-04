@@ -103,6 +103,12 @@
 			<artifactId>chatgpt</artifactId>
 			<version>${chatgpt.version}</version>
 		</dependency>
+		<!-- mybatis 企业特性 -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-mate-starter</artifactId>
+			<version>1.2.9-sp2</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

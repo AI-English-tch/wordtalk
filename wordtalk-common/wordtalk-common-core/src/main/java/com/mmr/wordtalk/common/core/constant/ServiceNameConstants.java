@@ -48,6 +48,6 @@ public interface ServiceNameConstants {
     /**
      * ai基座服务
      */
-    String AI_SERVER = "wordtalk-ai-server-biz";
+    String AI_SERVER = "zero-ai-server-biz";
 
 }

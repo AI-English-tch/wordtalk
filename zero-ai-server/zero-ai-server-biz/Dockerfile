@@ -7,12 +7,12 @@ ENV JAVA_OPTS="-Xms512m -Xmx1024m -Djava.security.egd=file:/dev/./urandom"
 
 RUN ln -sf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN mkdir -p /wordtalk-bridge
+RUN mkdir -p /zero-ai-server
 
-WORKDIR /wordtalk-bridge
+WORKDIR /zero-ai-server
 
-EXPOSE 6070
+EXPOSE 6060
 
-ADD ./target/wordtalk-bridge-biz.jar ./
+ADD ./target/zero-ai-server-biz.jar ./
 
-CMD sleep 60;java $JAVA_OPTS -jar wordtalk-bridge-biz.jar
+CMD sleep 60;java $JAVA_OPTS -jar zero-ai-server-biz.jar

@@ -56,6 +56,7 @@ public class GptStoreServiceImpl extends ServiceImpl<GptStoreMapper, GptStore> i
 	private final GptStoreWordsService storeWordsService;
 
 	private List<GptWords> createWordsEntity(List<String> wordsList) {
+		// 查询出在单词列表中的单词
 		return wordsList.stream().map(item -> {
 			GptWords one = wordsService.getOne(Wrappers.<GptWords>lambdaQuery().eq(GptWords::getWord, item));
 			if (Objects.isNull(one)) {
@@ -93,25 +94,26 @@ public class GptStoreServiceImpl extends ServiceImpl<GptStoreMapper, GptStore> i
 			// return MsgUtils.getMessage();
 			return R.failed("词库不存在");
 		}
-		//2. 构造完整的单词列表
-		List<GptWords> wordsEntityList = createWordsEntity(wordsList);
-		//3. 差量填充到词库中
-		List<GptWords> newWordsEntityList = wordsEntityList.stream().filter(item -> {
-			//3.1. 返回不在该词库中的新单词
-			GptStoreWords storeWords = storeWordsService.getOne(Wrappers.<GptStoreWords>lambdaQuery()
-					.eq(GptStoreWords::getStoreId, store.getId())
-					.eq(GptStoreWords::getWordId, item.getId()));
-			return Objects.isNull(storeWords);
-		}).collect(Collectors.toList());
-		//4. 构造要填充的关联实体
-		List<GptStoreWords> collect = newWordsEntityList.stream().map(item -> {
-			GptStoreWords storeWordsEntity = new GptStoreWords();
-			storeWordsEntity.setStoreId(store.getId());
-			storeWordsEntity.setWordId(item.getId());
-			return storeWordsEntity;
-		}).collect(Collectors.toList());
-		//5. 异步执行导入操作
+		// 异步执行导入操作
 		ThreadUtil.execute(() -> {
+			//2. 构造完整的单词列表
+			List<GptWords> wordsEntityList = createWordsEntity(wordsList);
+			//3. 差量填充到词库中
+			List<GptWords> newWordsEntityList = wordsEntityList.stream().filter(item -> {
+				//3.1. 返回不在该词库中的新单词
+				GptStoreWords storeWords = storeWordsService.getOne(Wrappers.<GptStoreWords>lambdaQuery()
+						.eq(GptStoreWords::getStoreId, store.getId())
+						.eq(GptStoreWords::getWordId, item.getId()));
+				return Objects.isNull(storeWords);
+			}).collect(Collectors.toList());
+			//4. 构造要填充的关联实体
+			List<GptStoreWords> collect = newWordsEntityList.stream().map(item -> {
+				GptStoreWords storeWordsEntity = new GptStoreWords();
+				storeWordsEntity.setStoreId(store.getId());
+				storeWordsEntity.setWordId(item.getId());
+				return storeWordsEntity;
+			}).collect(Collectors.toList());
+
 			storeWordsService.saveBatch(collect);
 		});
 		return R.ok("导入成功~请等待填充");
@@ -142,7 +144,7 @@ public class GptStoreServiceImpl extends ServiceImpl<GptStoreMapper, GptStore> i
 	public GptStore detail(Long id, GptStoreVo vo) {
 		GptStore source = this.getById(id);
 		GptStoreDto dto = BeanUtil.copyProperties(source, GptStoreDto.class);
-		fill(dto,vo);
+		fill(dto, vo);
 		return dto;
 	}
 

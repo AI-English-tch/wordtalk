@@ -26,7 +26,7 @@ import lombok.EqualsAndHashCode;
 import java.time.LocalDateTime;
 
 /**
- * 用户自己的词书
+ * 词书
  *
  * @author 张恩睿
  * @date 2023-06-11 20:00:03

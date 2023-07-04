@@ -1,5 +1,6 @@
 package com.mmr.wordtalk.bridge.controller;
 
+import com.mmr.wordtalk.bridge.dto.GptChatDto;
 import com.mmr.wordtalk.bridge.service.GptChatService;
 import com.mmr.wordtalk.common.core.util.R;
 import io.swagger.v3.oas.annotations.Operation;
@@ -27,21 +28,20 @@ public class GptChatController {
     /**
      * 单次对话
      *
-     * @param message 输入给AI的问题
-     * @param inject  插入到prompt中的值
+     * @param chatDto 对话交互对象
      * @return
      */
     @Operation(summary = "单次对话", description = "单次对话")
     @GetMapping("/send/{robotId}")
-    public R send(@PathVariable Long robotId, Long bookId, String message, String inject) {
-        String result = gptChatService.send(robotId, bookId, message, inject);
+    public R send(@PathVariable Long robotId, GptChatDto chatDto) {
+        String result = gptChatService.send(robotId, chatDto);
         return R.ok(result);
     }
 
     @Operation(summary = "流式对话", description = "流式对话")
     @GetMapping("/sendOnStream/{robotId}")
-    public R sendOnStream(@PathVariable Long robotId, Long bookId, String message, String inject) {
-        String result = gptChatService.sendOnStream(robotId, bookId, message, inject);
+    public R sendOnStream(@PathVariable Long robotId, GptChatDto chatDto) {
+        String result = gptChatService.sendOnStream(robotId, chatDto);
         return R.ok(result);
     }
 

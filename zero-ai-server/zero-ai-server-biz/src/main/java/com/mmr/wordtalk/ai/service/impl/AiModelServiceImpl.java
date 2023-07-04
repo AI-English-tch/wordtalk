@@ -62,7 +62,7 @@ public class AiModelServiceImpl extends ServiceImpl<AiModelMapper, AiModel> impl
 		if (StrUtil.equals(aiModel.getType(), ModelType.CHATGPT.getValue())) {
 			strategy = new ChatGptSendStrategy(aiModel,sendDto.getParams());
 		}
-		return strategy.streamSend(sendDto.getContextList());
+		return strategy.streamSend(sendDto.getSystem(),sendDto.getContextList());
 	}
 
 
