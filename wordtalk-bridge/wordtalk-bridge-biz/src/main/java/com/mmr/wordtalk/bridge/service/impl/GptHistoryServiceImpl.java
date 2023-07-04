@@ -24,7 +24,6 @@ import com.mmr.wordtalk.ai.dto.Context;
 import com.mmr.wordtalk.bridge.entity.GptHistory;
 import com.mmr.wordtalk.bridge.mapper.GptHistoryMapper;
 import com.mmr.wordtalk.bridge.service.GptHistoryService;
-import com.mmr.wordtalk.common.ai.properties.AiProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
