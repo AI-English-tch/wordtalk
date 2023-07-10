@@ -17,12 +17,12 @@ public class SseEmitterUtil {
     /**
      * 获取当前用户的Listener对象
      *
-     * @param system
      * @param token
      * @return
      */
-    public static SseEmitter openEmitter(String system, String token) {
-        String key = system + "::" + token;
+    public static SseEmitter openEmitter(String token) {
+//        String key = system + "::" + token;
+        final String key = token;
         if (sseTable.containsKey(key)) {
             return sseTable.get(key);
         }
@@ -36,8 +36,9 @@ public class SseEmitterUtil {
      *
      * @param token
      */
-    public static void closeEmitter(String system, String token) {
-        String key = system + "::" + token;
+    public static void closeEmitter(String token) {
+//        String key = system + "::" + token;
+        final String key = token;
         if (sseTable.containsKey(key)) {
             SseEmitter emitter = sseTable.remove(key);
             emitter.complete();

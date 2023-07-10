@@ -1,6 +1,7 @@
 package com.mmr.wordtalk.ai.dto;
 
 import cn.hutool.json.JSONObject;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -12,15 +13,15 @@ import java.util.List;
  */
 @Data
 @Schema(description = "AI交互对象")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SendDto {
-
-	@Schema(description = "交互系统")
-	private String system;
-
-	@Schema(description = "上下文列表")
-	private List<Context> contextList;
-
-	@Schema(description = "Ai参数")
-	private JSONObject params;
+    @Schema(description = "唯一标识")
+    private String id;
+    @Schema(description = "事件")
+    private String event;
+    @Schema(description = "上下文列表")
+    private List<Context> contextList;
+    @Schema(description = "Ai参数")
+    private JSONObject params;
 
 }

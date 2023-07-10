@@ -16,6 +16,7 @@
  */
 package com.mmr.wordtalk.bridge.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -49,9 +50,9 @@ public class GptHistoryServiceImpl extends ServiceImpl<GptHistoryMapper, GptHist
 
 
     @Override
-    public List<Context> getHistoryContext(Long robotId, Long bookId, Integer size) {
+    public List<Context> getHistoryContext(GptHistory history, Integer size) {
         // 从redis中尝试获取历史上下文数据
-        String key = createKey(robotId, bookId);
+        String key = createKey(history.getBookId(), history.getSystem());
         ListOperations<String, GptHistory> opsForList = redisTemplate.opsForList();
         List<GptHistory> historyList = new ArrayList<>(0);
         if (redisTemplate.hasKey(key)) {
@@ -64,8 +65,9 @@ public class GptHistoryServiceImpl extends ServiceImpl<GptHistoryMapper, GptHist
         } else {
             Page<GptHistory> page = Page.of(1, size, false);
             LambdaQueryWrapper<GptHistory> wrapper = new LambdaQueryWrapper<>();
-            wrapper.eq(GptHistory::getRobotId, robotId);
-            wrapper.eq(GptHistory::getBookId, bookId);
+            wrapper.eq(GptHistory::getSystem, history.getSystem());
+            wrapper.eq(GptHistory::getBookId, history.getBookId());
+            wrapper.eq(GptHistory::getWord, history.getWord());
             wrapper.orderByDesc(GptHistory::getCreateTime);
             historyList = this.page(page, wrapper).getRecords();
             if (!historyList.isEmpty()) {
@@ -80,11 +82,11 @@ public class GptHistoryServiceImpl extends ServiceImpl<GptHistoryMapper, GptHist
     }
 
     @Override
-    public void saveContext(Long robotId, Long bookId, List<Context> needSave) {
-        List<GptHistory> historyList = revers(robotId, bookId, needSave);
+    public void saveContext(GptHistory history, List<Context> needSave) {
+        List<GptHistory> historyList = revers(history, needSave);
         // 保存到mysql中
         this.saveBatch(historyList);
-        String key = createKey(robotId, bookId);
+        String key = createKey(history.getBookId(), history.getSystem());
         ListOperations<String, GptHistory> opsForList = redisTemplate.opsForList();
         // redis中加入数据
         opsForList.rightPushAll(key, historyList);
@@ -101,21 +103,19 @@ public class GptHistoryServiceImpl extends ServiceImpl<GptHistoryMapper, GptHist
                 .collect(Collectors.toList());
     }
 
-    private List<GptHistory> revers(Long robotId, Long bookId, List<Context> contextList) {
+    private List<GptHistory> revers(GptHistory history, List<Context> contextList) {
         return contextList.stream().map(item -> {
-            GptHistory history = new GptHistory();
-            history.setRole(item.getRole());
-            history.setContent(item.getContent());
-            history.setRobotId(robotId);
-            history.setBookId(bookId);
+            GptHistory temp = BeanUtil.copyProperties(history, GptHistory.class);
+            temp.setRole(item.getRole());
+            temp.setContent(item.getContent());
             return history;
         }).collect(Collectors.toList());
     }
 
-    private String createKey(Long robotId, Long bookId) {
+    private String createKey(Long bookId, String system) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("robotId", robotId);
         params.put("bookId", bookId);
+        params.put("system", system);
         String key = StrUtil.format(redisKey, params);
         return key;
     }

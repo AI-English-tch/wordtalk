@@ -1,8 +1,6 @@
 package com.mmr.wordtalk.ai.core;
 
-import com.mmr.wordtalk.ai.dto.Context;
-
-import java.util.List;
+import com.mmr.wordtalk.ai.dto.SendDto;
 
 /**
  * AI的消息发送策略
@@ -12,10 +10,12 @@ import java.util.List;
  */
 public interface SendStrategy {
 
-    default String send(List<Context> contextList) {
+    default String send(SendDto sendDto) {
         return "模型策略不存在!";
     }
 
-    default String streamSend(String system, List<Context> contextList) {return "模型策略不存在!";}
+    default String streamSend(SendDto sendDto) {
+        return "模型策略不存在!";
+    }
 
 }

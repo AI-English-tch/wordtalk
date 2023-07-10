@@ -37,67 +37,75 @@ import java.time.LocalDateTime;
 @Schema(description = "对话历史")
 public class GptHistory extends Model<GptHistory> {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
 
-	/**
-	 * 唯一标识
-	 */
-	@TableId(type = IdType.AUTO)
-	@Schema(description = "唯一标识")
-	private Long id;
+    /**
+     * 唯一标识
+     */
+    @TableId(type = IdType.AUTO)
+    @Schema(description = "唯一标识")
+    private Long id;
 
-	/**
-	 * 对话角色
-	 */
-	@Schema(description = "对话角色")
-	private String role;
+    /**
+     * 对话角色
+     */
+    @Schema(description = "对话角色")
+    private String role;
 
-	/**
-	 * 对话内容
-	 */
-	@Schema(description = "对话内容")
-	private String content;
+    /**
+     * 对话内容
+     */
+    @Schema(description = "对话内容")
+    private String content;
 
-	/**
-	 * 关联的词书ID
-	 */
-	@Schema(description = "关联的词书ID")
-	private Long bookId;
+    /**
+     * 关联的词书ID
+     */
+    @Schema(description = "关联的词书ID")
+    private Long bookId;
 
-	/**
-	 * 关联的助手ID
-	 */
-	@Schema(description = "关联的助手ID")
-	private Long robotId;
+    /**
+     * 关联的助手ID
+     */
+    @Schema(description = "关联的助手系统区")
+    @TableField("`system`")
+    private String system;
 
-	/**
-	 * 创建时间
-	 */
-	@TableField(fill = FieldFill.INSERT)
-	@Schema(description = "创建时间")
-	private LocalDateTime createTime;
+    /**
+     * 关联的单词信息
+     */
+    @Schema(description = "关联的单词信息")
+    private String word;
 
-	/**
-	 * 创建者
-	 */
-	@TableField(fill = FieldFill.INSERT)
-	@Schema(description = "创建者")
-	private String createBy;
 
-	/**
-	 * 更新时间
-	 */
-	@TableField(fill = FieldFill.INSERT_UPDATE)
-	@Schema(description = "更新时间")
-	private LocalDateTime updateTime;
+    /**
+     * 创建时间
+     */
+    @TableField(fill = FieldFill.INSERT)
+    @Schema(description = "创建时间")
+    private LocalDateTime createTime;
 
-	/**
-	 * 更新者
-	 */
-	@TableField(fill = FieldFill.INSERT_UPDATE)
-	@Schema(description = "更新者")
-	private String updateBy;
+    /**
+     * 创建者
+     */
+    @TableField(fill = FieldFill.INSERT)
+    @Schema(description = "创建者")
+    private String createBy;
+
+    /**
+     * 更新时间
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    @Schema(description = "更新时间")
+    private LocalDateTime updateTime;
+
+    /**
+     * 更新者
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    @Schema(description = "更新者")
+    private String updateBy;
 
 
 }

@@ -34,19 +34,17 @@ public interface GptHistoryService extends IService<GptHistory> {
     /**
      * 获取历史上下文的方法
      *
-     * @param robotId 助手的id
-     * @param bookId  词书的id
-     * @param size    上下文的大小
+     * @param history
+     * @param size
      * @return
      */
-    List<Context> getHistoryContext(Long robotId, Long bookId, Integer size);
+    List<Context> getHistoryContext(GptHistory history, Integer size);
 
     /**
      * 保存上下文到历史的方法
      *
-     * @param robotId  助手的id
-     * @param bookId   词书的id
+     * @param history
      * @param needSave 需要保存的上下文
      */
-    void saveContext(Long robotId, Long bookId, List<Context> needSave);
+    void saveContext(GptHistory history, List<Context> needSave);
 }

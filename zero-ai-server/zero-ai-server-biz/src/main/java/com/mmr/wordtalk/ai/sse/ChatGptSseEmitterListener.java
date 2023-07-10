@@ -26,9 +26,20 @@ import java.util.concurrent.CompletableFuture;
 @RequiredArgsConstructor
 public class ChatGptSseEmitterListener extends EventSourceListener {
 
+    /**
+     * 回复流式消息的组件，此处是SSE
+     */
     private final SseEmitter sseEmitter;
 
-    private final String token;
+    /**
+     * SSE的触发ID
+     */
+    private final String id;
+
+    /**
+     * SSE的触发事件
+     */
+    private final String event;
 
     @Getter
     protected CompletableFuture<String> future = new CompletableFuture<>();
@@ -56,7 +67,11 @@ public class ChatGptSseEmitterListener extends EventSourceListener {
 
         if (text != null) {
             lastMessage += text;
-            sseEmitter.send(text);
+            SseEmitter.SseEventBuilder sb = SseEmitter.event();
+            if (StrUtil.isNotBlank(id)) sb.id(id);
+            if (StrUtil.isNotBlank(event)) sb.name(event);
+            sb.data(text);
+            sseEmitter.send(sb);
         }
     }
 

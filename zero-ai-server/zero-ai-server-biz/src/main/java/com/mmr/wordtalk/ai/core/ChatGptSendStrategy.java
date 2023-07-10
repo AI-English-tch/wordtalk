@@ -8,6 +8,7 @@ import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.mmr.wordtalk.ai.bo.ChatGptModelParams;
 import com.mmr.wordtalk.ai.dto.Context;
+import com.mmr.wordtalk.ai.dto.SendDto;
 import com.mmr.wordtalk.ai.entity.AiModel;
 import com.mmr.wordtalk.ai.sse.ChatGptSseEmitterListener;
 import com.mmr.wordtalk.ai.sse.SseEmitterUtil;
@@ -112,9 +113,9 @@ public class ChatGptSendStrategy implements SendStrategy {
 
 
     @Override
-    public String send(List<Context> contextList) {
+    public String send(SendDto sendDto) {
         ChatGPT gpt = this.chatGPT.init();
-        this.chatCompletion.setMessages(cover(contextList));
+        this.chatCompletion.setMessages(cover(sendDto.getContextList()));
         ChatCompletionResponse response = gpt.chatCompletion(this.chatCompletion);
 
         // 此处可获取token总量进行扣费
@@ -125,18 +126,18 @@ public class ChatGptSendStrategy implements SendStrategy {
 
     @SneakyThrows
     @Override
-    public String streamSend(String system, List<Context> contextList) {
+    public String streamSend(SendDto sendDto) {
         ChatGPTStream gpt = this.chatGPTStream.init();
 
-        this.chatCompletion.setMessages(cover(contextList));
+        this.chatCompletion.setMessages(cover(sendDto.getContextList()));
         this.chatCompletion.setStream(true);
 
         //  获取当前用户的登陆信息
         WordtalkUser user = SecurityUtils.getUser();
 
-        SseEmitter emitter = SseEmitterUtil.openEmitter(system, user.getUsername());
+        SseEmitter emitter = SseEmitterUtil.openEmitter(user.getUsername());
 
-        ChatGptSseEmitterListener listener = new ChatGptSseEmitterListener(emitter, user.getUsername());
+        ChatGptSseEmitterListener listener = new ChatGptSseEmitterListener(emitter, sendDto.getId(), sendDto.getEvent());
 
         gpt.streamChatCompletion(this.chatCompletion, listener);
 
