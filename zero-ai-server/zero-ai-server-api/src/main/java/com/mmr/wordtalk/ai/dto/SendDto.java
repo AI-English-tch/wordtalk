@@ -19,6 +19,7 @@ public class SendDto {
     private String id;
     @Schema(description = "事件")
     private String event;
+
     @Schema(description = "上下文列表")
     private List<Context> contextList;
     @Schema(description = "Ai参数")

@@ -22,7 +22,7 @@ public class SseEmitterUtil {
      */
     public static SseEmitter openEmitter(String token) {
 //        String key = system + "::" + token;
-        final String key = token;
+        String key = token;
         if (sseTable.containsKey(key)) {
             return sseTable.get(key);
         }
@@ -38,7 +38,7 @@ public class SseEmitterUtil {
      */
     public static void closeEmitter(String token) {
 //        String key = system + "::" + token;
-        final String key = token;
+        String key = token;
         if (sseTable.containsKey(key)) {
             SseEmitter emitter = sseTable.remove(key);
             emitter.complete();
