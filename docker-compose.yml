@@ -76,23 +76,23 @@ services:
 #    environment:
 #      MYSQL_PWD: jiydCXYM3242
 
-#  wordtalk-bridge:
-#    build:
-#      context: ./wordtalk-bridge/wordtalk-bridge-biz
-#    restart: always
-#    container_name: wordtalk-bridge
-#    image: wordtalk-bridge
-#    environment:
-#      MYSQL_PWD: jiydCXYM3242
-
-  wordtalk-ai:
+  wordtalk-bridge:
     build:
-      context: ./zero-ai-server/zero-ai-server-biz
+      context: ./wordtalk-bridge/wordtalk-bridge-biz
     restart: always
-    container_name: wordtalk-ai
-    image: zero-ai-server
+    container_name: wordtalk-bridge
+    image: wordtalk-bridge
     environment:
       MYSQL_PWD: jiydCXYM3242
+
+#  wordtalk-ai:
+#    build:
+#      context: ./zero-ai-server/zero-ai-server-biz
+#    restart: always
+#    container_name: wordtalk-ai
+#    image: zero-ai-server
+#    environment:
+#      MYSQL_PWD: jiydCXYM3242
 
   #  wordtalk-monitor:
   #    build:
