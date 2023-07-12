@@ -46,7 +46,7 @@ public class GptHistoryServiceImpl extends ServiceImpl<GptHistoryMapper, GptHist
 
     private final RedisTemplate redisTemplate;
 
-    private final String redisKey = "context::{robotId}::{bookId}";
+    private final String redisKey = "context::{system}::{bookId}";
 
 
     @Override
@@ -108,7 +108,7 @@ public class GptHistoryServiceImpl extends ServiceImpl<GptHistoryMapper, GptHist
             GptHistory temp = BeanUtil.copyProperties(history, GptHistory.class);
             temp.setRole(item.getRole());
             temp.setContent(item.getContent());
-            return history;
+            return temp;
         }).collect(Collectors.toList());
     }
 
