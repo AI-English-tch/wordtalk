@@ -85,14 +85,14 @@ services:
     environment:
       MYSQL_PWD: jiydCXYM3242
 
-#  wordtalk-ai:
-#    build:
-#      context: ./zero-ai-server/zero-ai-server-biz
-#    restart: always
-#    container_name: wordtalk-ai
-#    image: zero-ai-server
-#    environment:
-#      MYSQL_PWD: jiydCXYM3242
+  wordtalk-ai:
+    build:
+      context: ./zero-ai-server/zero-ai-server-biz
+    restart: always
+    container_name: wordtalk-ai
+    image: zero-ai-server
+    environment:
+      MYSQL_PWD: jiydCXYM3242
 
   #  wordtalk-monitor:
   #    build:

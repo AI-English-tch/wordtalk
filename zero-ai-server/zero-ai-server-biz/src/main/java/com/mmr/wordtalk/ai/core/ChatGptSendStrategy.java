@@ -1,7 +1,6 @@
 package com.mmr.wordtalk.ai.core;
 
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.spring.SpringUtil;
 import cn.hutool.json.JSONObject;
@@ -52,6 +51,7 @@ public class ChatGptSendStrategy implements SendStrategy {
             globalProxy = SpringUtil.getBean("globalProxy", Proxy.class);
         } catch (Exception e) {
             // 未开启全局代理
+            globalProxy = Proxy.NO_PROXY;
         }
 
         // 构建模型默认参数 ---- 先采用全默认参数，若模型内有自定义参数，则将自定义覆盖之，若本次调用有自定义参数，则再覆盖之
@@ -66,7 +66,7 @@ public class ChatGptSendStrategy implements SendStrategy {
             BeanUtil.copyProperties(source, defaultParams);
         }
 
-        Proxy proxy = model.getEnable_proxy() && ObjectUtil.isNotNull(globalProxy) ? globalProxy : Proxy.NO_PROXY;
+        Proxy proxy = model.getEnable_proxy() ? globalProxy : Proxy.NO_PROXY;
 
         // 根据模型构造策略
         this.chatCompletion = ChatCompletion.builder()
