@@ -69,7 +69,7 @@ public class ChatGptSseEmitterListener extends EventSourceListener {
             SseEmitter.SseEventBuilder sb = SseEmitter.event();
             if (StrUtil.isNotBlank(id)) sb.id(id);
             if (StrUtil.isNotBlank(event)) sb.name(event);
-            sb.data(text+"");
+            sb.data(new String(text));
             sseEmitter.send(sb);
         }
     }
