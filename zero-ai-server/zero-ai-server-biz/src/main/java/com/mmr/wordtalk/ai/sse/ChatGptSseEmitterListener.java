@@ -13,6 +13,7 @@ import okhttp3.sse.EventSource;
 import okhttp3.sse.EventSourceListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.slf4j.Marker;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.util.Objects;
@@ -64,7 +65,7 @@ public class ChatGptSseEmitterListener extends EventSourceListener {
         ChatCompletionResponse response = JSON.parseObject(data, ChatCompletionResponse.class);
         // 读取Json
         String text = ChatGptSendStrategy.parse(response.getChoices(), true);
-
+        log.info(Marker.ANY_MARKER, text);
         if (text != null) {
             lastMessage += text;
             SseEmitter.SseEventBuilder sb = SseEmitter.event();
