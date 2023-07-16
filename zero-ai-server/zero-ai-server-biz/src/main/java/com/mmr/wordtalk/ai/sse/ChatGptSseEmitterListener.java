@@ -1,5 +1,6 @@
 package com.mmr.wordtalk.ai.sse;
 
+import cn.hutool.core.net.URLEncodeUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 import com.mmr.wordtalk.ai.core.ChatGptSendStrategy;
@@ -15,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
+import java.nio.charset.Charset;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
@@ -69,7 +71,7 @@ public class ChatGptSseEmitterListener extends EventSourceListener {
             SseEmitter.SseEventBuilder sb = SseEmitter.event();
             if (StrUtil.isNotBlank(id)) sb.id(id);
             if (StrUtil.isNotBlank(event)) sb.name(event);
-            sb.data(new String(text));
+            sb.data(URLEncodeUtil.encode(text, Charset.forName("UTF-8")));
             sseEmitter.send(sb);
         }
     }

@@ -1,3 +1,5 @@
+import cn.hutool.core.net.URLDecoder;
+import cn.hutool.core.net.URLEncodeUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.spring.SpringUtil;
 import com.mmr.wordtalk.ai.ZeroAiApplication;
@@ -10,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.net.Proxy;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,10 +49,18 @@ public class Gpt4Test {
         Proxy globalProxy = null;
         try {
             globalProxy = SpringUtil.getBean("globalProxy");
-        } catch (Exception e){
+        } catch (Exception e) {
 
         }
         System.out.println(globalProxy);
+    }
+
+    @Test
+    public void test3() {
+        String text = "  hello  world !  ";
+        String encode = URLEncodeUtil.encode(text, Charset.forName("UTF-8"));
+        System.out.println(encode);
+        System.out.println(URLDecoder.decode(encode, Charset.forName("UTF-8")));
     }
 
 }
