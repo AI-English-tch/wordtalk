@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
-import java.net.URLEncoder;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
@@ -70,7 +69,7 @@ public class ChatGptSseEmitterListener extends EventSourceListener {
             SseEmitter.SseEventBuilder sb = SseEmitter.event();
             if (StrUtil.isNotBlank(id)) sb.id(id);
             if (StrUtil.isNotBlank(event)) sb.name(event);
-            sb.data(URLEncoder.encode(text, "UTF-8"));
+            sb.data(text+"");
             sseEmitter.send(sb);
         }
     }
