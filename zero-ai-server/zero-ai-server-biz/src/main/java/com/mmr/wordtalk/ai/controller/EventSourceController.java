@@ -64,7 +64,8 @@ public class EventSourceController {
 //    @Inner
     public R push(@RequestParam String msg, @RequestParam String token) {
         SseEmitter emitter = SseEmitterUtil.openEmitter(token);
-        emitter.send(msg);
+//        emitter.send(msg);
+        emitter.send("  hello world !  ");
         return R.ok("发送成功");
     }
 
