@@ -76,14 +76,14 @@ services:
 #    environment:
 #      MYSQL_PWD: jiydCXYM3242
 
-  wordtalk-bridge:
-    build:
-      context: ./wordtalk-bridge/wordtalk-bridge-biz
-    restart: always
-    container_name: wordtalk-bridge
-    image: wordtalk-bridge
-    environment:
-      MYSQL_PWD: jiydCXYM3242
+#  wordtalk-bridge:
+#    build:
+#      context: ./wordtalk-bridge/wordtalk-bridge-biz
+#    restart: always
+#    container_name: wordtalk-bridge
+#    image: wordtalk-bridge
+#    environment:
+#      MYSQL_PWD: jiydCXYM3242
 
   wordtalk-ai:
     build:

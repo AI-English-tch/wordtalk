@@ -2,7 +2,6 @@ package com.mmr.wordtalk.ai.controller;
 
 import com.mmr.wordtalk.ai.sse.SseEmitterUtil;
 import com.mmr.wordtalk.common.core.util.R;
-import com.mmr.wordtalk.common.security.annotation.Inner;
 import com.mmr.wordtalk.common.security.util.SecurityUtils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -62,7 +61,7 @@ public class EventSourceController {
     @SneakyThrows
     @Operation(summary = "推送文字到EventSource", description = "推送文字到EventSource")
     @GetMapping("/push")
-    @Inner
+//    @Inner
     public R push(@RequestParam String msg, @RequestParam String token) {
         SseEmitter emitter = SseEmitterUtil.openEmitter(token);
         emitter.send(msg);
