@@ -1,9 +1,13 @@
 package com.mmr.wordtalk.ai.sse;
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.net.URLEncodeUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 import com.mmr.wordtalk.ai.core.ChatGptSendStrategy;
+import com.mmr.wordtalk.common.core.util.SpringContextHolder;
+import com.mmr.wordtalk.common.websocket.distribute.MessageDO;
+import com.mmr.wordtalk.common.websocket.distribute.RedisMessageDistributor;
 import com.plexpt.chatgpt.entity.chat.ChatCompletionResponse;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -43,6 +47,8 @@ public class ChatGptSseEmitterListener extends EventSourceListener {
      */
     private final String event;
 
+    RedisMessageDistributor messageDistributor = SpringContextHolder.getBean(RedisMessageDistributor.class);
+
     @Getter
     protected CompletableFuture<String> future = new CompletableFuture<>();
     @Getter
@@ -73,6 +79,14 @@ public class ChatGptSseEmitterListener extends EventSourceListener {
             if (StrUtil.isNotBlank(event)) sb.name(event);
             sb.data(URLEncodeUtil.encode(text, Charset.forName("UTF-8")));
             sseEmitter.send(sb);
+
+            // websocket 发送消息
+            MessageDO messageDO = new MessageDO();
+            messageDO.setNeedBroadcast(Boolean.FALSE);
+            // 给目标用户ID
+            messageDO.setSessionKeys(CollUtil.newArrayList(1));
+            messageDO.setMessageText(text);
+            messageDistributor.distribute(messageDO);
         }
     }
 
