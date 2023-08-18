@@ -6,6 +6,7 @@ import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 import com.mmr.wordtalk.ai.core.ChatGptSendStrategy;
 import com.mmr.wordtalk.common.core.util.SpringContextHolder;
+import com.mmr.wordtalk.common.security.util.SecurityUtils;
 import com.mmr.wordtalk.common.websocket.distribute.MessageDO;
 import com.mmr.wordtalk.common.websocket.distribute.RedisMessageDistributor;
 import com.plexpt.chatgpt.entity.chat.ChatCompletionResponse;
@@ -84,7 +85,8 @@ public class ChatGptSseEmitterListener extends EventSourceListener {
             MessageDO messageDO = new MessageDO();
             messageDO.setNeedBroadcast(Boolean.FALSE);
             // 给目标用户ID
-            messageDO.setSessionKeys(CollUtil.newArrayList(1));
+			Long userId = SecurityUtils.getUser().getId();
+			messageDO.setSessionKeys(CollUtil.newArrayList(userId));
             messageDO.setMessageText(text);
             messageDistributor.distribute(messageDO);
         }
