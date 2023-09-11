@@ -27,6 +27,11 @@ public interface ErrorCodes {
      * 用户已存在
      */
     String SYS_USER_PHONE_EXISTING = "sys.user.phone.existing";
+    
+    /**
+     * 用户已存在
+     */
+    String SYS_USER_EMAIL_EXISTING = "sys.user.email.existing";
 
     /**
      * 用户原密码错误，修改失败

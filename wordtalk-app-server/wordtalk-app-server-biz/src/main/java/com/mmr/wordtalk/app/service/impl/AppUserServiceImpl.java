@@ -19,6 +19,7 @@ package com.mmr.wordtalk.app.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ArrayUtil;
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -276,6 +277,11 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserMapper, AppUser> impl
 
     @Override
     public R getEmailCode(String email) {
+        // 判断邮箱是否已被注册
+        AppUser appUser = baseMapper.selectOne(Wrappers.<AppUser>lambdaQuery().eq(AppUser::getEmail, email));
+        if (ObjectUtil.isNotNull(appUser)) {
+            return R.failed(MsgUtils.getMessage(ErrorCodes.SYS_USER_EMAIL_EXISTING, email));
+        }
         String key = String.format("%s:%s:%s", tenantKeyStrResolver.key(), CacheConstants.REGISTER_VERIFICATION, email);
         redisTemplate.delete(key);
         // 3.重新生成验证码
@@ -298,10 +304,15 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserMapper, AppUser> impl
         String verify = redisTemplate.opsForValue().get(key);
         if (code.equals(verify)) {
             // 验证通过可以注册
-            AppUser appUser = new AppUser();
+            AppUser appUser = baseMapper.selectOne(Wrappers.<AppUser>lambdaQuery().eq(AppUser::getUsername, registerDto.getUsername()));
+            if (ObjectUtil.isNotNull(appUser)) {
+                return R.failed(MsgUtils.getMessage(ErrorCodes.SYS_USER_USERNAME_EXISTING, registerDto.getUsername()));
+            }
+            appUser = new AppUser();
             BeanUtils.copyProperties(registerDto, appUser);
             appUser.setDelFlag(CommonConstants.STATUS_NORMAL);
             appUser.setPassword(ENCODER.encode(registerDto.getPassword()));
+            appUser.setEmail(email);
             baseMapper.insert(appUser);
             return R.ok(null, MsgUtils.getMessage(ErrorCodes.REGISTER_SUCCESS));
         }
