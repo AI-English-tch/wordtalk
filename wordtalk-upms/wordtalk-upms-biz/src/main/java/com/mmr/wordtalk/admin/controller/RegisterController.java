@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author 张恩睿
  * @date 2022/3/30
  * <p>
- * 客户端注册功能 register.user = false
+ * 客户端注册功能  = false
  */
 @RestController
 @RequestMapping("/register")
@@ -37,5 +37,7 @@ public class RegisterController {
 	public R<Boolean> registerUser(@RequestBody UserDTO userDto) {
 		return userService.registerUser(userDto);
 	}
+
+
 
 }

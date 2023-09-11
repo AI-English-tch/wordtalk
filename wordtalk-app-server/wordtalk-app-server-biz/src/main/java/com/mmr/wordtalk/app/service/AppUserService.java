@@ -22,6 +22,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mmr.wordtalk.app.api.dto.AppUserDTO;
 import com.mmr.wordtalk.app.api.dto.AppUserInfo;
+import com.mmr.wordtalk.app.api.dto.AppUserRegisterDto;
 import com.mmr.wordtalk.app.api.entity.AppUser;
 import com.mmr.wordtalk.app.api.vo.AppUserExcelVO;
 import com.mmr.wordtalk.app.api.vo.AppUserVO;
@@ -56,4 +57,7 @@ public interface AppUserService extends IService<AppUser> {
 
 	R importUser(List<AppUserExcelVO> excelVOList, BindingResult bindingResult);
 
+    R getEmailCode(String email);
+
+	R registerByEmail(AppUserRegisterDto registerDto);
 }

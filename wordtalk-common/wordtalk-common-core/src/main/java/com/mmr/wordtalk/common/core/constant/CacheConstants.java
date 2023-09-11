@@ -115,4 +115,9 @@ public interface CacheConstants {
 	 */
 	String PROJECT_OAUTH_ACCESS = "token::access_token";
 
+	/**
+	 * 注册验证吗缓存
+	 */
+	String REGISTER_VERIFICATION = "register_verification";
+
 }

@@ -89,6 +89,12 @@
 			<groupId>com.mmr</groupId>
 			<artifactId>wordtalk-common-swagger</artifactId>
 		</dependency>
+		<!--spring boot 邮件快速启动器-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
