@@ -10,7 +10,6 @@ import com.mmr.wordtalk.ai.dto.Context;
 import com.mmr.wordtalk.ai.dto.SendDto;
 import com.mmr.wordtalk.ai.entity.AiModel;
 import com.mmr.wordtalk.ai.sse.ChatGptSseEmitterListener;
-import com.mmr.wordtalk.ai.sse.SseEmitterUtil;
 import com.mmr.wordtalk.common.security.service.WordtalkUser;
 import com.mmr.wordtalk.common.security.util.SecurityUtils;
 import com.plexpt.chatgpt.ChatGPT;
@@ -22,7 +21,6 @@ import com.plexpt.chatgpt.entity.chat.ChatCompletionResponse;
 import com.plexpt.chatgpt.entity.chat.Message;
 import lombok.Data;
 import lombok.SneakyThrows;
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.net.Proxy;
 import java.util.ArrayList;
@@ -135,9 +133,9 @@ public class ChatGptSendStrategy implements SendStrategy {
         //  获取当前用户的登陆信息
         WordtalkUser user = SecurityUtils.getUser();
 
-        SseEmitter emitter = SseEmitterUtil.openEmitter(user.getUsername());
+//        SseEmitter emitter = SseEmitterUtil.openEmitter(user.getUsername());
 
-        ChatGptSseEmitterListener listener = new ChatGptSseEmitterListener(emitter, sendDto.getId(), sendDto.getEvent());
+        ChatGptSseEmitterListener listener = new ChatGptSseEmitterListener(user.getId(), sendDto.getId(), sendDto.getEvent());
 
         gpt.streamChatCompletion(this.chatCompletion, listener);
 

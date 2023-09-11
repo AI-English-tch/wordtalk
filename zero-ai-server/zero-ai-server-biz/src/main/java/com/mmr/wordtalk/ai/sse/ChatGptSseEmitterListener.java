@@ -1,12 +1,10 @@
 package com.mmr.wordtalk.ai.sse;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.net.URLEncodeUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 import com.mmr.wordtalk.ai.core.ChatGptSendStrategy;
 import com.mmr.wordtalk.common.core.util.SpringContextHolder;
-import com.mmr.wordtalk.common.security.util.SecurityUtils;
 import com.mmr.wordtalk.common.websocket.distribute.MessageDO;
 import com.mmr.wordtalk.common.websocket.distribute.RedisMessageDistributor;
 import com.plexpt.chatgpt.entity.chat.ChatCompletionResponse;
@@ -19,9 +17,7 @@ import okhttp3.sse.EventSource;
 import okhttp3.sse.EventSourceListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
-import java.nio.charset.Charset;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
@@ -36,8 +32,8 @@ public class ChatGptSseEmitterListener extends EventSourceListener {
     /**
      * 回复流式消息的组件，此处是SSE
      */
-    private final SseEmitter sseEmitter;
-
+//    private final SseEmitter sseEmitter;
+    private final Long userId;
     /**
      * SSE的触发ID
      */
@@ -75,18 +71,18 @@ public class ChatGptSseEmitterListener extends EventSourceListener {
         String text = ChatGptSendStrategy.parse(response.getChoices(), true);
         if (text != null) {
             lastMessage += text;
-            SseEmitter.SseEventBuilder sb = SseEmitter.event();
-            if (StrUtil.isNotBlank(id)) sb.id(id);
-            if (StrUtil.isNotBlank(event)) sb.name(event);
-            sb.data(URLEncodeUtil.encode(text, Charset.forName("UTF-8")));
-            sseEmitter.send(sb);
+//            SseEmitter.SseEventBuilder sb = SseEmitter.event();
+//            if (StrUtil.isNotBlank(id)) sb.id(id);
+//            if (StrUtil.isNotBlank(event)) sb.name(event);
+//            sb.data(URLEncodeUtil.encode(text, Charset.forName("UTF-8")));
+//            sseEmitter.send(sb);
 
             // websocket 发送消息
             MessageDO messageDO = new MessageDO();
             messageDO.setNeedBroadcast(Boolean.FALSE);
             // 给目标用户ID
-			Long userId = SecurityUtils.getUser().getId();
-			messageDO.setSessionKeys(CollUtil.newArrayList(userId));
+//            Long userId = SecurityUtils.getUser().getId();
+            messageDO.setSessionKeys(CollUtil.newArrayList(userId));
             messageDO.setMessageText(text);
             messageDistributor.distribute(messageDO);
         }
