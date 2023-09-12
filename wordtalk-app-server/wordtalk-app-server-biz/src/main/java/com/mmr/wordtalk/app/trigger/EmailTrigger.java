@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 @Slf4j
-@Service
+@Component
 public class EmailTrigger {
 
     @Lazy
