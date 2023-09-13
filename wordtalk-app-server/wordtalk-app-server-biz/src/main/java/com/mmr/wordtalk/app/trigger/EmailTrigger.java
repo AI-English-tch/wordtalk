@@ -1,6 +1,7 @@
 package com.mmr.wordtalk.app.trigger;
 
 import cn.hutool.core.util.StrUtil;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.MailSender;
@@ -9,6 +10,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 @Slf4j
+@Data
 @Component
 @RequiredArgsConstructor
 public class EmailTrigger {
