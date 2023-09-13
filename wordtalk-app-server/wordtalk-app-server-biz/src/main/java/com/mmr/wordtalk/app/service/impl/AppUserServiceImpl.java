@@ -313,7 +313,12 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserMapper, AppUser> impl
             appUser.setDelFlag(CommonConstants.STATUS_NORMAL);
             appUser.setPassword(ENCODER.encode(registerDto.getPassword()));
             appUser.setEmail(email);
-            baseMapper.insert(appUser);
+            this.save(appUser);
+            // 给用户赋予默认角色
+            AppUserRole userRole = new AppUserRole();
+            userRole.setUserId(appUser.getUserId());
+            userRole.setRoleId(1L);
+            appUserRoleService.save(userRole);
             return R.ok(null, MsgUtils.getMessage(ErrorCodes.REGISTER_SUCCESS));
         }
         return R.failed(MsgUtils.getMessage(ErrorCodes.VERIFY_CODE_ERROR));
