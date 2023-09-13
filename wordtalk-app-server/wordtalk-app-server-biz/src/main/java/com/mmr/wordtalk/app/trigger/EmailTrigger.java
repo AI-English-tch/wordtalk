@@ -32,7 +32,6 @@ public class EmailTrigger {
 
     @Async
     public void sendRegisterCode(String email, String code) {
-
         try {
             MailUtil.send(email, "WordTalk注册验证码", StrUtil.format("{} 验证码十分钟内有效", code), false, null);
         } catch (Exception e) {
