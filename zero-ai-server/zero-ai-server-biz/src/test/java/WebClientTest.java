@@ -1,15 +1,22 @@
+import cn.hutool.crypto.SecureUtil;
+import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClient;
 import reactor.netty.transport.ProxyProvider;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author 张恩睿
@@ -151,5 +158,68 @@ public class WebClientTest {
 
 
         Thread.sleep(3000);
+    }
+
+    @SneakyThrows
+    @Test
+    public void testWebClient3() {
+        Map<String, Object> input = new HashMap<>();
+        input.put("input", "知乎，是一个中文互联网高质量问答社区和创作者聚集的原创内容平台...");
+        input.put("prompt", "问答");
+        input.put("question", "知乎上线多长时间了？");
+        input.put("<ans>", "");
+
+        String endpointName = "cpm-bee-230915045304JBSQ";
+        String ak = "72aa3973531411eeb4eb0242ac120004";
+        String sk = "I%0isNo+pKr=UfEuNEp2OIdtxmp0jKdE";
+        String host = "saas-1222385307.us-west-2.elb.amazonaws.com";
+
+        long timestamp = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+
+        String timestr = String.valueOf(timestamp);
+        String sign = getSign(timestr, sk);
+
+        String url = "http://" + host + "/inference";
+
+        Map<String, Object> payload = new HashMap<>();
+        payload.put("endpoint_name", endpointName);
+        payload.put("input", JSONUtil.toJsonStr(input));
+        payload.put("ak", ak);
+        payload.put("timestamp", timestr);
+        payload.put("sign", sign);
+
+        WebClient webClient = WebClient.builder()
+                .baseUrl(url)
+                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .build();
+
+        Mono<JSONObject> response = webClient.post()
+                .bodyValue(JSONUtil.toJsonStr(payload))
+                .retrieve()
+                .bodyToMono(JSONObject.class);
+
+        JSONObject block = response.block();
+
+        JSONObject data = JSONUtil.parseObj(block.getStr("data"));
+
+        JSONObject result = JSONUtil.parseObj(data.getStr("data"));
+
+        System.out.println(result);
+    }
+
+    private static String getSign(String timestamp, String sk) throws NoSuchAlgorithmException {
+        String data = timestamp + sk;
+
+        return SecureUtil.md5(data);
+
+//        String s1 = HexUtil.encodeHexStr(s);
+//
+//        MessageDigest md5 = MessageDigest.getInstance("MD5");
+//        byte[] digest = md5.digest(data.getBytes());
+//        StringBuilder sb = new StringBuilder();
+//        for (byte b : digest) {
+//            sb.append(String.format("%02x", b));
+//        }
+//        return sb.toString();
     }
 }

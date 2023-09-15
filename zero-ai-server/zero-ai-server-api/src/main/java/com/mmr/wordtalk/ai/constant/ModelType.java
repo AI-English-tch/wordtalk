@@ -14,6 +14,7 @@ import lombok.Getter;
 public enum ModelType {
 
     CHATGPT("chatgpt"),
+    CPMGPT("cpmgpt"),
     ;
 
     private String value;

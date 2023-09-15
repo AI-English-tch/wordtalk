@@ -47,7 +47,7 @@ public class AiModel extends Model<AiModel> {
 	/**
 	 * 唯一标识
 	 */
-	@TableId(type = IdType.AUTO)
+	@TableId(type = IdType.ASSIGN_ID)
 	@Schema(description = "唯一标识")
 	private Long id;
 
@@ -101,12 +101,14 @@ public class AiModel extends Model<AiModel> {
 	 * 创建者
 	 */
 	@Schema(description = "创建者")
+	@TableField(fill = FieldFill.INSERT)
 	private String createBy;
 
 	/**
 	 * 创建时间
 	 */
 	@Schema(description = "创建时间")
+	@TableField(fill = FieldFill.INSERT)
 	private LocalDateTime createTime;
 
 }

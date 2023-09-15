@@ -19,6 +19,7 @@ package com.mmr.wordtalk.ai.service.impl;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mmr.wordtalk.ai.constant.ModelType;
+import com.mmr.wordtalk.ai.core.CPMSendStrategy;
 import com.mmr.wordtalk.ai.core.ChatGptSendStrategy;
 import com.mmr.wordtalk.ai.core.SendStrategy;
 import com.mmr.wordtalk.ai.dto.SendDto;
@@ -46,6 +47,8 @@ public class AiModelServiceImpl extends ServiceImpl<AiModelMapper, AiModel> impl
         // 根据AI模型的类型调用不同的实现体
         if (StrUtil.equals(aiModel.getType(), ModelType.CHATGPT.getValue())) {
             strategy = new ChatGptSendStrategy(aiModel, sendDto.getParams());
+        } else if (StrUtil.equals(aiModel.getType(), ModelType.CPMGPT.getValue())) {
+            strategy = new CPMSendStrategy();
         }
         return strategy.send(sendDto);
     }
@@ -58,6 +61,8 @@ public class AiModelServiceImpl extends ServiceImpl<AiModelMapper, AiModel> impl
         // 根据AI模型的类型调用不同的实现体
         if (StrUtil.equals(aiModel.getType(), ModelType.CHATGPT.getValue())) {
             strategy = new ChatGptSendStrategy(aiModel, sendDto.getParams());
+        } else if (StrUtil.equals(aiModel.getType(), ModelType.CPMGPT.getValue())) {
+            strategy = new CPMSendStrategy();
         }
         return strategy.streamSend(sendDto);
     }
